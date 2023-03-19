@@ -25,23 +25,62 @@ Object.keys(feeds).forEach((feed) => {
     .then((body) => {
       const buffer = Buffer.from(body);
       fs.writeFileSync(`./zips/${feed}.zip`, buffer, 'utf8');
+      console.log(`Saved ${feed} to ./zips/${feed}.zip`);
 
-      console.log(`Unzipping ${feed}...`)
+      console.log(`Unzipping ${feed}...`);
       fs.mkdirSync(`./csv/${feed}`);
       execSync(`unzip -o ./zips/${feed}.zip -d ./csv/${feed}`);
+      console.log(`Unzipped ${feed} to ./csv/${feed}`);
 
       console.log(`Converting ${feed} to JSON...`)
       fs.mkdirSync(`./data/${feed}`);
-      ['routes', 'stops', 'trips'].forEach((fileName) => {
-        let data = [];
-        fs.createReadStream(`./csv/${feed}/${fileName}.txt`)
-          .pipe(csv())
-          .on('data', function (row) {
-            data.push(row)
-          })
-          .on('end', function () {
-            fs.writeFileSync(`./data/${feed}/${fileName}.json`, JSON.stringify(data));
-          });        
-      })
+
+      let routes = {};
+      console.log(`Processing ${feed} routes...`)
+      fs.createReadStream(`./csv/${feed}/routes.txt`)
+        .pipe(csv())
+        .on('data', function (row) {
+          routes[row.route_id] = {
+            routeID: row.route_id,
+            routeShortName: row.route_short_name,
+            routeLongName: row.route_long_name,
+            routeColor: row.route_color,
+            routeTextColor: row.route_text_color,
+            routeHeadSign: '',
+            routeTrips: []
+          }
+        })
+        .on('end', function () {
+          console.log(`Processing ${feed} trips...`)
+          fs.createReadStream(`./csv/${feed}/trips.txt`)
+            .pipe(csv())
+            .on('data', function (row) {
+              routes[row.route_id].routeTrips.push(Number(row.trip_id));
+              routes[row.route_id].routeHeadSign = row.trip_headsign;
+            })
+            .on('end', function () {
+              console.log(`Writing ${feed} routes to JSON...`)
+              fs.writeFileSync(`./data/${feed}/routes.json`, JSON.stringify(routes));
+            });
+        });
+
+      let stops = {};
+      console.log(`Processing ${feed} stops...`)
+      fs.createReadStream(`./csv/${feed}/stops.txt`)
+        .pipe(csv())
+        .on('data', function (row) {
+          stops[row.stop_id] = {
+            stopID: row.stop_id,
+            stopName: row.stop_name,
+            stopLat: Number(Number(row.stop_lat).toFixed(5)),
+            stopLon: Number(Number(row.stop_lon).toFixed(5)),
+            zoneID: row.zone_id,
+            parentStation: row.parent_station,
+          };
+        })
+        .on('end', function () {
+          console.log(`Writing ${feed} stops to JSON...`)
+          fs.writeFileSync(`./data/${feed}/stops.json`, JSON.stringify(stops));
+        });
     })
 });
