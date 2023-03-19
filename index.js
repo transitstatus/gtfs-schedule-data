@@ -46,7 +46,6 @@ Object.keys(feeds).forEach((feed) => {
             routeLongName: row.route_long_name,
             routeColor: row.route_color,
             routeTextColor: row.route_text_color,
-            routeHeadSign: '',
             routeTrips: []
           }
         })
@@ -56,7 +55,6 @@ Object.keys(feeds).forEach((feed) => {
             .pipe(csv())
             .on('data', function (row) {
               routes[row.route_id].routeTrips.push(Number(row.trip_id));
-              routes[row.route_id].routeHeadSign = row.trip_headsign;
             })
             .on('end', function () {
               console.log(`Writing ${feed} routes to JSON...`)
