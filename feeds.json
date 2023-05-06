@@ -1,3 +1,12 @@
 {
-  "bart": "https://www.bart.gov/dev/schedules/google_transit.zip"
+  "bart": {
+    "url": "https://www.bart.gov/dev/schedules/google_transit.zip",
+    "headers": {}
+  },
+  "metra": {
+    "url": "https://gtfsapi.metrarail.com/gtfs/raw/schedule.zip",
+    "headers": {
+      "Authorization": "env.metra_authorization"
+    }
+  }
 }

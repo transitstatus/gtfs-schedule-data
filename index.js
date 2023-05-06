@@ -3,6 +3,25 @@ const fs = require('fs');
 const csv = require('csv-parser')
 const { execSync } = require('child_process');
 
+// dot env
+require('dotenv').config();
+
+const processHeaders = (headers) => {
+  const processedHeaders = {};
+  Object.keys(headers).forEach((header) => {
+    if (headers[header].startsWith('env.')) {
+      const envVar = headers[header].replace('env.', '');
+      processedHeaders[header] = process.env[envVar];
+    } else {
+      processedHeaders[header] = headers[header];
+    };
+  });
+
+  console.log(headers)
+  console.log(processedHeaders)
+  return processedHeaders;
+};
+
 const feeds = JSON.parse(fs.readFileSync('./feeds.json', 'utf8'));
 
 //removing old zips
@@ -18,9 +37,12 @@ fs.existsSync('./data') && fs.rmSync('./data', { recursive: true });
 fs.mkdirSync('./data');
 
 Object.keys(feeds).forEach((feed) => {
-  const feedURL = feeds[feed];
+  const feedURL = feeds[feed]['url'];
   console.log(`Fetching ${feedURL}...`)
-  fetch(feedURL)
+  fetch(feedURL, {
+    method: 'GET',
+    headers: processHeaders(feeds[feed]['headers'])
+  })
     .then((res) => res.arrayBuffer())
     .then((body) => {
       const buffer = Buffer.from(body);
