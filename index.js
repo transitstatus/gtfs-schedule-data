@@ -1,5 +1,6 @@
 const fetch = require('node-fetch');
 const fs = require('fs');
+const { parse } = require('csv-parse');
 const csv = require('csv-parser')
 const { execSync } = require('child_process');
 
@@ -16,9 +17,6 @@ const processHeaders = (headers) => {
       processedHeaders[header] = headers[header];
     };
   });
-
-  console.log(headers)
-  console.log(processedHeaders)
   return processedHeaders;
 };
 
@@ -60,7 +58,10 @@ Object.keys(feeds).forEach((feed) => {
       let routes = {};
       console.log(`Processing ${feed} routes...`)
       fs.createReadStream(`./csv/${feed}/routes.txt`)
-        .pipe(csv())
+        .pipe(parse({
+          delimiter: feeds[feed]['separator'],
+          columns: true
+        }))
         .on('data', function (row) {
           routes[row.route_id] = {
             routeID: row.route_id,
@@ -74,9 +75,12 @@ Object.keys(feeds).forEach((feed) => {
         .on('end', function () {
           console.log(`Processing ${feed} trips...`)
           fs.createReadStream(`./csv/${feed}/trips.txt`)
-            .pipe(csv())
+            .pipe(parse({
+              delimiter: feeds[feed]['separator'],
+              columns: true
+            }))
             .on('data', function (row) {
-              routes[row.route_id].routeTrips.push(Number(row.trip_id));
+              routes[row.route_id].routeTrips.push(row.trip_id);
             })
             .on('end', function () {
               console.log(`Writing ${feed} routes to JSON...`)
@@ -87,8 +91,12 @@ Object.keys(feeds).forEach((feed) => {
       let stops = {};
       console.log(`Processing ${feed} stops...`)
       fs.createReadStream(`./csv/${feed}/stops.txt`)
-        .pipe(csv())
+        .pipe(parse({
+          delimiter: feeds[feed]['separator'],
+          columns: true
+        }))
         .on('data', function (row) {
+
           stops[row.stop_id] = {
             stopID: row.stop_id,
             stopName: row.stop_name,

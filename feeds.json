@@ -1,12 +1,29 @@
 {
   "bart": {
     "url": "https://www.bart.gov/dev/schedules/google_transit.zip",
-    "headers": {}
+    "headers": {},
+    "separator": ","
   },
   "metra": {
     "url": "https://gtfsapi.metrarail.com/gtfs/raw/schedule.zip",
     "headers": {
       "Authorization": "env.metra_authorization"
-    }
+    },
+    "separator": ", "
+  },
+  "nyct_subway": {
+    "url": "http://web.mta.info/developers/data/nyct/subway/google_transit.zip",
+    "headers": {},
+    "separator": ","
+  },
+  "lirr": {
+    "url": "http://web.mta.info/developers/data/lirr/google_transit.zip",
+    "headers": {},
+    "separator": ","
+  },
+  "mnrr": {
+    "url": "http://web.mta.info/developers/data/mnr/google_transit.zip",
+    "headers": {},
+    "separator": ","
   }
 }
