@@ -2,28 +2,154 @@
   "bart": {
     "url": "https://www.bart.gov/dev/schedules/google_transit.zip",
     "headers": {},
-    "separator": ","
+    "separator": ",",
+    "colorOverrides": {}
   },
   "metra": {
     "url": "https://gtfsapi.metrarail.com/gtfs/raw/schedule.zip",
     "headers": {
       "Authorization": "env.metra_authorization"
     },
-    "separator": ", "
+    "separator": ", ",
+    "colorOverrides": {}
   },
   "nyct_subway": {
     "url": "http://web.mta.info/developers/data/nyct/subway/google_transit.zip",
     "headers": {},
-    "separator": ","
+    "separator": ",",
+    "colorOverrides": {
+      "1": [
+        "EE352E",
+        "F2F2F2"
+      ],
+      "2": [
+        "EE352E",
+        "F2F2F2"
+      ],
+      "3": [
+        "EE352E",
+        "F2F2F2"
+      ],
+      "4": [
+        "00933C",
+        "F2F2F2"
+      ],
+      "5": [
+        "00933C",
+        "F2F2F2"
+      ],
+      "6": [
+        "00933C",
+        "F2F2F2"
+      ],
+      "7": [
+        "B933AD",
+        "F2F2F2"
+      ],
+      "5X": [
+        "00933C",
+        "F2F2F2"
+      ],
+      "6X": [
+        "00A65C",
+        "F2F2F2"
+      ],
+      "7X": [
+        "B933AD",
+        "F2F2F2"
+      ],
+      "GS": [
+        "6D6E71",
+        "F2F2F2"
+      ],
+      "A": [
+        "2850AD",
+        "FFFFFF"
+      ],
+      "B": [
+        "FF6319",
+        "FFFFFF"
+      ],
+      "C": [
+        "2850AD",
+        "FFFFFF"
+      ],
+      "D": [
+        "FF6319",
+        "FFFFFF"
+      ],
+      "E": [
+        "2850AD",
+        "FFFFFF"
+      ],
+      "F": [
+        "FF6319",
+        "F2F2F2"
+      ],
+      "FX": [
+        "FF6319",
+        "F2F2F2"
+      ],
+      "FS": [
+        "FF6319",
+        "F2F2F2"
+      ],
+      "G": [
+        "6D6E71",
+        "F2F2F2"
+      ],
+      "J": [
+        "996633",
+        "F2F2F2"
+      ],
+      "L": [
+        "A7A9AC",
+        "F2F2F2"
+      ],
+      "M": [
+        "FF6319",
+        "F2F2F2"
+      ],
+      "N": [
+        "FCCC0A",
+        "000000"
+      ],
+      "Q": [
+        "FCCC0A",
+        "000000"
+      ],
+      "R": [
+        "FCCC0A",
+        "000000"
+      ],
+      "H": [
+        "A7A9AC",
+        "F2F2F2"
+      ],
+      "W": [
+        "FCCC0A",
+        "000000"
+      ],
+      "Z": [
+        "996633",
+        "F2F2F2"
+      ],
+      "SI": [
+        "2850AD",
+        "FFFFFF"
+      ]
+    }
   },
   "lirr": {
     "url": "http://web.mta.info/developers/data/lirr/google_transit.zip",
     "headers": {},
-    "separator": ","
+    "separator": ",",
+    "colorOverrides": {}
   },
   "mnrr": {
     "url": "http://web.mta.info/developers/data/mnr/google_transit.zip",
     "headers": {},
-    "separator": ","
+    "separator": ",",
+    "colorOverrides": {}
   }
 }

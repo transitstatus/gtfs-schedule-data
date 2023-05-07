@@ -67,8 +67,8 @@ Object.keys(feeds).forEach((feed) => {
             routeID: row.route_id,
             routeShortName: row.route_short_name,
             routeLongName: row.route_long_name,
-            routeColor: row.route_color,
-            routeTextColor: row.route_text_color,
+            routeColor: feeds[feed]['colorOverrides'][row.route_id] ? feeds[feed]['colorOverrides'][row.route_id][0] : row.route_color,
+            routeTextColor: feeds[feed]['colorOverrides'][row.route_id] ? feeds[feed]['colorOverrides'][row.route_id][1] : row.route_text_color,
             routeTrips: []
           }
         })
