@@ -80,7 +80,12 @@ Object.keys(feeds).forEach((feed) => {
               columns: true
             }))
             .on('data', function (row) {
-              routes[row.route_id].routeTrips.push(row.trip_id);
+              routes[row.route_id].routeTrips.push(
+                {
+                  id: row.trip_id,
+                  headsign: row.trip_headsign
+                }
+              );
             })
             .on('end', function () {
               console.log(`Writing ${feed} routes to JSON...`)
