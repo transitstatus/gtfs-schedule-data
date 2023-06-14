@@ -151,5 +151,11 @@
     "headers": {},
     "separator": ",",
     "colorOverrides": {}
+  },
+  "cta": {
+    "url": "https://www.transitchicago.com/downloads/sch_data/google_transit.zip",
+    "headers": {},
+    "separator": ",",
+    "colorOverrides": {}
   }
 }
