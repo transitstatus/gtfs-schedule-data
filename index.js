@@ -71,7 +71,8 @@ Object.keys(feeds).forEach((feed) => {
             routeColor: feeds[feed]['colorOverrides'][row.route_id] ? feeds[feed]['colorOverrides'][row.route_id][0] : row.route_color,
             routeTextColor: feeds[feed]['colorOverrides'][row.route_id] ? feeds[feed]['colorOverrides'][row.route_id][1] : row.route_text_color,
             routeTrips: [],
-            routeStations: []
+            routeStations: [],
+            destinations: [],
           }
         })
         .on('end', function () {
@@ -90,6 +91,11 @@ Object.keys(feeds).forEach((feed) => {
               );
 
               tripsDict[row.trip_id] = row.route_id;
+
+              if (!routes[row.route_id]['destinations'].includes(row.trip_headsign)) {
+                if (row.trip_headsign === '' || row.trip_headsign === null || row.trip_headsign === undefined) return;
+                routes[row.route_id]['destinations'].push(row.trip_headsign);
+              }
             })
             .on('end', function () {
               console.log(`Processing ${feed} stop times...`)
@@ -104,11 +110,21 @@ Object.keys(feeds).forEach((feed) => {
                   if (!routes[routeID]['routeStations'].includes(row.stop_id)) {
                     routes[routeID]['routeStations'].push(row.stop_id);
                   }
+
+                  if (!routes[routeID]['destinations'].includes(row.stop_headsign)) {
+                    if (row.stop_headsign === '' || row.stop_headsign === null || row.stop_headsign === undefined) return;
+                    routes[routeID]['destinations'].push(row.stop_headsign);
+                  }
                 })
                 .on('end', function () {
                   console.log(`Sorting ${feed} route stops...`)
                   Object.keys(routes).forEach((route) => {
                     routes[route]['routeStations'] = routes[route]['routeStations'].map((n) => n.trim()).sort();
+                  });
+
+                  console.log(`Sorting ${feed} destinations...`)
+                  Object.keys(routes).forEach((route) => {
+                    routes[route]['destinations'] = routes[route]['destinations'].map((n) => n.trim()).sort();
                   });
 
                   console.log(`Writing ${feed} routes to JSON...`)
