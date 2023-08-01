@@ -56,6 +56,7 @@ Object.keys(feeds).forEach((feed) => {
       fs.mkdirSync(`./data/${feed}`);
 
       let routes = {};
+      let tripsDict = {};
       console.log(`Processing ${feed} routes...`)
       fs.createReadStream(`./csv/${feed}/routes.txt`)
         .pipe(parse({
@@ -69,7 +70,8 @@ Object.keys(feeds).forEach((feed) => {
             routeLongName: row.route_long_name,
             routeColor: feeds[feed]['colorOverrides'][row.route_id] ? feeds[feed]['colorOverrides'][row.route_id][0] : row.route_color,
             routeTextColor: feeds[feed]['colorOverrides'][row.route_id] ? feeds[feed]['colorOverrides'][row.route_id][1] : row.route_text_color,
-            routeTrips: []
+            routeTrips: [],
+            routeStations: []
           }
         })
         .on('end', function () {
@@ -86,10 +88,32 @@ Object.keys(feeds).forEach((feed) => {
                   headsign: row.trip_headsign
                 }
               );
+
+              tripsDict[row.trip_id] = row.route_id;
             })
             .on('end', function () {
-              console.log(`Writing ${feed} routes to JSON...`)
-              fs.writeFileSync(`./data/${feed}/routes.json`, JSON.stringify(routes));
+              console.log(`Processing ${feed} stop times...`)
+              fs.createReadStream(`./csv/${feed}/stop_times.txt`)
+                .pipe(parse({
+                  delimiter: feeds[feed]['separator'],
+                  columns: true
+                }))
+                .on('data', function (row) {
+                  const routeID = tripsDict[row.trip_id];
+
+                  if (!routes[routeID]['routeStations'].includes(row.stop_id)) {
+                    routes[routeID]['routeStations'].push(row.stop_id);
+                  }
+                })
+                .on('end', function () {
+                  console.log(`Sorting ${feed} route stops...`)
+                  Object.keys(routes).forEach((route) => {
+                    routes[route]['routeStations'] = routes[route]['routeStations'].map((n) => n.trim()).sort();
+                  });
+
+                  console.log(`Writing ${feed} routes to JSON...`)
+                  fs.writeFileSync(`./data/${feed}/routes.json`, JSON.stringify(routes));
+                });
             });
         });
 
@@ -101,7 +125,6 @@ Object.keys(feeds).forEach((feed) => {
           columns: true
         }))
         .on('data', function (row) {
-
           stops[row.stop_id] = {
             stopID: row.stop_id,
             stopName: row.stop_name,
