@@ -57,6 +57,8 @@ Object.keys(feeds).forEach((feed) => {
 
       let routes = {};
       let tripsDict = {};
+      let parentStations = {};
+
       console.log(`Processing ${feed} routes...`)
       fs.createReadStream(`./csv/${feed}/routes.txt`)
         .pipe(parse({
@@ -95,66 +97,88 @@ Object.keys(feeds).forEach((feed) => {
               }
             })
             .on('end', function () {
-              console.log(`Processing ${feed} stop times...`)
-              fs.createReadStream(`./csv/${feed}/stop_times.txt`)
+              console.log(`Processing ${feed} stops...`)
+              fs.createReadStream(`./csv/${feed}/stops.txt`)
                 .pipe(parse({
                   delimiter: feeds[feed]['separator'],
                   columns: true
                 }))
                 .on('data', function (row) {
-                  const routeID = tripsDict[row.trip_id];
-
-                  if (!routes[routeID]['routeStations'].includes(row.stop_id)) {
-                    routes[routeID]['routeStations'].push(row.stop_id);
-                  }
-
-                  if (!routes[routeID]['destinations'].includes(row.stop_headsign)) {
-                    if (row.stop_headsign === '' || row.stop_headsign === null || row.stop_headsign === undefined) return;
-                    routes[routeID]['destinations'].push(row.stop_headsign);
-                  }
-
-                  if (!routes[routeID]['routeTrips'][row.trip_id]['headsign']) {
-                    if (row.stop_headsign === '' || row.stop_headsign === null || row.stop_headsign === undefined) return;
-                    routes[routeID]['routeTrips'][row.trip_id]['headsign'] = row.stop_headsign;
-                  }
+                  parentStations[row.stop_id] = row.parent_station;
                 })
                 .on('end', function () {
-                  console.log(`Sorting ${feed} route stops...`)
-                  Object.keys(routes).forEach((route) => {
-                    routes[route]['routeStations'] = routes[route]['routeStations'].map((n) => n.trim()).sort();
-                  });
+                  console.log(`Processing ${feed} stop times...`)
+                  fs.createReadStream(`./csv/${feed}/stop_times.txt`)
+                    .pipe(parse({
+                      delimiter: feeds[feed]['separator'],
+                      columns: true
+                    }))
+                    .on('data', function (row) {
+                      const routeID = tripsDict[row.trip_id];
+                      const parentStation = parentStations[row.stop_id];
 
-                  console.log(`Sorting ${feed} destinations...`)
-                  Object.keys(routes).forEach((route) => {
-                    routes[route]['destinations'] = routes[route]['destinations'].map((n) => n.trim()).sort();
-                  });
+                      if (parentStation && feed === 'cta') {
+                        //console.log(row.stop_id)
+                        //console.log(parentStation)
+                      }
 
-                  console.log(`Writing ${feed} routes to JSON...`)
-                  fs.writeFileSync(`./data/${feed}/routes.json`, JSON.stringify(routes));
+                      if (!parentStation && !routes[routeID]['routeStations'].includes(row.stop_id)) {
+                        routes[routeID]['routeStations'].push(row.stop_id);
+                      }
+
+                      if (parentStation && !routes[routeID]['routeStations'].includes(parentStation)) {
+                        if (feed === 'cta') console.log('has parent')
+                        routes[routeID]['routeStations'].push(parentStation);
+                      }
+
+                      if (!routes[routeID]['destinations'].includes(row.stop_headsign)) {
+                        if (row.stop_headsign === '' || row.stop_headsign === null || row.stop_headsign === undefined) return;
+                        routes[routeID]['destinations'].push(row.stop_headsign);
+                      }
+
+                      if (!routes[routeID]['routeTrips'][row.trip_id]['headsign']) {
+                        if (row.stop_headsign === '' || row.stop_headsign === null || row.stop_headsign === undefined) return;
+                        routes[routeID]['routeTrips'][row.trip_id]['headsign'] = row.stop_headsign;
+                      }
+                    })
+                    .on('end', function () {
+                      console.log(`Sorting ${feed} route stops...`)
+                      Object.keys(routes).forEach((route) => {
+                        routes[route]['routeStations'] = routes[route]['routeStations'].map((n) => n.trim()).sort();
+                      });
+
+                      console.log(`Sorting ${feed} destinations...`)
+                      Object.keys(routes).forEach((route) => {
+                        routes[route]['destinations'] = routes[route]['destinations'].map((n) => n.trim()).sort();
+                      });
+
+                      console.log(`Writing ${feed} routes to JSON...`)
+                      fs.writeFileSync(`./data/${feed}/routes.json`, JSON.stringify(routes));
+                    });
                 });
             });
-        });
 
-      let stops = {};
-      console.log(`Processing ${feed} stops...`)
-      fs.createReadStream(`./csv/${feed}/stops.txt`)
-        .pipe(parse({
-          delimiter: feeds[feed]['separator'],
-          columns: true
-        }))
-        .on('data', function (row) {
-          stops[row.stop_id] = {
-            stopID: row.stop_id,
-            stopName: row.stop_name,
-            stopLat: Number(Number(row.stop_lat).toFixed(5)),
-            stopLon: Number(Number(row.stop_lon).toFixed(5)),
-            zoneID: row.zone_id,
-            parentStation: row.parent_station,
-          };
+          let stops = {};
+          console.log(`Processing ${feed} stops...`)
+          fs.createReadStream(`./csv/${feed}/stops.txt`)
+            .pipe(parse({
+              delimiter: feeds[feed]['separator'],
+              columns: true
+            }))
+            .on('data', function (row) {
+              stops[row.stop_id] = {
+                stopID: row.stop_id,
+                stopName: row.stop_name,
+                stopLat: Number(Number(row.stop_lat).toFixed(5)),
+                stopLon: Number(Number(row.stop_lon).toFixed(5)),
+                zoneID: row.zone_id,
+                parentStation: row.parent_station,
+              };
+            })
+            .on('end', function () {
+              console.log(`Writing ${feed} stops to JSON...`)
+              fs.writeFileSync(`./data/${feed}/stops.json`, JSON.stringify(stops));
+            });
         })
-        .on('end', function () {
-          console.log(`Writing ${feed} stops to JSON...`)
-          fs.writeFileSync(`./data/${feed}/stops.json`, JSON.stringify(stops));
-        });
-    })
+    });
 });
