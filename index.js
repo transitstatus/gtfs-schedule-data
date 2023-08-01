@@ -70,7 +70,7 @@ Object.keys(feeds).forEach((feed) => {
             routeLongName: row.route_long_name,
             routeColor: feeds[feed]['colorOverrides'][row.route_id] ? feeds[feed]['colorOverrides'][row.route_id][0] : row.route_color,
             routeTextColor: feeds[feed]['colorOverrides'][row.route_id] ? feeds[feed]['colorOverrides'][row.route_id][1] : row.route_text_color,
-            routeTrips: [],
+            routeTrips: {},
             routeStations: [],
             destinations: [],
           }
@@ -83,12 +83,9 @@ Object.keys(feeds).forEach((feed) => {
               columns: true
             }))
             .on('data', function (row) {
-              routes[row.route_id].routeTrips.push(
-                {
-                  id: row.trip_id,
-                  headsign: row.trip_headsign
-                }
-              );
+              routes[row.route_id]['routeTrips'][row.trip_id] = {
+                headsign: row.trip_headsign,
+              };
 
               tripsDict[row.trip_id] = row.route_id;
 
@@ -114,6 +111,11 @@ Object.keys(feeds).forEach((feed) => {
                   if (!routes[routeID]['destinations'].includes(row.stop_headsign)) {
                     if (row.stop_headsign === '' || row.stop_headsign === null || row.stop_headsign === undefined) return;
                     routes[routeID]['destinations'].push(row.stop_headsign);
+                  }
+
+                  if (!routes[routeID]['routeTrips'][row.trip_id]['headsign']) {
+                    if (row.stop_headsign === '' || row.stop_headsign === null || row.stop_headsign === undefined) return;
+                    routes[routeID]['routeTrips'][row.trip_id]['headsign'] = row.stop_headsign;
                   }
                 })
                 .on('end', function () {
