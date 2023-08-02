@@ -35,6 +35,8 @@ fs.existsSync('./data') && fs.rmSync('./data', { recursive: true });
 fs.mkdirSync('./data');
 
 Object.keys(feeds).forEach((feed) => {
+  //if (feed !== 'cta') return;
+
   const feedURL = feeds[feed]['url'];
   console.log(`Fetching ${feedURL}...`)
   fetch(feedURL, {
@@ -107,6 +109,8 @@ Object.keys(feeds).forEach((feed) => {
                   parentStations[row.stop_id] = row.parent_station;
                 })
                 .on('end', function () {
+                  //console.log(parentStations)
+
                   console.log(`Processing ${feed} stop times...`)
                   fs.createReadStream(`./csv/${feed}/stop_times.txt`)
                     .pipe(parse({
@@ -117,9 +121,11 @@ Object.keys(feeds).forEach((feed) => {
                       const routeID = tripsDict[row.trip_id];
                       const parentStation = parentStations[row.stop_id];
 
-                      if (parentStation && feed === 'cta') {
+                      if (row.stop_id == 30068) {
                         //console.log(row.stop_id)
                         //console.log(parentStation)
+
+                        //console.log(routes[routeID]['routeStations'].includes(parentStation))
                       }
 
                       if (!parentStation && !routes[routeID]['routeStations'].includes(row.stop_id)) {
@@ -127,7 +133,6 @@ Object.keys(feeds).forEach((feed) => {
                       }
 
                       if (parentStation && !routes[routeID]['routeStations'].includes(parentStation)) {
-                        if (feed === 'cta') console.log('has parent')
                         routes[routeID]['routeStations'].push(parentStation);
                       }
 
