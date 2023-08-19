@@ -60,6 +60,60 @@ Object.keys(feeds).forEach((feed) => {
       let routes = {};
       let tripsDict = {};
       let parentStations = {};
+      let shapes = {};
+
+      /*
+      console.log(`Processing ${feed} shapes...`)
+      fs.createReadStream(`./csv/${feed}/shapes.txt`)
+        .pipe(parse({
+          delimiter: feeds[feed]['separator'],
+          columns: true
+        }))
+        .on('data', function (row) {
+          if (!shapes[row.shape_id]) {
+            shapes[row.shape_id] = [];
+          }
+
+          shapes[row.shape_id].push({
+            lat: row.shape_pt_lat,
+            lon: row.shape_pt_lon,
+            seq: row.shape_pt_sequence,
+          });
+        })
+        .on('end', function () {
+          console.log(`Sorting ${feed} shapes...`)
+
+          Object.keys(shapes).forEach((shape) => {
+            shapes[shape] = shapes[shape].sort((a, b) => a.seq - b.seq);
+          });
+
+          console.log(`Creating ${feed} shapes folder...`)
+          fs.mkdirSync(`./data/${feed}/shapes`);
+
+          console.log(`Writing ${feed} shapes as GeoJSON...`)
+          Object.keys(shapes).forEach((shape) => {
+            const geojson = {
+              type: 'FeatureCollection',
+              features: [
+                {
+                  type: 'Feature',
+                  properties: {
+                    shapeID: shape,
+                  },
+                  geometry: {
+                    type: 'LineString',
+                    coordinates: shapes[shape].map((point) => [Number(point.lon), Number(point.lat)]),
+                  },
+                },
+              ],
+            };
+
+            fs.writeFile(`./data/${feed}/shapes/${shape}.geojson`, JSON.stringify(geojson), (err) => {
+              if (err) throw err;
+            });
+          });
+        });
+        */
 
       console.log(`Processing ${feed} routes...`)
       fs.createReadStream(`./csv/${feed}/routes.txt`)
