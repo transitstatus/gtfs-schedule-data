@@ -3,6 +3,9 @@ const fs = require('fs');
 const { parse } = require('csv-parse');
 const csv = require('csv-parser')
 const { execSync } = require('child_process');
+const simplify = require('@turf/simplify');
+
+console.log(simplify)
 
 // dot env
 require('dotenv').config();
@@ -58,62 +61,9 @@ Object.keys(feeds).forEach((feed) => {
       fs.mkdirSync(`./data/${feed}`);
 
       let routes = {};
+      let routeShapes = {};
       let tripsDict = {};
       let parentStations = {};
-      let shapes = {};
-
-      /*
-      console.log(`Processing ${feed} shapes...`)
-      fs.createReadStream(`./csv/${feed}/shapes.txt`)
-        .pipe(parse({
-          delimiter: feeds[feed]['separator'],
-          columns: true
-        }))
-        .on('data', function (row) {
-          if (!shapes[row.shape_id]) {
-            shapes[row.shape_id] = [];
-          }
-
-          shapes[row.shape_id].push({
-            lat: row.shape_pt_lat,
-            lon: row.shape_pt_lon,
-            seq: row.shape_pt_sequence,
-          });
-        })
-        .on('end', function () {
-          console.log(`Sorting ${feed} shapes...`)
-
-          Object.keys(shapes).forEach((shape) => {
-            shapes[shape] = shapes[shape].sort((a, b) => a.seq - b.seq);
-          });
-
-          console.log(`Creating ${feed} shapes folder...`)
-          fs.mkdirSync(`./data/${feed}/shapes`);
-
-          console.log(`Writing ${feed} shapes as GeoJSON...`)
-          Object.keys(shapes).forEach((shape) => {
-            const geojson = {
-              type: 'FeatureCollection',
-              features: [
-                {
-                  type: 'Feature',
-                  properties: {
-                    shapeID: shape,
-                  },
-                  geometry: {
-                    type: 'LineString',
-                    coordinates: shapes[shape].map((point) => [Number(point.lon), Number(point.lat)]),
-                  },
-                },
-              ],
-            };
-
-            fs.writeFile(`./data/${feed}/shapes/${shape}.geojson`, JSON.stringify(geojson), (err) => {
-              if (err) throw err;
-            });
-          });
-        });
-        */
 
       console.log(`Processing ${feed} routes...`)
       fs.createReadStream(`./csv/${feed}/routes.txt`)
@@ -126,12 +76,15 @@ Object.keys(feeds).forEach((feed) => {
             routeID: row.route_id,
             routeShortName: row.route_short_name,
             routeLongName: row.route_long_name,
+            routeType: row.route_type,
             routeColor: feeds[feed]['colorOverrides'][row.route_id] ? feeds[feed]['colorOverrides'][row.route_id][0] : row.route_color,
             routeTextColor: feeds[feed]['colorOverrides'][row.route_id] ? feeds[feed]['colorOverrides'][row.route_id][1] : row.route_text_color,
             routeTrips: {},
             routeStations: [],
             destinations: [],
           }
+
+          routeShapes[row.route_id] = [];
         })
         .on('end', function () {
           console.log(`Processing ${feed} trips...`)
@@ -147,12 +100,105 @@ Object.keys(feeds).forEach((feed) => {
 
               tripsDict[row.trip_id] = row.route_id;
 
+              routeShapes[row.route_id].push(row.shape_id);
+
               if (!routes[row.route_id]['destinations'].includes(row.trip_headsign)) {
                 if (row.trip_headsign === '' || row.trip_headsign === null || row.trip_headsign === undefined) return;
                 routes[row.route_id]['destinations'].push(row.trip_headsign);
               }
             })
             .on('end', function () {
+              console.log(`Processing ${feed} shapes...`)
+
+              let shapes = {};
+              let finalGeoJSONByType = {};
+
+              fs.mkdirSync(`./data/${feed}/shapes`);
+
+              fs.createReadStream(`./csv/${feed}/shapes.txt`)
+                .pipe(parse({
+                  delimiter: feeds[feed]['separator'],
+                  columns: true,
+                  skip_empty_lines: true,
+                }))
+                .on('data', function (row) {
+                  if (!shapes[row.shape_id]) {
+                    shapes[row.shape_id] = [];
+                  }
+
+                  shapes[row.shape_id].push([Number(Number(row.shape_pt_lon).toFixed(5)), Number(Number(row.shape_pt_lat).toFixed(5))]);
+                })
+                .on('end', function () {
+                  Object.keys(routeShapes).forEach((route) => {
+                    if (!finalGeoJSONByType[routes[route]['routeType']]) {
+                      finalGeoJSONByType[routes[route]['routeType']] = {
+                        type: 'FeatureCollection',
+                        features: [],
+                      };
+                    }
+
+                    let finalGeoJSON = {
+                      type: 'FeatureCollection',
+                      features: [],
+                    };
+
+                    routeShapes[route].forEach((shape) => {
+                      if (!shapes[shape]) return;
+
+                      finalGeoJSON.features.push({
+                        type: 'Feature',
+                        properties: {
+                          shapeID: shape,
+                        },
+                        geometry: {
+                          type: 'LineString',
+                          coordinates: shapes[shape],
+                        },
+                      });
+                    });
+
+                    //detect if multiple shapes are the same and remove them
+                    finalGeoJSON.features = finalGeoJSON.features.filter((feature, index, self) =>
+                      index === self.findIndex((t) => (
+                        t.geometry.coordinates.length === feature.geometry.coordinates.length &&
+                        t.geometry.coordinates.every((v, i) => v === feature.geometry.coordinates[i])
+                      ))
+                    );
+
+                    //simplify each polyline to a tolerance of 0.0001
+                    finalGeoJSON.features = finalGeoJSON.features.map((feature) => {
+                      const simplified = simplify(feature, { tolerance: 0.0001, highQuality: true });
+                      return simplified;
+                    });
+
+                    finalGeoJSONByType[routes[route]['routeType']].features.push({
+                      type: 'Feature',
+                      properties: {
+                        routeID: route,
+                        routeShortName: routes[route]['routeShortName'],
+                        routeLongName: routes[route]['routeLongName'],
+                        routeColor: routes[route]['routeColor'],
+                      },
+                      geometry: {
+                        type: 'MultiLineString',
+                        coordinates: finalGeoJSON.features.map((feature) => feature.geometry.coordinates),
+                      },
+                    });
+
+                    /*
+                    fs.writeFile(`./data/${feed}/shapes/${route}.geojson`, JSON.stringify(finalGeoJSON), (err) => {
+                      if (err) throw err;
+                    });
+                    */
+                  });
+
+                  Object.keys(finalGeoJSONByType).forEach((type) => {
+                    fs.writeFileSync(`./data/${feed}/shapes/type_${type}.geojson`, JSON.stringify(finalGeoJSONByType[type]));
+                  });
+
+                  console.log(`${feed} shapes processed`);
+                });
+
               console.log(`Processing ${feed} stops...`)
               fs.createReadStream(`./csv/${feed}/stops.txt`)
                 .pipe(parse({
