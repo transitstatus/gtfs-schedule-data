@@ -177,7 +177,7 @@ Object.keys(feeds).forEach((feed) => {
                         routeID: route,
                         routeShortName: routes[route]['routeShortName'],
                         routeLongName: routes[route]['routeLongName'],
-                        routeColor: routes[route]['routeColor'],
+                        routeColor: `#${routes[route]['routeColor']}`,
                       },
                       geometry: {
                         type: 'MultiLineString',
