@@ -5,8 +5,6 @@ const csv = require('csv-parser')
 const { execSync } = require('child_process');
 const simplify = require('@turf/simplify');
 
-console.log(simplify)
-
 // dot env
 require('dotenv').config();
 
@@ -39,6 +37,7 @@ fs.mkdirSync('./data');
 
 Object.keys(feeds).forEach((feed) => {
   //if (feed !== 'cta') return;
+  //if (feed !== 'metra') return;
 
   const feedURL = feeds[feed]['url'];
   console.log(`Fetching ${feedURL}...`)
@@ -117,7 +116,7 @@ Object.keys(feeds).forEach((feed) => {
 
               fs.createReadStream(`./csv/${feed}/shapes.txt`)
                 .pipe(parse({
-                  delimiter: feeds[feed]['separator'],
+                  delimiter: feeds[feed]['seperatorOverrides'].shapes ?? feeds[feed]['separator'],
                   columns: true,
                   skip_empty_lines: true,
                 }))
@@ -165,9 +164,9 @@ Object.keys(feeds).forEach((feed) => {
                       ))
                     );
 
-                    //simplify each polyline to a tolerance of 0.0001
+                    //simplify each polyline to a tolerance of 0.00001
                     finalGeoJSON.features = finalGeoJSON.features.map((feature) => {
-                      const simplified = simplify(feature, { tolerance: 0.0001, highQuality: true });
+                      const simplified = simplify(feature, { tolerance: 0.00001, highQuality: true });
                       return simplified;
                     });
 
@@ -185,11 +184,12 @@ Object.keys(feeds).forEach((feed) => {
                       },
                     });
 
+
                     /*
                     fs.writeFile(`./data/${feed}/shapes/${route}.geojson`, JSON.stringify(finalGeoJSON), (err) => {
                       if (err) throw err;
                     });
-                    */
+                    //*/
                   });
 
                   Object.keys(finalGeoJSONByType).forEach((type) => {
@@ -214,7 +214,7 @@ Object.keys(feeds).forEach((feed) => {
                   console.log(`Processing ${feed} stop times...`)
                   fs.createReadStream(`./csv/${feed}/stop_times.txt`)
                     .pipe(parse({
-                      delimiter: feeds[feed]['separator'],
+                      delimiter: feeds[feed]['seperatorOverrides'].stop_times ?? feeds[feed]['separator'],
                       columns: true
                     }))
                     .on('data', function (row) {

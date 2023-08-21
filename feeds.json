@@ -3,6 +3,7 @@
     "url": "https://www.bart.gov/dev/schedules/google_transit.zip",
     "headers": {},
     "separator": ",",
+    "seperatorOverrides": {},
     "colorOverrides": {}
   },
   "metra": {
@@ -11,12 +12,16 @@
       "Authorization": "env.metra_authorization"
     },
     "separator": ", ",
+    "seperatorOverrides": {
+      "shapes": ","
+    },
     "colorOverrides": {}
   },
   "nyct_subway": {
     "url": "http://web.mta.info/developers/data/nyct/subway/google_transit.zip",
     "headers": {},
     "separator": ",",
+    "seperatorOverrides": {},
     "colorOverrides": {
       "1": [
         "EE352E",
@@ -144,24 +149,28 @@
     "url": "http://web.mta.info/developers/data/lirr/google_transit.zip",
     "headers": {},
     "separator": ",",
+    "seperatorOverrides": {},
     "colorOverrides": {}
   },
   "mnrr": {
     "url": "http://web.mta.info/developers/data/mnr/google_transit.zip",
     "headers": {},
     "separator": ",",
+    "seperatorOverrides": {},
     "colorOverrides": {}
   },
   "cta": {
     "url": "https://www.transitchicago.com/downloads/sch_data/google_transit.zip",
     "headers": {},
     "separator": ",",
+    "seperatorOverrides": {},
     "colorOverrides": {}
   },
   "rutgers": {
     "url": "https://passio3.com/rutgers/passioTransit/gtfs/google_transit.zip",
     "headers": {},
     "separator": ",",
+    "seperatorOverrides": {},
     "colorOverrides": {}
   }
 }
