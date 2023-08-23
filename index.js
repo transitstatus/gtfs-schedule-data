@@ -4,6 +4,7 @@ const { parse } = require('csv-parse');
 const csv = require('csv-parser')
 const { execSync } = require('child_process');
 const simplify = require('@turf/simplify');
+const sharp = require('sharp');
 
 // dot env
 require('dotenv').config();
@@ -60,6 +61,7 @@ Object.keys(feeds).forEach((feed) => {
       fs.mkdirSync(`./data/${feed}`);
 
       let routes = {};
+      let routeColors = {};
       let routeShapes = {};
       let tripsDict = {};
       let parentStations = {};
@@ -71,21 +73,85 @@ Object.keys(feeds).forEach((feed) => {
           columns: true
         }))
         .on('data', function (row) {
+          const routeColor = feeds[feed]['colorOverrides'][row.route_id] ? feeds[feed]['colorOverrides'][row.route_id][0] : row.route_color;
+          const routeTextColor = feeds[feed]['colorOverrides'][row.route_id] ? feeds[feed]['colorOverrides'][row.route_id][1] : row.route_text_color;
+
           routes[row.route_id] = {
             routeID: row.route_id,
             routeShortName: row.route_short_name,
             routeLongName: row.route_long_name,
             routeType: row.route_type,
-            routeColor: feeds[feed]['colorOverrides'][row.route_id] ? feeds[feed]['colorOverrides'][row.route_id][0] : row.route_color,
-            routeTextColor: feeds[feed]['colorOverrides'][row.route_id] ? feeds[feed]['colorOverrides'][row.route_id][1] : row.route_text_color,
+            routeColor: routeColor,
+            routeTextColor: routeTextColor,
             routeTrips: {},
             routeStations: [],
             destinations: [],
           }
 
+          if (!Object.keys(routeColors).includes(routeColor)) {
+            routeColors[routeColor] = { routeTextColor, types: [] };
+          }
+
+          if (!routeColors[routeColor].types.includes(row.route_type)) {
+            routeColors[routeColor].types.push(row.route_type);
+          }
+
           routeShapes[row.route_id] = [];
         })
         .on('end', function () {
+          console.log(`Generating ${feed} icons...`)
+
+          fs.mkdirSync(`./data/${feed}/icons`);
+
+          const trainTemplate = fs.readFileSync('./templates/train.svg', 'utf8');
+          const busTemplate = fs.readFileSync('./templates/bus.svg', 'utf8');
+          const boatTemplate = fs.readFileSync('./templates/boat.svg', 'utf8');
+
+          Object.keys(routeColors).forEach((routeColor) => {
+            const routeTextColor = routeColors[routeColor].routeTextColor;
+            const types = routeColors[routeColor].types;
+
+            const trainIcon = trainTemplate.replaceAll("#FFFFFF", `#${routeColor}`).replaceAll("#000000", `#${routeTextColor}`);
+            const busIcon = busTemplate.replaceAll("#FFFFFF", `#${routeColor}`).replaceAll("#000000", `#${routeTextColor}`);
+            const boatIcon = boatTemplate.replaceAll("#FFFFFF", `#${routeColor}`).replaceAll("#000000", `#${routeTextColor}`);
+
+            const trainBuffer = Buffer.from(trainIcon, 'utf8');
+            const busBuffer = Buffer.from(busIcon, 'utf8');
+            const boatBuffer = Buffer.from(boatIcon, 'utf8');
+
+            if (types.includes('1') || types.includes('2')) {
+              sharp(trainBuffer)
+                .resize(64, 64)
+                .png()
+                .toFile(`./data/${feed}/icons/${routeColor}_train.png`, (err, info) => {
+                  if (err) throw err;
+                  if (info) console.log(info);
+                });
+            }
+
+            if (types.includes('3')) {
+              sharp(busBuffer)
+                .resize(64, 64)
+                .png()
+                .toFile(`./data/${feed}/icons/${routeColor}_bus.png`, (err, info) => {
+                  if (err) throw err;
+                  if (info) console.log(info);
+                });
+            }
+
+            /*
+            if (types.includes('4')) {
+              sharp(boatBuffer)
+                .resize(512, 512)
+                .png()
+                .toFile(`./data/${feed}/icons/${routeColor}_boat.png`, (err, info) => {
+                  if (err) throw err;
+                  if (info) console.log(info);
+                });
+            }
+            */
+          });
+
           console.log(`Processing ${feed} trips...`)
           fs.createReadStream(`./csv/${feed}/trips.txt`)
             .pipe(parse({
