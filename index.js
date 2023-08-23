@@ -122,7 +122,7 @@ Object.keys(feeds).forEach((feed) => {
             const boatBuffer = Buffer.from(boatIcon, 'utf8');
 
             if (types.includes('1') || types.includes('2')) {
-              iconsRef.push(`"${routeColor}_train.png"`);
+              iconsRef.push(`${routeColor}_train.png`);
 
               sharp(trainBuffer)
                 .resize(64, 64)
@@ -134,7 +134,7 @@ Object.keys(feeds).forEach((feed) => {
             }
 
             if (types.includes('3')) {
-              iconsRef.push(`"${routeColor}_bus.png"`);
+              iconsRef.push(`${routeColor}_bus.png`);
 
               sharp(busBuffer)
                 .resize(64, 64)
