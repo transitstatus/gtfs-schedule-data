@@ -178,6 +178,11 @@
     "headers": {},
     "separator": ",",
     "seperatorOverrides": {},
-    "colorOverrides": {}
+    "colorOverrides": {
+      "so_shore": [
+        "EA6E10",
+        "000000"
+      ]
+    }
   }
 }
