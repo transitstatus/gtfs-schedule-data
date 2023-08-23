@@ -172,5 +172,12 @@
     "separator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {}
+  },
+  "southshore": {
+    "url": "http://www.mysouthshoreline.com/google/google_transit.zip",
+    "headers": {},
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {}
   }
 }

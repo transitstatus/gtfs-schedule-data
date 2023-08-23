@@ -39,6 +39,7 @@ fs.mkdirSync('./data');
 Object.keys(feeds).forEach((feed) => {
   //if (feed !== 'cta') return;
   //if (feed !== 'metra') return;
+  //if (feed !== 'southshore') return;
 
   const feedURL = feeds[feed]['url'];
   console.log(`Fetching ${feedURL}...`)
@@ -193,6 +194,7 @@ Object.keys(feeds).forEach((feed) => {
                   delimiter: feeds[feed]['seperatorOverrides'].shapes ?? feeds[feed]['separator'],
                   columns: true,
                   skip_empty_lines: true,
+                  bom: true
                 }))
                 .on('data', function (row) {
                   if (!shapes[row.shape_id]) {
@@ -216,7 +218,10 @@ Object.keys(feeds).forEach((feed) => {
                     };
 
                     routeShapes[route].forEach((shape) => {
-                      if (!shapes[shape]) return;
+                      if (!shapes[shape]) {
+                        console.log('Shape not found')
+                        return;
+                      }
 
                       finalGeoJSON.features.push({
                         type: 'Feature',
@@ -289,7 +294,8 @@ Object.keys(feeds).forEach((feed) => {
                   fs.createReadStream(`./csv/${feed}/stop_times.txt`)
                     .pipe(parse({
                       delimiter: feeds[feed]['seperatorOverrides'].stop_times ?? feeds[feed]['separator'],
-                      columns: true
+                      columns: true,
+                      skip_empty_lines: true,
                     }))
                     .on('data', function (row) {
                       const routeID = tripsDict[row.trip_id];
