@@ -71,7 +71,9 @@ Object.keys(feeds).forEach((feed) => {
       fs.createReadStream(`./csv/${feed}/routes.txt`)
         .pipe(parse({
           delimiter: feeds[feed]['separator'],
-          columns: true
+          columns: true,
+          skip_empty_lines: true,
+          bom: true
         }))
         .on('data', function (row) {
           const routeColor = feeds[feed]['colorOverrides'][row.route_id] ? feeds[feed]['colorOverrides'][row.route_id][0] : row.route_color;
@@ -165,7 +167,9 @@ Object.keys(feeds).forEach((feed) => {
           fs.createReadStream(`./csv/${feed}/trips.txt`)
             .pipe(parse({
               delimiter: feeds[feed]['separator'],
-              columns: true
+              columns: true,
+              skip_empty_lines: true,
+              bom: true
             }))
             .on('data', function (row) {
               routes[row.route_id]['routeTrips'][row.trip_id] = {
@@ -282,7 +286,9 @@ Object.keys(feeds).forEach((feed) => {
               fs.createReadStream(`./csv/${feed}/stops.txt`)
                 .pipe(parse({
                   delimiter: feeds[feed]['separator'],
-                  columns: true
+                  columns: true,
+                  skip_empty_lines: true,
+                  bom: true
                 }))
                 .on('data', function (row) {
                   parentStations[row.stop_id] = row.parent_station;
@@ -348,7 +354,9 @@ Object.keys(feeds).forEach((feed) => {
           fs.createReadStream(`./csv/${feed}/stops.txt`)
             .pipe(parse({
               delimiter: feeds[feed]['separator'],
-              columns: true
+              columns: true,
+              skip_empty_lines: true,
+              bom: true
             }))
             .on('data', function (row) {
               stops[row.stop_id] = {
