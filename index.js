@@ -107,6 +107,8 @@ Object.keys(feeds).forEach((feed) => {
           const busTemplate = fs.readFileSync('./templates/bus.svg', 'utf8');
           const boatTemplate = fs.readFileSync('./templates/boat.svg', 'utf8');
 
+          let iconsRef = [];
+
           Object.keys(routeColors).forEach((routeColor) => {
             const routeTextColor = routeColors[routeColor].routeTextColor;
             const types = routeColors[routeColor].types;
@@ -120,6 +122,8 @@ Object.keys(feeds).forEach((feed) => {
             const boatBuffer = Buffer.from(boatIcon, 'utf8');
 
             if (types.includes('1') || types.includes('2')) {
+              iconsRef.push(`"${routeColor}_train.png"`);
+
               sharp(trainBuffer)
                 .resize(64, 64)
                 .png()
@@ -130,6 +134,8 @@ Object.keys(feeds).forEach((feed) => {
             }
 
             if (types.includes('3')) {
+              iconsRef.push(`"${routeColor}_bus.png"`);
+
               sharp(busBuffer)
                 .resize(64, 64)
                 .png()
@@ -151,6 +157,8 @@ Object.keys(feeds).forEach((feed) => {
             }
             */
           });
+
+          fs.writeFileSync(`./data/${feed}/icons.json`, JSON.stringify(iconsRef));
 
           console.log(`Processing ${feed} trips...`)
           fs.createReadStream(`./csv/${feed}/trips.txt`)
