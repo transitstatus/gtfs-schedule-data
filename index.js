@@ -22,6 +22,36 @@ const processHeaders = (headers) => {
   return processedHeaders;
 };
 
+const RED = 0.2126;
+const GREEN = 0.7152;
+const BLUE = 0.0722;
+
+const GAMMA = 2.4;
+
+const luminance = (r, g, b) => {
+  var a = [r, g, b].map((v) => {
+    v /= 255;
+    return v <= 0.03928
+      ? v / 12.92
+      : Math.pow((v + 0.055) / 1.055, GAMMA);
+  });
+  return a[0] * RED + a[1] * GREEN + a[2] * BLUE;
+}
+
+const contrast = (rgb1, rgb2) => {
+  var lum1 = luminance(...rgb1);
+  var lum2 = luminance(...rgb2);
+  var brightest = Math.max(lum1, lum2);
+  var darkest = Math.min(lum1, lum2);
+  return (brightest + 0.05) / (darkest + 0.05);
+}
+
+const contrastFromString = (color1, color2) => {
+  const rgb1 = color1.match(/[A-Za-z0-9]{2}/g).map((v) => parseInt(v, 16));
+  const rgb2 = color2.match(/[A-Za-z0-9]{2}/g).map((v) => parseInt(v, 16));
+  return contrast(rgb1, rgb2);
+}
+
 const feeds = JSON.parse(fs.readFileSync('./feeds.json', 'utf8'));
 
 //removing old zips
@@ -78,8 +108,27 @@ Object.keys(feeds).forEach((feed) => {
           bom: true
         }))
         .on('data', function (row) {
-          const routeColor = feeds[feed]['colorOverrides'][row.route_id] ? feeds[feed]['colorOverrides'][row.route_id][0] : row.route_color;
-          const routeTextColor = feeds[feed]['colorOverrides'][row.route_id] ? feeds[feed]['colorOverrides'][row.route_id][1] : row.route_text_color;
+          let routeColor = feeds[feed]['colorOverrides'][row.route_id] ? feeds[feed]['colorOverrides'][row.route_id][0] : row.route_color;
+          let routeTextColor = feeds[feed]['colorOverrides'][row.route_id] ? feeds[feed]['colorOverrides'][row.route_id][1] : row.route_text_color;
+
+          if (routeColor.length === 0) {
+            routeColor = '000000';
+          }
+
+          if (routeTextColor.length === 0) {
+            const constrastWhite = contrastFromString('FFFFFF', routeColor);
+            const contrastBlack = contrastFromString('000000', routeColor);
+
+            if (constrastWhite < contrastBlack) {
+              routeTextColor = '000000';
+            } else {
+              routeTextColor = 'FFFFFF';
+            }
+
+            if (routeColor === '000000') {
+              routeTextColor = 'FFFFFF';
+            }
+          }
 
           routes[row.route_id] = {
             routeID: row.route_id,
