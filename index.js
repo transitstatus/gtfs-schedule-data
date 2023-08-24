@@ -53,6 +53,8 @@ Object.keys(feeds).forEach((feed) => {
       fs.writeFileSync(`./zips/${feed}.zip`, buffer, 'utf8');
       console.log(`Saved ${feed} to ./zips/${feed}.zip`);
 
+      console.log(body.toString());
+
       console.log(`Unzipping ${feed}...`);
       fs.mkdirSync(`./csv/${feed}`);
       execSync(`unzip -o ./zips/${feed}.zip -d ./csv/${feed}`);
@@ -132,7 +134,8 @@ Object.keys(feeds).forEach((feed) => {
                 .png()
                 .toFile(`./data/${feed}/icons/${routeColor}_train.png`, (err, info) => {
                   if (err) throw err;
-                  if (info) console.log(info);
+                  //if (info) console.log(info);
+                  console.log(`${routeColor}_train.png generated for ${feed}`)
                 });
             }
 
