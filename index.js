@@ -70,7 +70,7 @@ Object.keys(feeds).forEach((feed) => {
   //if (feed !== 'cta') return;
   //if (feed !== 'metra') return;
   //if (feed !== 'southshore') return;
-  // if (feed !== 'chicago') return;
+  //if (feed !== 'chicago') return;
 
   if (feeds[feed].disabled === true) return;
 
@@ -114,6 +114,8 @@ Object.keys(feeds).forEach((feed) => {
         .on('data', function (row) {
           let routeColor = feeds[feed]['colorOverrides'][row.route_id] ? feeds[feed]['colorOverrides'][row.route_id][0] : row.route_color;
           let routeTextColor = feeds[feed]['colorOverrides'][row.route_id] ? feeds[feed]['colorOverrides'][row.route_id][1] : row.route_text_color;
+
+          console.log(routeColor, routeTextColor)
 
           if (routeColor.length === 0) {
             routeColor = '000000';
@@ -172,7 +174,7 @@ Object.keys(feeds).forEach((feed) => {
             const types = routeColors[routeColor].types;
 
             let actualRouteColor = routeColor === '000000' ? 'FFFFFF' : routeColor;
-            let actualRouteTextColor = routeTextColor === 'FFFFFF' ? '000000' : routeTextColor;
+            let actualRouteTextColor = routeColor === '000000' ? '000000' : routeTextColor;
 
             const trainIcon = trainTemplate.replaceAll("#FFFFFF", `#${actualRouteColor}`).replaceAll("#000000", `#${actualRouteTextColor}`);
             const busIcon = busTemplate.replaceAll("#FFFFFF", `#${actualRouteColor}`).replaceAll("#000000", `#${actualRouteTextColor}`);
