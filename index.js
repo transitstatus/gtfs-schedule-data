@@ -70,7 +70,9 @@ Object.keys(feeds).forEach((feed) => {
   //if (feed !== 'cta') return;
   //if (feed !== 'metra') return;
   //if (feed !== 'southshore') return;
-  //if (feed !== 'rutgers') return;
+  // if (feed !== 'chicago') return;
+
+  if (feeds[feed].disabled === true) return;
 
   const feedURL = feeds[feed]['url'];
   console.log(`Fetching ${feedURL}...`)
@@ -169,9 +171,12 @@ Object.keys(feeds).forEach((feed) => {
             const routeTextColor = routeColors[routeColor].routeTextColor;
             const types = routeColors[routeColor].types;
 
-            const trainIcon = trainTemplate.replaceAll("#FFFFFF", `#${routeColor}`).replaceAll("#000000", `#${routeTextColor}`);
-            const busIcon = busTemplate.replaceAll("#FFFFFF", `#${routeColor}`).replaceAll("#000000", `#${routeTextColor}`);
-            const boatIcon = boatTemplate.replaceAll("#FFFFFF", `#${routeColor}`).replaceAll("#000000", `#${routeTextColor}`);
+            let actualRouteColor = routeColor === '000000' ? 'FFFFFF' : routeColor;
+            let actualRouteTextColor = routeTextColor === 'FFFFFF' ? '000000' : routeTextColor;
+
+            const trainIcon = trainTemplate.replaceAll("#FFFFFF", `#${actualRouteColor}`).replaceAll("#000000", `#${actualRouteTextColor}`);
+            const busIcon = busTemplate.replaceAll("#FFFFFF", `#${actualRouteColor}`).replaceAll("#000000", `#${actualRouteTextColor}`);
+            const boatIcon = boatTemplate.replaceAll("#FFFFFF", `#${actualRouteColor}`).replaceAll("#000000", `#${actualRouteTextColor}`);
 
             const trainBuffer = Buffer.from(trainIcon, 'utf8');
             const busBuffer = Buffer.from(busIcon, 'utf8');
@@ -198,7 +203,7 @@ Object.keys(feeds).forEach((feed) => {
                 .png()
                 .toFile(`./data/${feed}/icons/${routeColor}_bus.png`, (err, info) => {
                   if (err) throw err;
-                  if (info) console.log(info);
+                  console.log(`${routeColor}_bus.png generated for ${feed}`)
                 });
             }
 
@@ -315,7 +320,7 @@ Object.keys(feeds).forEach((feed) => {
                         routeID: route,
                         routeShortName: routes[route]['routeShortName'],
                         routeLongName: routes[route]['routeLongName'],
-                        routeColor: `#${routes[route]['routeColor']}`,
+                        routeColor: `#${routes[route]['routeColor'] === '000000' ? 'FFFFFF' : routes[route]['routeColor']}`,
                       },
                       geometry: {
                         type: 'MultiLineString',

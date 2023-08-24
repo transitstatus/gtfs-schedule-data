@@ -5,7 +5,8 @@
     "separator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": false
   },
   "metra": {
     "url": "https://gtfsapi.metrarail.com/gtfs/raw/schedule.zip",
@@ -17,7 +18,8 @@
       "shapes": ","
     },
     "colorOverrides": {},
-    "trim": true
+    "trim": true,
+    "disabled": false
   },
   "nyct_subway": {
     "url": "http://web.mta.info/developers/data/nyct/subway/google_transit.zip",
@@ -145,7 +147,9 @@
         "2850AD",
         "FFFFFF"
       ]
-    }
+    },
+    "trim": false,
+    "disabled": false
   },
   "lirr": {
     "url": "http://web.mta.info/developers/data/lirr/google_transit.zip",
@@ -153,7 +157,8 @@
     "separator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": false
   },
   "mnrr": {
     "url": "http://web.mta.info/developers/data/mnr/google_transit.zip",
@@ -161,7 +166,8 @@
     "separator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": false
   },
   "cta": {
     "url": "https://www.transitchicago.com/downloads/sch_data/google_transit.zip",
@@ -169,7 +175,8 @@
     "separator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": false
   },
   "southshore": {
     "url": "http://www.mysouthshoreline.com/google/google_transit.zip",
@@ -181,7 +188,9 @@
         "EA6E10",
         "000000"
       ]
-    }
+    },
+    "trim": false,
+    "disabled": false
   },
   "peachtree": {
     "url": "https://passio3.com/peachtree/passioTransit/gtfs/google_transit.zip",
@@ -189,7 +198,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "cardinal5025": {
     "url": "https://passio3.com/cardinal5025/passioTransit/gtfs/google_transit.zip",
@@ -197,7 +207,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "725ponce": {
     "url": "https://passio3.com/725ponce/passioTransit/gtfs/google_transit.zip",
@@ -205,7 +216,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "9town": {
     "url": "https://passio3.com/9town/passioTransit/gtfs/google_transit.zip",
@@ -213,7 +225,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "ascott": {
     "url": "https://passio3.com/ascott/passioTransit/gtfs/google_transit.zip",
@@ -221,7 +234,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "aamu": {
     "url": "https://passio3.com/aamu/passioTransit/gtfs/google_transit.zip",
@@ -229,7 +243,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "AnneC": {
     "url": "https://passio3.com/AnneC/passioTransit/gtfs/google_transit.zip",
@@ -237,7 +252,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "rwwl": {
     "url": "https://passio3.com/rwwl/passioTransit/gtfs/google_transit.zip",
@@ -245,7 +261,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "Audible": {
     "url": "https://passio3.com/Audible/passioTransit/gtfs/google_transit.zip",
@@ -253,7 +270,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "gru": {
     "url": "https://passio3.com/gru/passioTransit/gtfs/google_transit.zip",
@@ -261,7 +279,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "bayonne": {
     "url": "https://passio3.com/bayonne/passioTransit/gtfs/google_transit.zip",
@@ -269,7 +288,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "BeaconCollege11": {
     "url": "https://passio3.com/BeaconCollege11/passioTransit/gtfs/google_transit.zip",
@@ -277,7 +297,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "beaconprop": {
     "url": "https://passio3.com/beaconprop/passioTransit/gtfs/google_transit.zip",
@@ -285,7 +306,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "beloit": {
     "url": "https://passio3.com/beloit/passioTransit/gtfs/google_transit.zip",
@@ -293,7 +315,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "brockton": {
     "url": "https://passio3.com/brockton/passioTransit/gtfs/google_transit.zip",
@@ -301,7 +324,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "usf": {
     "url": "https://passio3.com/usf/passioTransit/gtfs/google_transit.zip",
@@ -309,7 +333,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "sundiego": {
     "url": "https://passio3.com/sundiego/passioTransit/gtfs/google_transit.zip",
@@ -317,7 +342,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "canbyTransit": {
     "url": "https://passio3.com/canbyTransit/passioTransit/gtfs/google_transit.zip",
@@ -325,7 +351,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "cet": {
     "url": "https://passio3.com/cet/passioTransit/gtfs/google_transit.zip",
@@ -333,7 +360,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "century": {
     "url": "https://passio3.com/century/passioTransit/gtfs/google_transit.zip",
@@ -341,7 +369,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "chapman": {
     "url": "https://passio3.com/chapman/passioTransit/gtfs/google_transit.zip",
@@ -349,7 +378,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "charmcity": {
     "url": "https://passio3.com/charmcity/passioTransit/gtfs/google_transit.zip",
@@ -357,7 +387,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "choa": {
     "url": "https://passio3.com/choa/passioTransit/gtfs/google_transit.zip",
@@ -365,7 +396,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "citrusconn": {
     "url": "https://passio3.com/citrusconn/passioTransit/gtfs/google_transit.zip",
@@ -373,7 +405,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "ArcadiaCity": {
     "url": "https://passio3.com/ArcadiaCity/passioTransit/gtfs/google_transit.zip",
@@ -381,7 +414,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "beckley": {
     "url": "https://passio3.com/beckley/passioTransit/gtfs/google_transit.zip",
@@ -389,7 +423,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "billings": {
     "url": "https://passio3.com/billings/passioTransit/gtfs/google_transit.zip",
@@ -397,7 +432,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "cerritos": {
     "url": "https://passio3.com/cerritos/passioTransit/gtfs/google_transit.zip",
@@ -405,7 +441,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "detroitemp": {
     "url": "https://passio3.com/detroitemp/passioTransit/gtfs/google_transit.zip",
@@ -413,7 +450,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "harrisonburg": {
     "url": "https://passio3.com/harrisonburg/passioTransit/gtfs/google_transit.zip",
@@ -421,7 +459,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "hoboken": {
     "url": "https://passio3.com/hoboken/passioTransit/gtfs/google_transit.zip",
@@ -429,7 +468,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "jtran": {
     "url": "https://passio3.com/jtran/passioTransit/gtfs/google_transit.zip",
@@ -437,7 +477,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "jacksonville": {
     "url": "https://passio3.com/jacksonville/passioTransit/gtfs/google_transit.zip",
@@ -445,7 +486,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "montereyp": {
     "url": "https://passio3.com/montereyp/passioTransit/gtfs/google_transit.zip",
@@ -453,7 +495,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "oats": {
     "url": "https://passio3.com/oats/passioTransit/gtfs/google_transit.zip",
@@ -461,7 +504,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "rosemead": {
     "url": "https://passio3.com/rosemead/passioTransit/gtfs/google_transit.zip",
@@ -469,7 +513,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "sandyor": {
     "url": "https://passio3.com/sandyor/passioTransit/gtfs/google_transit.zip",
@@ -477,7 +522,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "CityofTracy": {
     "url": "https://passio3.com/CityofTracy/passioTransit/gtfs/google_transit.zip",
@@ -485,7 +531,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "tylertx": {
     "url": "https://passio3.com/tylertx/passioTransit/gtfs/google_transit.zip",
@@ -493,7 +540,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "watertown": {
     "url": "https://passio3.com/watertown/passioTransit/gtfs/google_transit.zip",
@@ -501,7 +549,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "kootenai": {
     "url": "https://passio3.com/kootenai/passioTransit/gtfs/google_transit.zip",
@@ -509,7 +558,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "citylinkrural": {
     "url": "https://passio3.com/citylinkrural/passioTransit/gtfs/google_transit.zip",
@@ -517,7 +567,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "clackamas": {
     "url": "https://passio3.com/clackamas/passioTransit/gtfs/google_transit.zip",
@@ -525,7 +576,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "Clemson2": {
     "url": "https://passio3.com/Clemson2/passioTransit/gtfs/google_transit.zip",
@@ -533,7 +585,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "cnrl": {
     "url": "https://passio3.com/cnrl/passioTransit/gtfs/google_transit.zip",
@@ -541,7 +594,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "coke": {
     "url": "https://passio3.com/coke/passioTransit/gtfs/google_transit.zip",
@@ -549,7 +603,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "security@colby.edu": {
     "url": "https://passio3.com/security@colby.edu/passioTransit/gtfs/google_transit.zip",
@@ -557,7 +612,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "columbia": {
     "url": "https://passio3.com/columbia/passioTransit/gtfs/google_transit.zip",
@@ -565,7 +621,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "conchoVT": {
     "url": "https://passio3.com/conchoVT/passioTransit/gtfs/google_transit.zip",
@@ -573,7 +630,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "concordk": {
     "url": "https://passio3.com/concordk/passioTransit/gtfs/google_transit.zip",
@@ -581,7 +639,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "Concourse": {
     "url": "https://passio3.com/Concourse/passioTransit/gtfs/google_transit.zip",
@@ -589,7 +648,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "douglas": {
     "url": "https://passio3.com/douglas/passioTransit/gtfs/google_transit.zip",
@@ -597,7 +657,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "coast": {
     "url": "https://passio3.com/coast/passioTransit/gtfs/google_transit.zip",
@@ -605,7 +666,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "cgables": {
     "url": "https://passio3.com/cgables/passioTransit/gtfs/google_transit.zip",
@@ -613,7 +675,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "CoryD": {
     "url": "https://passio3.com/CoryD/passioTransit/gtfs/google_transit.zip",
@@ -621,7 +684,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "countyconn": {
     "url": "https://passio3.com/countyconn/passioTransit/gtfs/google_transit.zip",
@@ -629,7 +693,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "reefdoc": {
     "url": "https://passio3.com/reefdoc/passioTransit/gtfs/google_transit.zip",
@@ -637,7 +702,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "easternken": {
     "url": "https://passio3.com/easternken/passioTransit/gtfs/google_transit.zip",
@@ -645,7 +711,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "epta": {
     "url": "https://passio3.com/epta/passioTransit/gtfs/google_transit.zip",
@@ -653,7 +720,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "EVMS": {
     "url": "https://passio3.com/EVMS/passioTransit/gtfs/google_transit.zip",
@@ -661,7 +729,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "emory": {
     "url": "https://passio3.com/emory/passioTransit/gtfs/google_transit.zip",
@@ -669,7 +738,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "endicott": {
     "url": "https://passio3.com/endicott/passioTransit/gtfs/google_transit.zip",
@@ -677,7 +747,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "epsteins": {
     "url": "https://passio3.com/epsteins/passioTransit/gtfs/google_transit.zip",
@@ -685,7 +756,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "ecat": {
     "url": "https://passio3.com/ecat/passioTransit/gtfs/google_transit.zip",
@@ -693,7 +765,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "uniteda": {
     "url": "https://passio3.com/uniteda/passioTransit/gtfs/google_transit.zip",
@@ -701,7 +774,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "ewrpanynj": {
     "url": "https://passio3.com/ewrpanynj/passioTransit/gtfs/google_transit.zip",
@@ -709,7 +783,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "fitnewyork": {
     "url": "https://passio3.com/fitnewyork/passioTransit/gtfs/google_transit.zip",
@@ -717,7 +792,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "floridabus": {
     "url": "https://passio3.com/floridabus/passioTransit/gtfs/google_transit.zip",
@@ -725,7 +801,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "fgcu": {
     "url": "https://passio3.com/fgcu/passioTransit/gtfs/google_transit.zip",
@@ -733,7 +810,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "avenel": {
     "url": "https://passio3.com/avenel/passioTransit/gtfs/google_transit.zip",
@@ -741,7 +819,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "fortsask": {
     "url": "https://passio3.com/fortsask/passioTransit/gtfs/google_transit.zip",
@@ -749,7 +828,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "frta": {
     "url": "https://passio3.com/frta/passioTransit/gtfs/google_transit.zip",
@@ -757,7 +837,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "franklint": {
     "url": "https://passio3.com/franklint/passioTransit/gtfs/google_transit.zip",
@@ -765,7 +846,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "fresno": {
     "url": "https://passio3.com/fresno/passioTransit/gtfs/google_transit.zip",
@@ -773,7 +855,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "gatewayjfk": {
     "url": "https://passio3.com/gatewayjfk/passioTransit/gtfs/google_transit.zip",
@@ -781,7 +864,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "gcsu": {
     "url": "https://passio3.com/gcsu/passioTransit/gtfs/google_transit.zip",
@@ -789,7 +873,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "GASO": {
     "url": "https://passio3.com/GASO/passioTransit/gtfs/google_transit.zip",
@@ -797,7 +882,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "georgiast": {
     "url": "https://passio3.com/georgiast/passioTransit/gtfs/google_transit.zip",
@@ -805,7 +891,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "gatech": {
     "url": "https://passio3.com/gatech/passioTransit/gtfs/google_transit.zip",
@@ -813,7 +900,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "miller": {
     "url": "https://passio3.com/miller/passioTransit/gtfs/google_transit.zip",
@@ -821,7 +909,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "hart": {
     "url": "https://passio3.com/hart/passioTransit/gtfs/google_transit.zip",
@@ -829,7 +918,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "harvard": {
     "url": "https://passio3.com/harvard/passioTransit/gtfs/google_transit.zip",
@@ -837,7 +927,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "hendrycounty": {
     "url": "https://passio3.com/hendrycounty/passioTransit/gtfs/google_transit.zip",
@@ -845,7 +936,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "highlandhos": {
     "url": "https://passio3.com/highlandhos/passioTransit/gtfs/google_transit.zip",
@@ -853,7 +945,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "hillplace": {
     "url": "https://passio3.com/hillplace/passioTransit/gtfs/google_transit.zip",
@@ -861,7 +954,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "hollinsshuttle": {
     "url": "https://passio3.com/hollinsshuttle/passioTransit/gtfs/google_transit.zip",
@@ -869,7 +963,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "simonedev": {
     "url": "https://passio3.com/simonedev/passioTransit/gtfs/google_transit.zip",
@@ -877,7 +972,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "jfkpanynj": {
     "url": "https://passio3.com/jfkpanynj/passioTransit/gtfs/google_transit.zip",
@@ -885,7 +981,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "kfoothills": {
     "url": "https://passio3.com/kfoothills/passioTransit/gtfs/google_transit.zip",
@@ -893,7 +990,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "lehigh": {
     "url": "https://passio3.com/lehigh/passioTransit/gtfs/google_transit.zip",
@@ -901,7 +999,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "lax": {
     "url": "https://passio3.com/lax/passioTransit/gtfs/google_transit.zip",
@@ -909,7 +1008,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "puertoricotec": {
     "url": "https://passio3.com/puertoricotec/passioTransit/gtfs/google_transit.zip",
@@ -917,7 +1017,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "mktrail": {
     "url": "https://passio3.com/mktrail/passioTransit/gtfs/google_transit.zip",
@@ -925,7 +1026,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "mercy": {
     "url": "https://passio3.com/mercy/passioTransit/gtfs/google_transit.zip",
@@ -933,7 +1035,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "mizzst": {
     "url": "https://passio3.com/mizzst/passioTransit/gtfs/google_transit.zip",
@@ -941,7 +1044,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "mit": {
     "url": "https://passio3.com/mit/passioTransit/gtfs/google_transit.zip",
@@ -949,7 +1053,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "montachusett": {
     "url": "https://passio3.com/montachusett/passioTransit/gtfs/google_transit.zip",
@@ -957,7 +1062,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "NCI": {
     "url": "https://passio3.com/NCI/passioTransit/gtfs/google_transit.zip",
@@ -965,7 +1071,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "ncstateuni": {
     "url": "https://passio3.com/ncstateuni/passioTransit/gtfs/google_transit.zip",
@@ -973,7 +1080,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "newyork": {
     "url": "https://passio3.com/newyork/passioTransit/gtfs/google_transit.zip",
@@ -981,7 +1089,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "ncat": {
     "url": "https://passio3.com/ncat/passioTransit/gtfs/google_transit.zip",
@@ -989,7 +1098,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "northfork": {
     "url": "https://passio3.com/northfork/passioTransit/gtfs/google_transit.zip",
@@ -997,7 +1107,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "otterbus": {
     "url": "https://passio3.com/otterbus/passioTransit/gtfs/google_transit.zip",
@@ -1005,7 +1116,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "ozark": {
     "url": "https://passio3.com/ozark/passioTransit/gtfs/google_transit.zip",
@@ -1013,7 +1125,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "wpbair": {
     "url": "https://passio3.com/wpbair/passioTransit/gtfs/google_transit.zip",
@@ -1021,7 +1134,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "pepperdine": {
     "url": "https://passio3.com/pepperdine/passioTransit/gtfs/google_transit.zip",
@@ -1029,7 +1143,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "pittair": {
     "url": "https://passio3.com/pittair/passioTransit/gtfs/google_transit.zip",
@@ -1037,7 +1152,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "Port775": {
     "url": "https://passio3.com/Port775/passioTransit/gtfs/google_transit.zip",
@@ -1045,7 +1161,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "parta": {
     "url": "https://passio3.com/parta/passioTransit/gtfs/google_transit.zip",
@@ -1053,7 +1170,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "quinnUni": {
     "url": "https://passio3.com/quinnUni/passioTransit/gtfs/google_transit.zip",
@@ -1061,7 +1179,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "radford": {
     "url": "https://passio3.com/radford/passioTransit/gtfs/google_transit.zip",
@@ -1069,7 +1188,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "ravinia": {
     "url": "https://passio3.com/ravinia/passioTransit/gtfs/google_transit.zip",
@@ -1077,7 +1197,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "rogerwu": {
     "url": "https://passio3.com/rogerwu/passioTransit/gtfs/google_transit.zip",
@@ -1085,7 +1206,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "rutgers": {
     "url": "https://passio3.com/rutgers/passioTransit/gtfs/google_transit.zip",
@@ -1093,7 +1215,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": false
   },
   "sacair": {
     "url": "https://passio3.com/sacair/passioTransit/gtfs/google_transit.zip",
@@ -1101,7 +1224,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "spuniv": {
     "url": "https://passio3.com/spuniv/passioTransit/gtfs/google_transit.zip",
@@ -1109,7 +1233,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "salve": {
     "url": "https://passio3.com/salve/passioTransit/gtfs/google_transit.zip",
@@ -1117,7 +1242,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "senecanation": {
     "url": "https://passio3.com/senecanation/passioTransit/gtfs/google_transit.zip",
@@ -1125,7 +1251,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "scsu": {
     "url": "https://passio3.com/scsu/passioTransit/gtfs/google_transit.zip",
@@ -1133,7 +1260,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "stvincent": {
     "url": "https://passio3.com/stvincent/passioTransit/gtfs/google_transit.zip",
@@ -1141,7 +1269,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "onyx": {
     "url": "https://passio3.com/onyx/passioTransit/gtfs/google_transit.zip",
@@ -1149,7 +1278,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "chickfila": {
     "url": "https://passio3.com/chickfila/passioTransit/gtfs/google_transit.zip",
@@ -1157,7 +1287,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "centraltrans": {
     "url": "https://passio3.com/centraltrans/passioTransit/gtfs/google_transit.zip",
@@ -1165,7 +1296,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "tntech": {
     "url": "https://passio3.com/tntech/passioTransit/gtfs/google_transit.zip",
@@ -1173,7 +1305,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "Terraces": {
     "url": "https://passio3.com/Terraces/passioTransit/gtfs/google_transit.zip",
@@ -1181,7 +1314,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "concordtrolley": {
     "url": "https://passio3.com/concordtrolley/passioTransit/gtfs/google_transit.zip",
@@ -1189,7 +1323,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "retreatlt": {
     "url": "https://passio3.com/retreatlt/passioTransit/gtfs/google_transit.zip",
@@ -1197,7 +1332,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "cardgroup": {
     "url": "https://passio3.com/cardgroup/passioTransit/gtfs/google_transit.zip",
@@ -1205,7 +1341,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "westorange": {
     "url": "https://passio3.com/westorange/passioTransit/gtfs/google_transit.zip",
@@ -1213,7 +1350,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "towson": {
     "url": "https://passio3.com/towson/passioTransit/gtfs/google_transit.zip",
@@ -1221,7 +1359,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "tulaneshuttles": {
     "url": "https://passio3.com/tulaneshuttles/passioTransit/gtfs/google_transit.zip",
@@ -1229,7 +1368,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "uconn": {
     "url": "https://passio3.com/uconn/passioTransit/gtfs/google_transit.zip",
@@ -1237,7 +1377,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "uncc": {
     "url": "https://passio3.com/uncc/passioTransit/gtfs/google_transit.zip",
@@ -1245,7 +1386,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "uncg": {
     "url": "https://passio3.com/uncg/passioTransit/gtfs/google_transit.zip",
@@ -1253,7 +1395,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "bamabama": {
     "url": "https://passio3.com/bamabama/passioTransit/gtfs/google_transit.zip",
@@ -1261,7 +1404,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "UofArkansas": {
     "url": "https://passio3.com/UofArkansas/passioTransit/gtfs/google_transit.zip",
@@ -1269,7 +1413,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "chicago": {
     "url": "https://passio3.com/chicago/passioTransit/gtfs/google_transit.zip",
@@ -1277,7 +1422,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": false
   },
   "HartfordAmerica": {
     "url": "https://passio3.com/HartfordAmerica/passioTransit/gtfs/google_transit.zip",
@@ -1285,7 +1431,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "umdearborn": {
     "url": "https://passio3.com/umdearborn/passioTransit/gtfs/google_transit.zip",
@@ -1293,7 +1440,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "unm": {
     "url": "https://passio3.com/unm/passioTransit/gtfs/google_transit.zip",
@@ -1301,7 +1449,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "northga": {
     "url": "https://passio3.com/northga/passioTransit/gtfs/google_transit.zip",
@@ -1309,7 +1458,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "UofSanDTram": {
     "url": "https://passio3.com/UofSanDTram/passioTransit/gtfs/google_transit.zip",
@@ -1317,7 +1467,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "utep": {
     "url": "https://passio3.com/utep/passioTransit/gtfs/google_transit.zip",
@@ -1325,7 +1476,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "milwaukee": {
     "url": "https://passio3.com/milwaukee/passioTransit/gtfs/google_transit.zip",
@@ -1333,7 +1485,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "uchra": {
     "url": "https://passio3.com/uchra/passioTransit/gtfs/google_transit.zip",
@@ -1341,7 +1494,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "utahstate": {
     "url": "https://passio3.com/utahstate/passioTransit/gtfs/google_transit.zip",
@@ -1349,7 +1503,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "vandy": {
     "url": "https://passio3.com/vandy/passioTransit/gtfs/google_transit.zip",
@@ -1357,7 +1512,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "vandyhealth": {
     "url": "https://passio3.com/vandyhealth/passioTransit/gtfs/google_transit.zip",
@@ -1365,7 +1521,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "wakeforest": {
     "url": "https://passio3.com/wakeforest/passioTransit/gtfs/google_transit.zip",
@@ -1373,7 +1530,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "westmar": {
     "url": "https://passio3.com/westmar/passioTransit/gtfs/google_transit.zip",
@@ -1381,7 +1539,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "woodbridge": {
     "url": "https://passio3.com/woodbridge/passioTransit/gtfs/google_transit.zip",
@@ -1389,7 +1548,8 @@
     "seperator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
-    "trim": false
+    "trim": false,
+    "disabled": true
   },
   "xchange": {
     "url": "https://passio3.com/xchange/passioTransit/gtfs/google_transit.zip",
@@ -1398,6 +1558,8 @@
     "seperatorOverrides": {},
     "colorOverrides": {},
     "trim": false,
-    "trim": false
+    "disabled": true,
+    "trim": false,
+    "disabled": true
   }
 }
