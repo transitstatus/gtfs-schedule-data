@@ -1,7 +1,6 @@
 const fetch = require('node-fetch');
 const fs = require('fs');
 const { parse } = require('csv-parse');
-const csv = require('csv-parser')
 const { execSync } = require('child_process');
 const simplify = require('@turf/simplify');
 const sharp = require('sharp');
