@@ -318,7 +318,7 @@ Object.keys(feeds).forEach((feed) => {
                     finalGeoJSONByType[routes[route]['routeType']].features.push({
                       type: 'Feature',
                       properties: {
-                        routeID: route,
+                        routeID: feeds[feed].mapCodeOverrides[route] ?? route,
                         routeShortName: routes[route]['routeShortName'],
                         routeLongName: routes[route]['routeLongName'],
                         routeColor: `#${routes[route]['routeColor'] === '000000' ? 'FFFFFF' : routes[route]['routeColor']}`,

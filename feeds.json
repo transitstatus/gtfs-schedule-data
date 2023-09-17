@@ -5,6 +5,7 @@
     "separator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
+    "mapCodeOverrides": {},
     "trim": false,
     "disabled": false
   },
@@ -18,6 +19,7 @@
       "shapes": ","
     },
     "colorOverrides": {},
+    "mapCodeOverrides": {},
     "trim": true,
     "disabled": false
   },
@@ -148,6 +150,7 @@
         "FFFFFF"
       ]
     },
+    "mapCodeOverrides": {},
     "trim": false,
     "disabled": false
   },
@@ -157,6 +160,7 @@
     "separator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
+    "mapCodeOverrides": {},
     "trim": false,
     "disabled": false
   },
@@ -166,6 +170,7 @@
     "separator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
+    "mapCodeOverrides": {},
     "trim": false,
     "disabled": false
   },
@@ -175,6 +180,16 @@
     "separator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
+    "mapCodeOverrides": {
+      "Red": "R",
+      "P": "P",
+      "Y": "Y",
+      "Blue": "B",
+      "Pink": "V",
+      "G": "G",
+      "Brn": "T",
+      "Org": "O"
+    },
     "trim": false,
     "disabled": false
   },
@@ -189,6 +204,7 @@
         "000000"
       ]
     },
+    "mapCodeOverrides": {},
     "trim": false,
     "disabled": false
   }
