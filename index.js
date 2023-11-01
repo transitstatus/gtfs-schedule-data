@@ -95,6 +95,11 @@ Object.keys(feeds).forEach((feed) => {
       console.log(`Converting ${feed} to JSON...`)
       fs.mkdirSync(`./data/${feed}`);
 
+      let feedPath = `./csv/${feed}`;
+      if (feeds[feed].subfolder) {
+        feedPath = `./csv/${feed}/${feeds[feed].subfolder}`
+      }
+
       let routes = {};
       let routeColors = {};
       let routeShapes = {};
@@ -102,7 +107,7 @@ Object.keys(feeds).forEach((feed) => {
       let parentStations = {};
 
       console.log(`Processing ${feed} routes...`)
-      fs.createReadStream(`./csv/${feed}/routes.txt`)
+      fs.createReadStream(`${feedPath}/routes.txt`)
         .pipe(parse({
           delimiter: feeds[feed]['separator'],
           columns: true,
@@ -224,7 +229,7 @@ Object.keys(feeds).forEach((feed) => {
           fs.writeFileSync(`./data/${feed}/icons.json`, JSON.stringify(iconsRef));
 
           console.log(`Processing ${feed} trips...`)
-          fs.createReadStream(`./csv/${feed}/trips.txt`)
+          fs.createReadStream(`${feedPath}/trips.txt`)
             .pipe(parse({
               delimiter: feeds[feed]['separator'],
               columns: true,
@@ -254,7 +259,7 @@ Object.keys(feeds).forEach((feed) => {
 
               fs.mkdirSync(`./data/${feed}/shapes`);
 
-              fs.createReadStream(`./csv/${feed}/shapes.txt`)
+              fs.createReadStream(`${feedPath}/shapes.txt`)
                 .pipe(parse({
                   delimiter: feeds[feed]['seperatorOverrides'].shapes ?? feeds[feed]['separator'],
                   columns: true,
@@ -345,7 +350,7 @@ Object.keys(feeds).forEach((feed) => {
                 });
 
               console.log(`Processing ${feed} stops...`)
-              fs.createReadStream(`./csv/${feed}/stops.txt`)
+              fs.createReadStream(`${feedPath}/stops.txt`)
                 .pipe(parse({
                   delimiter: feeds[feed]['separator'],
                   columns: true,
@@ -362,7 +367,7 @@ Object.keys(feeds).forEach((feed) => {
                   let tripEnds = {};
 
                   console.log(`Processing ${feed} stop times...`)
-                  fs.createReadStream(`./csv/${feed}/stop_times.txt`)
+                  fs.createReadStream(`${feedPath}/stop_times.txt`)
                     .pipe(parse({
                       delimiter: feeds[feed]['seperatorOverrides'].stop_times ?? feeds[feed]['separator'],
                       columns: true,
@@ -406,7 +411,7 @@ Object.keys(feeds).forEach((feed) => {
 
                       let stops = {};
                       console.log(`Processing ${feed} stops...`)
-                      fs.createReadStream(`./csv/${feed}/stops.txt`)
+                      fs.createReadStream(`${feedPath}/stops.txt`)
                         .pipe(parse({
                           delimiter: feeds[feed]['separator'],
                           columns: true,
@@ -432,10 +437,11 @@ Object.keys(feeds).forEach((feed) => {
                             Object.keys(route.routeTrips).forEach((tripKey) => {
                               const finalStopID = tripEnds[tripKey];
 
+                              if (!finalStopID) return; //probably a yeeted trip
+
                               if (!route.destinations.includes(finalStopID)) {
                                 route.destinations.push(stops[finalStopID].stopName);
                               }
-
                               route.routeTrips[tripKey].headsign = stops[finalStopID].stopName;
                             })
 

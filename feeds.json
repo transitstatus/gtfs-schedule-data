@@ -206,6 +206,7 @@
     },
     "mapCodeOverrides": {},
     "trim": false,
-    "disabled": false
+    "disabled": false,
+    "subfolder": "Working copy GTFS changes/"
   }
 }
