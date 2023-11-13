@@ -85,7 +85,7 @@ Object.keys(feeds).forEach((feed) => {
       fs.writeFileSync(`./zips/${feed}.zip`, buffer, 'utf8');
       console.log(`Saved ${feed} to ./zips/${feed}.zip`);
 
-      console.log(body.toString());
+      //console.log(body.toString());
 
       console.log(`Unzipping ${feed}...`);
       fs.mkdirSync(`./csv/${feed}`);
