@@ -170,6 +170,7 @@ Object.keys(feeds).forEach((feed) => {
           const trainTemplate = fs.readFileSync('./templates/train.svg', 'utf8');
           const busTemplate = fs.readFileSync('./templates/bus.svg', 'utf8');
           const boatTemplate = fs.readFileSync('./templates/boat.svg', 'utf8');
+          const arrowTemplate = fs.readFileSync('./templates/arrow.svg', 'utf8');
 
           let iconsRef = [];
 
@@ -183,11 +184,14 @@ Object.keys(feeds).forEach((feed) => {
             const trainIcon = trainTemplate.replaceAll("#FFFFFF", `#${actualRouteColor}`).replaceAll("#000000", `#${actualRouteTextColor}`);
             const busIcon = busTemplate.replaceAll("#FFFFFF", `#${actualRouteColor}`).replaceAll("#000000", `#${actualRouteTextColor}`);
             const boatIcon = boatTemplate.replaceAll("#FFFFFF", `#${actualRouteColor}`).replaceAll("#000000", `#${actualRouteTextColor}`);
+            const arrowIcon = arrowTemplate.replaceAll("#FFFFFF", `#${actualRouteColor}`).replaceAll("#000000", `#${actualRouteTextColor}`);
 
             const trainBuffer = Buffer.from(trainIcon, 'utf8');
             const busBuffer = Buffer.from(busIcon, 'utf8');
             const boatBuffer = Buffer.from(boatIcon, 'utf8');
+            const arrowBuffer = Buffer.from(arrowIcon, 'utf8');
 
+            //trains
             if (types.includes('1') || types.includes('2')) {
               iconsRef.push(`${routeColor}_train.png`);
 
@@ -201,6 +205,7 @@ Object.keys(feeds).forEach((feed) => {
                 });
             }
 
+            //buses
             if (types.includes('3')) {
               iconsRef.push(`${routeColor}_bus.png`);
 
@@ -213,6 +218,7 @@ Object.keys(feeds).forEach((feed) => {
                 });
             }
 
+            //ferries - currently not used
             /*
             if (types.includes('4')) {
               sharp(boatBuffer)
@@ -224,9 +230,22 @@ Object.keys(feeds).forEach((feed) => {
                 });
             }
             */
+
+            //arrow
+            iconsRef.push(`${routeColor}_arrow.png`);
+
+            sharp(arrowBuffer)
+              .resize(112, 112)
+              .png()
+              .toFile(`./data/${feed}/icons/${routeColor}_arrow.png`, (err, info) => {
+                if (err) throw err;
+                console.log(`${routeColor}_arrow.png generated for ${feed}`)
+              });
           });
 
-          fs.writeFileSync(`./data/${feed}/icons.json`, JSON.stringify(iconsRef));
+          const uniqueIconsRef = [...new Set(iconsRef)];
+
+          fs.writeFileSync(`./data/${feed}/icons.json`, JSON.stringify(uniqueIconsRef));
 
           console.log(`Processing ${feed} trips...`)
           fs.createReadStream(`${feedPath}/trips.txt`)
