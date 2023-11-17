@@ -235,7 +235,7 @@ Object.keys(feeds).forEach((feed) => {
             iconsRef.push(`${routeColor}_arrow.png`);
 
             sharp(arrowBuffer)
-              .resize(112, 112)
+              .resize(120, 120)
               .png()
               .toFile(`./data/${feed}/icons/${routeColor}_arrow.png`, (err, info) => {
                 if (err) throw err;
