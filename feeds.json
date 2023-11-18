@@ -196,7 +196,7 @@
       "Org": "O"
     },
     "colorReplacements": {
-      "565a5c": "b02727"
+      "565a5c_": "b02727_"
     },
     "trim": false,
     "disabled": false
