@@ -6,6 +6,7 @@
     "seperatorOverrides": {},
     "colorOverrides": {},
     "mapCodeOverrides": {},
+    "colorReplacements": {},
     "trim": false,
     "disabled": false
   },
@@ -20,6 +21,7 @@
     },
     "colorOverrides": {},
     "mapCodeOverrides": {},
+    "colorReplacements": {},
     "trim": true,
     "disabled": false
   },
@@ -151,6 +153,7 @@
       ]
     },
     "mapCodeOverrides": {},
+    "colorReplacements": {},
     "trim": false,
     "disabled": false
   },
@@ -161,6 +164,7 @@
     "seperatorOverrides": {},
     "colorOverrides": {},
     "mapCodeOverrides": {},
+    "colorReplacements": {},
     "trim": false,
     "disabled": false
   },
@@ -171,6 +175,7 @@
     "seperatorOverrides": {},
     "colorOverrides": {},
     "mapCodeOverrides": {},
+    "colorReplacements": {},
     "trim": false,
     "disabled": false
   },
@@ -190,6 +195,9 @@
       "Brn": "T",
       "Org": "O"
     },
+    "colorReplacements": {
+      "565a5c": "882b2b"
+    },
     "trim": false,
     "disabled": false
   },
@@ -205,6 +213,7 @@
       ]
     },
     "mapCodeOverrides": {},
+    "colorReplacements": {},
     "trim": false,
     "disabled": false,
     "subfolder": "Working copy GTFS changes/"

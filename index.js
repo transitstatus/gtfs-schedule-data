@@ -121,6 +121,10 @@ Object.keys(feeds).forEach((feed) => {
 
           console.log(routeColor, routeTextColor)
 
+          if (feeds[feed]['colorReplacements'][routeColor]) {
+            routeColor = feeds[feed]['colorReplacements'][routeColor]
+          }
+
           if (routeColor.length === 0) {
             routeColor = '000000';
           }
