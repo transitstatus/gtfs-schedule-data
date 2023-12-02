@@ -1,4 +1,16 @@
 {
+  "bart": {
+    "url": "https://www.bart.gov/dev/schedules/google_transit.zip",
+    "headers": {},
+    "urlEnv": [],
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
+    "trim": false,
+    "disabled": false
+  },
   "3D": {
     "name": "Tri Delta Transit",
     "url": "https://api.511.org/transit/datafeeds?api_key=env.bay_511&operator_id=3D",
@@ -47,21 +59,6 @@
   "AM": {
     "name": "Capitol Corridor Joint Powers Authority",
     "url": "https://api.511.org/transit/datafeeds?api_key=env.bay_511&operator_id=AM",
-    "headers": {},
-    "urlEnv": [
-      "env.bay_511"
-    ],
-    "separator": ",",
-    "seperatorOverrides": {},
-    "colorOverrides": {},
-    "mapCodeOverrides": {},
-    "colorReplacements": {},
-    "trim": false,
-    "disabled": false
-  },
-  "BA": {
-    "name": "Bay Area Rapid Transit",
-    "url": "https://api.511.org/transit/datafeeds?api_key=env.bay_511&operator_id=BA",
     "headers": {},
     "urlEnv": [
       "env.bay_511"
