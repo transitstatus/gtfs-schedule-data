@@ -21,6 +21,14 @@ const processHeaders = (headers) => {
   return processedHeaders;
 };
 
+const processURL = (url, urlEnv) => {
+  let finalURL = url;
+  urlEnv.forEach((replacement) => {
+    finalURL = finalURL.replace(replacement, process.env[replacement.replace('env.', '')]);
+  })
+  return finalURL;
+}
+
 const RED = 0.2126;
 const GREEN = 0.7152;
 const BLUE = 0.0722;
@@ -70,11 +78,12 @@ Object.keys(feeds).forEach((feed) => {
   //if (feed !== 'metra') return;
   //if (feed !== 'southshore') return;
   //if (feed !== 'chicago') return;
+  //if (feed !== 'AC') return;
 
   if (feeds[feed].disabled === true) return;
 
-  const feedURL = feeds[feed]['url'];
-  console.log(`Fetching ${feedURL}...`)
+  const feedURL = processURL(feeds[feed]['url'], feeds[feed]['urlEnv']);
+  console.log(`Fetching ${feed} zip...`)
   fetch(feedURL, {
     method: 'GET',
     headers: processHeaders(feeds[feed]['headers'])
@@ -222,8 +231,7 @@ Object.keys(feeds).forEach((feed) => {
                 });
             }
 
-            //ferries - currently not used
-            /*
+            //ferries
             if (types.includes('4')) {
               sharp(boatBuffer)
                 .resize(512, 512)
@@ -233,7 +241,6 @@ Object.keys(feeds).forEach((feed) => {
                   if (info) console.log(info);
                 });
             }
-            */
 
             //arrow
             iconsRef.push(`${routeColor}_arrow.png`);

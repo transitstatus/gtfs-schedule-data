@@ -1,7 +1,536 @@
 {
-  "bart": {
-    "url": "https://www.bart.gov/dev/schedules/google_transit.zip",
+  "3D": {
+    "name": "Tri Delta Transit",
+    "url": "https://api.511.org/transit/datafeeds?api_key=env.bay_511&operator_id=3D",
     "headers": {},
+    "urlEnv": [
+      "env.bay_511"
+    ],
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
+    "trim": false,
+    "disabled": false
+  },
+  "AC": {
+    "name": "AC Transit",
+    "url": "https://api.511.org/transit/datafeeds?api_key=env.bay_511&operator_id=AC",
+    "headers": {},
+    "urlEnv": [
+      "env.bay_511"
+    ],
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
+    "trim": false,
+    "disabled": false
+  },
+  "AF": {
+    "name": "Angel Island Tiburon Ferry",
+    "url": "https://api.511.org/transit/datafeeds?api_key=env.bay_511&operator_id=AF",
+    "headers": {},
+    "urlEnv": [
+      "env.bay_511"
+    ],
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
+    "trim": false,
+    "disabled": false
+  },
+  "AM": {
+    "name": "Capitol Corridor Joint Powers Authority",
+    "url": "https://api.511.org/transit/datafeeds?api_key=env.bay_511&operator_id=AM",
+    "headers": {},
+    "urlEnv": [
+      "env.bay_511"
+    ],
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
+    "trim": false,
+    "disabled": false
+  },
+  "BA": {
+    "name": "Bay Area Rapid Transit",
+    "url": "https://api.511.org/transit/datafeeds?api_key=env.bay_511&operator_id=BA",
+    "headers": {},
+    "urlEnv": [
+      "env.bay_511"
+    ],
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
+    "trim": false,
+    "disabled": false
+  },
+  "CC": {
+    "name": "County Connection",
+    "url": "https://api.511.org/transit/datafeeds?api_key=env.bay_511&operator_id=CC",
+    "headers": {},
+    "urlEnv": [
+      "env.bay_511"
+    ],
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
+    "trim": false,
+    "disabled": false
+  },
+  "CE": {
+    "name": "Altamont Corridor Express",
+    "url": "https://api.511.org/transit/datafeeds?api_key=env.bay_511&operator_id=CE",
+    "headers": {},
+    "urlEnv": [
+      "env.bay_511"
+    ],
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
+    "trim": false,
+    "disabled": false
+  },
+  "CM": {
+    "name": "Commute.org Shuttles",
+    "url": "https://api.511.org/transit/datafeeds?api_key=env.bay_511&operator_id=CM",
+    "headers": {},
+    "urlEnv": [
+      "env.bay_511"
+    ],
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
+    "trim": false,
+    "disabled": false
+  },
+  "CT": {
+    "name": "Caltrain",
+    "url": "https://api.511.org/transit/datafeeds?api_key=env.bay_511&operator_id=CT",
+    "headers": {},
+    "urlEnv": [
+      "env.bay_511"
+    ],
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
+    "trim": false,
+    "disabled": false
+  },
+  "DE": {
+    "name": "Dumbarton Express Consortium",
+    "url": "https://api.511.org/transit/datafeeds?api_key=env.bay_511&operator_id=DE",
+    "headers": {},
+    "urlEnv": [
+      "env.bay_511"
+    ],
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
+    "trim": false,
+    "disabled": false
+  },
+  "EM": {
+    "name": "Emery Go-Round",
+    "url": "https://api.511.org/transit/datafeeds?api_key=env.bay_511&operator_id=EM",
+    "headers": {},
+    "urlEnv": [
+      "env.bay_511"
+    ],
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
+    "trim": false,
+    "disabled": false
+  },
+  "FS": {
+    "name": "FAST",
+    "url": "https://api.511.org/transit/datafeeds?api_key=env.bay_511&operator_id=FS",
+    "headers": {},
+    "urlEnv": [
+      "env.bay_511"
+    ],
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
+    "trim": false,
+    "disabled": false
+  },
+  "GF": {
+    "name": "Golden Gate Ferry",
+    "url": "https://api.511.org/transit/datafeeds?api_key=env.bay_511&operator_id=GF",
+    "headers": {},
+    "urlEnv": [
+      "env.bay_511"
+    ],
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
+    "trim": false,
+    "disabled": false
+  },
+  "GG": {
+    "name": "Golden Gate Transit",
+    "url": "https://api.511.org/transit/datafeeds?api_key=env.bay_511&operator_id=GG",
+    "headers": {},
+    "urlEnv": [
+      "env.bay_511"
+    ],
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
+    "trim": false,
+    "disabled": false
+  },
+  "MA": {
+    "name": "Marin Transit",
+    "url": "https://api.511.org/transit/datafeeds?api_key=env.bay_511&operator_id=MA",
+    "headers": {},
+    "urlEnv": [
+      "env.bay_511"
+    ],
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
+    "trim": false,
+    "disabled": false
+  },
+  "MB": {
+    "name": "Mission Bay TMA",
+    "url": "https://api.511.org/transit/datafeeds?api_key=env.bay_511&operator_id=MB",
+    "headers": {},
+    "urlEnv": [
+      "env.bay_511"
+    ],
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
+    "trim": false,
+    "disabled": false
+  },
+  "MV": {
+    "name": "MVgo",
+    "url": "https://api.511.org/transit/datafeeds?api_key=env.bay_511&operator_id=MV",
+    "headers": {},
+    "urlEnv": [
+      "env.bay_511"
+    ],
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
+    "trim": false,
+    "disabled": false
+  },
+  "PE": {
+    "name": "Petaluma",
+    "url": "https://api.511.org/transit/datafeeds?api_key=env.bay_511&operator_id=PE",
+    "headers": {},
+    "urlEnv": [
+      "env.bay_511"
+    ],
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
+    "trim": false,
+    "disabled": false
+  },
+  "RG": {
+    "name": "Regional GTFS",
+    "url": "https://api.511.org/transit/datafeeds?api_key=env.bay_511&operator_id=RG",
+    "headers": {},
+    "urlEnv": [
+      "env.bay_511"
+    ],
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
+    "trim": false,
+    "disabled": false
+  },
+  "RV": {
+    "name": "Rio Vista Delta Breeze",
+    "url": "https://api.511.org/transit/datafeeds?api_key=env.bay_511&operator_id=RV",
+    "headers": {},
+    "urlEnv": [
+      "env.bay_511"
+    ],
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
+    "trim": false,
+    "disabled": false
+  },
+  "SA": {
+    "name": "Sonoma Marin Area Rail Transit",
+    "url": "https://api.511.org/transit/datafeeds?api_key=env.bay_511&operator_id=SA",
+    "headers": {},
+    "urlEnv": [
+      "env.bay_511"
+    ],
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
+    "trim": false,
+    "disabled": false
+  },
+  "SB": {
+    "name": "San Francisco Bay Ferry",
+    "url": "https://api.511.org/transit/datafeeds?api_key=env.bay_511&operator_id=SB",
+    "headers": {},
+    "urlEnv": [
+      "env.bay_511"
+    ],
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
+    "trim": false,
+    "disabled": false
+  },
+  "SC": {
+    "name": "VTA",
+    "url": "https://api.511.org/transit/datafeeds?api_key=env.bay_511&operator_id=SC",
+    "headers": {},
+    "urlEnv": [
+      "env.bay_511"
+    ],
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
+    "trim": false,
+    "disabled": false
+  },
+  "SF": {
+    "name": "San Francisco Municipal Transportation Agency",
+    "url": "https://api.511.org/transit/datafeeds?api_key=env.bay_511&operator_id=SF",
+    "headers": {},
+    "urlEnv": [
+      "env.bay_511"
+    ],
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
+    "trim": false,
+    "disabled": false
+  },
+  "SI": {
+    "name": "San Francisco International Airport",
+    "url": "https://api.511.org/transit/datafeeds?api_key=env.bay_511&operator_id=SI",
+    "headers": {},
+    "urlEnv": [
+      "env.bay_511"
+    ],
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
+    "trim": false,
+    "disabled": false
+  },
+  "SM": {
+    "name": "SamTrans",
+    "url": "https://api.511.org/transit/datafeeds?api_key=env.bay_511&operator_id=SM",
+    "headers": {},
+    "urlEnv": [
+      "env.bay_511"
+    ],
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
+    "trim": false,
+    "disabled": false
+  },
+  "SO": {
+    "name": "Sonoma County Transit",
+    "url": "https://api.511.org/transit/datafeeds?api_key=env.bay_511&operator_id=SO",
+    "headers": {},
+    "urlEnv": [
+      "env.bay_511"
+    ],
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
+    "trim": false,
+    "disabled": false
+  },
+  "SR": {
+    "name": "SANTAROSA",
+    "url": "https://api.511.org/transit/datafeeds?api_key=env.bay_511&operator_id=SR",
+    "headers": {},
+    "urlEnv": [
+      "env.bay_511"
+    ],
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
+    "trim": false,
+    "disabled": false
+  },
+  "SS": {
+    "name": "City of South San Francisco",
+    "url": "https://api.511.org/transit/datafeeds?api_key=env.bay_511&operator_id=SS",
+    "headers": {},
+    "urlEnv": [
+      "env.bay_511"
+    ],
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
+    "trim": false,
+    "disabled": false
+  },
+  "ST": {
+    "name": "SolTrans",
+    "url": "https://api.511.org/transit/datafeeds?api_key=env.bay_511&operator_id=ST",
+    "headers": {},
+    "urlEnv": [
+      "env.bay_511"
+    ],
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
+    "trim": false,
+    "disabled": false
+  },
+  "TF": {
+    "name": "Treasure Island Ferry",
+    "url": "https://api.511.org/transit/datafeeds?api_key=env.bay_511&operator_id=TF",
+    "headers": {},
+    "urlEnv": [
+      "env.bay_511"
+    ],
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
+    "trim": false,
+    "disabled": false
+  },
+  "UC": {
+    "name": "Union City Transit",
+    "url": "https://api.511.org/transit/datafeeds?api_key=env.bay_511&operator_id=UC",
+    "headers": {},
+    "urlEnv": [
+      "env.bay_511"
+    ],
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
+    "trim": false,
+    "disabled": false
+  },
+  "VC": {
+    "name": "Vacaville City Coach",
+    "url": "https://api.511.org/transit/datafeeds?api_key=env.bay_511&operator_id=VC",
+    "headers": {},
+    "urlEnv": [
+      "env.bay_511"
+    ],
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
+    "trim": false,
+    "disabled": false
+  },
+  "VN": {
+    "name": "VINE Transit",
+    "url": "https://api.511.org/transit/datafeeds?api_key=env.bay_511&operator_id=VN",
+    "headers": {},
+    "urlEnv": [
+      "env.bay_511"
+    ],
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
+    "trim": false,
+    "disabled": false
+  },
+  "WC": {
+    "name": "WestCat (Western Contra Costa)",
+    "url": "https://api.511.org/transit/datafeeds?api_key=env.bay_511&operator_id=WC",
+    "headers": {},
+    "urlEnv": [
+      "env.bay_511"
+    ],
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
+    "trim": false,
+    "disabled": false
+  },
+  "WH": {
+    "name": "Livermore Amador Valley Transit Authority",
+    "url": "https://api.511.org/transit/datafeeds?api_key=env.bay_511&operator_id=WH",
+    "headers": {},
+    "urlEnv": [
+      "env.bay_511"
+    ],
     "separator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
@@ -11,10 +540,12 @@
     "disabled": false
   },
   "metra": {
+    "name": "Metra",
     "url": "https://gtfsapi.metrarail.com/gtfs/raw/schedule.zip",
     "headers": {
       "Authorization": "env.metra_authorization"
     },
+    "urlEnv": [],
     "separator": ", ",
     "seperatorOverrides": {
       "shapes": ","
@@ -26,8 +557,10 @@
     "disabled": false
   },
   "nyct_subway": {
+    "name": "NYC Subway",
     "url": "http://web.mta.info/developers/data/nyct/subway/google_transit.zip",
     "headers": {},
+    "urlEnv": [],
     "separator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {
@@ -158,8 +691,10 @@
     "disabled": false
   },
   "lirr": {
+    "name": "Long Island Railroad (MTA)",
     "url": "http://web.mta.info/developers/data/lirr/google_transit.zip",
     "headers": {},
+    "urlEnv": [],
     "separator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
@@ -169,8 +704,10 @@
     "disabled": false
   },
   "mnrr": {
+    "name": "Metro North (MTA)",
     "url": "http://web.mta.info/developers/data/mnr/google_transit.zip",
     "headers": {},
+    "urlEnv": [],
     "separator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
@@ -180,8 +717,10 @@
     "disabled": false
   },
   "cta": {
+    "name": "Chicago Transit Authority",
     "url": "https://www.transitchicago.com/downloads/sch_data/google_transit.zip",
     "headers": {},
+    "urlEnv": [],
     "separator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
@@ -202,8 +741,10 @@
     "disabled": false
   },
   "southshore": {
+    "name": "South Shore Line",
     "url": "http://www.mysouthshoreline.com/google/google_transit.zip",
     "headers": {},
+    "urlEnv": [],
     "separator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {
