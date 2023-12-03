@@ -114,6 +114,7 @@ Object.keys(feeds).forEach((feed) => {
       let routeShapes = {};
       let tripsDict = {};
       let parentStations = {};
+      let tripsMeta = {};
 
       console.log(`Processing ${feed} routes...`)
       fs.createReadStream(`${feedPath}/routes.txt`)
@@ -268,6 +269,9 @@ Object.keys(feeds).forEach((feed) => {
               trim: feeds[feed]['trim'],
             }))
             .on('data', function (row) {
+              tripsMeta[row.trip_id] = {
+                headsign: row.trip_headsign,
+              }
               routes[row.route_id]['routeTrips'][row.trip_id] = {
                 headsign: row.trip_headsign,
               };
@@ -282,6 +286,10 @@ Object.keys(feeds).forEach((feed) => {
               }
             })
             .on('end', function () {
+
+              console.log(`Writing ${feed} trip metadata to JSON...`)
+              fs.writeFileSync(`./data/${feed}/tripMeta.json`, JSON.stringify(tripsMeta), { encoding: 'utf-8' })
+
               console.log(`Processing ${feed} shapes...`)
 
               let shapes = {};
