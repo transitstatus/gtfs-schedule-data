@@ -12,7 +12,7 @@ ${paths.map((path) => {
   const name = path.type === 'directory' ? `${path.name}/` : `${path.name}`;
   const filePath = path.type === 'directory' ? `./${path.name}` : `/${dir}/${path.name}`; 
 
-    return `      <a href="${filePath}" title="${path.name}">${name}</a>${path.name.padEnd(50, ' ').replace(path.name, '')}${path.mtime.toISOString().split('T').join(' ')}${path.size.toString().padStart(20, ' ')}`
+    return `      <a href="${filePath}" title="${path.name}">${name}</a>${path.name.padEnd(path.type === 'directory' ? 50 : 51, ' ').replace(path.name, '')}${path.mtime.toISOString().split('T').join(' ')}${path.size.toString().padStart(20, ' ')}`
   }).join('\n')}</pre><hr>
   </body>
 </html>`
