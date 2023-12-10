@@ -10,12 +10,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@turf/simplify": "^6.5.0",
     "csv-parse": "^5.3.10",
-    "csv-parser": "^3.0.0",
+    "directory-tree": "^3.5.1",
     "dotenv": "^16.0.3",
     "node-fetch": "^2.6.7",
-    "node-stream-zip": "^1.15.0",
-    "sharp": "^0.32.5"
+    "sharp": "^0.32.5",
+    "skeleton-tracing-js": "^1.0.4"
   }
 }

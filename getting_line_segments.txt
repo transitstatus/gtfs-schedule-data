@@ -1,0 +1,8 @@
+- For each trip: (find one trip per shape and just process that. should end up with 2 (one per direction) per service pattern, in theory)
+  - get the geojson line, really just need the coordinates TBH
+  - for each segment (between stations):
+    - slice line between points, note length, and note time
+  - also note station order for trip and deduplicate arrays of trips 
+
+- when having to find location when one isn't given:
+  - find last station and next station (based on next two stations)
