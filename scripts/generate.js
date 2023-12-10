@@ -240,7 +240,7 @@ Object.keys(feeds).forEach((feed) => {
               iconsRef.push(`${routeColor}_boat.png`);
 
               sharp(boatBuffer)
-                .resize(512, 512)
+                .resize(64, 64)
                 .png()
                 .toFile(`./data/${feed}/icons/${routeColor}_boat.png`, (err, info) => {
                   if (err) throw err;
@@ -252,7 +252,7 @@ Object.keys(feeds).forEach((feed) => {
             iconsRef.push(`${routeColor}_box.png`);
 
             sharp(boxBuffer)
-              .resize(512, 512)
+              .resize(64, 64)
               .png()
               .toFile(`./data/${feed}/icons/${routeColor}_box.png`, (err, info) => {
                 if (err) throw err;
