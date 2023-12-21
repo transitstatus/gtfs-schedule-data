@@ -12,7 +12,6 @@ Object.keys(feeds).forEach((feed) => {
   //if (feed !== 'metra') return;
   //if (feed !== 'southshore') return;
   //if (feed !== 'chicago') return;
-  //if (feed !== 'bart') return;
 
   if (feeds[feed].disabled === true) return;
 
@@ -29,6 +28,7 @@ Object.keys(feeds).forEach((feed) => {
   let trips = {};
   let stops = {};
   let segments = {};
+  let segmentKeyDict = {};
 
   fs.createReadStream(`${feedPath}/shapes.txt`)
     .pipe(parse({
@@ -69,6 +69,7 @@ Object.keys(feeds).forEach((feed) => {
           if (!row.shape_id) return;
 
           trips[row.trip_id] = {
+            routeID: row.route_id,
             shapeID: row.shape_id,
             stopTimes: [],
           }
@@ -124,6 +125,8 @@ Object.keys(feeds).forEach((feed) => {
                   console.log(`Setting up line segments for ${feed}`);
 
                   Object.keys(trips).forEach((tripID) => {
+                    if (trips[tripID].routeID !== 'Y') return;
+
                     trips[tripID].stopTimes.forEach((startStopTime, i, arr) => {
                       if (i === arr.length - 1) return; //as there is no i + 1 element
 
@@ -133,9 +136,17 @@ Object.keys(feeds).forEach((feed) => {
                       //getting parent stations
                       const startStopID = stops[startStopTime.stopID].parent ?? startStopTime.stopID;
                       const endStopID = stops[endStopTime.stopID].parent ?? endStopTime.stopID;
+                      const additionalStopID = arr[i + 2] ? (stops[arr[i + 2].stopID].parent ?? arr[i + 2].stopID) : 'undefined';
 
                       //dont redo work already done
                       if (segments[`${startStopID}_${endStopID}`]) return;
+
+                      //setting up the key dict
+                      //if (i < arr.length - 2) { //if this is the last segment
+                      //  segmentKeyDict[`${trips[tripID].routeID}_${endStopID}_undefined`] = `${startStopID}_${endStopID}`;
+                      //} else { //since there are 2+ upcoming stops, we can just go ahead
+                      segmentKeyDict[`${trips[tripID].routeID}_${endStopID}_${additionalStopID}`] = `${startStopID}_${endStopID}`;
+                      //}
 
                       //getting stop metadata
                       const startStop = stops[startStopID];
@@ -170,7 +181,10 @@ Object.keys(feeds).forEach((feed) => {
 
                   console.log(`Line segments setup for ${feed}, saving to disk`)
 
-                  fs.writeFileSync(`./data/${feed}/segments.json`, JSON.stringify(segments), { encoding: 'utf8' });
+                  fs.writeFileSync(`./data/${feed}/segments.json`, JSON.stringify({
+                    segments,
+                    segmentKeyDict
+                  }), { encoding: 'utf8' });
                 })
             })
 

@@ -13,3 +13,7 @@
 
 - when having to find location when one isn't given:
   - find last station and next station (based on next two stations)
+
+BIG FUCKING THING TO NOTE:
+- because the cta HATE ME theyve decided each yellow line round trip is A SINGLE TRIP so it kinda breaks my algo.
+- always check for [route id]_[next station]_[next station] on top of normal [route id]_[next station]_undefined to account for this little bit of funny business
