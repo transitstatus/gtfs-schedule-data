@@ -185,7 +185,7 @@ Object.keys(feeds).forEach((feed) => {
           const busTemplate = fs.readFileSync('./templates/bus.svg', 'utf8');
           const boatTemplate = fs.readFileSync('./templates/boat.svg', 'utf8');
           const arrowTemplate = fs.readFileSync('./templates/arrow.svg', 'utf8');
-          const boxTemplate = fs.readFileSync('./templates/box.svg', 'utf8');
+          //const boxTemplate = fs.readFileSync('./templates/box.svg', 'utf8');
 
           let iconsRef = [];
 
@@ -200,13 +200,13 @@ Object.keys(feeds).forEach((feed) => {
             const busIcon = busTemplate.replaceAll("#FFFFFF", `#${actualRouteColor}`).replaceAll("#000000", `#${actualRouteTextColor}`);
             const boatIcon = boatTemplate.replaceAll("#FFFFFF", `#${actualRouteColor}`).replaceAll("#000000", `#${actualRouteTextColor}`);
             const arrowIcon = arrowTemplate.replaceAll("#FFFFFF", `#${actualRouteColor}`).replaceAll("#000000", `#${actualRouteTextColor}`);
-            const boxIcon = boxTemplate.replaceAll("#FFFFFF", `#${actualRouteColor}`).replaceAll("#000000", `#${actualRouteTextColor}`);
+            //const boxIcon = boxTemplate.replaceAll("#FFFFFF", `#${actualRouteColor}`).replaceAll("#000000", `#${actualRouteTextColor}`);
 
             const trainBuffer = Buffer.from(trainIcon, 'utf8');
             const busBuffer = Buffer.from(busIcon, 'utf8');
             const boatBuffer = Buffer.from(boatIcon, 'utf8');
             const arrowBuffer = Buffer.from(arrowIcon, 'utf8');
-            const boxBuffer = Buffer.from(boxIcon, 'utf8');
+            //const boxBuffer = Buffer.from(boxIcon, 'utf8');
 
             //trains
             if (types.includes('1') || types.includes('2')) {
@@ -248,6 +248,7 @@ Object.keys(feeds).forEach((feed) => {
                 });
             }
 
+            /*
             //box (all)
             iconsRef.push(`${routeColor}_box.png`);
 
@@ -258,6 +259,7 @@ Object.keys(feeds).forEach((feed) => {
                 if (err) throw err;
                 if (info) console.log(info);
               });
+              */
 
 
             //arrow

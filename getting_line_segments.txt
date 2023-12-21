@@ -3,6 +3,13 @@
   - for each segment (between stations):
     - slice line between points, note length, and note time
   - also note station order for trip and deduplicate arrays of trips 
+  - while we could check for duplication here, its best to use overwriting for simplicity's sake
+    - besides, any time saved by service pattern deduplication would probably be far outweighed by the cost of comparing trip stop times.
+
+- build shapes
+- build stop time segments between stations
+- split up shapes based on closest point to various stations
+- store elements 
 
 - when having to find location when one isn't given:
   - find last station and next station (based on next two stations)
