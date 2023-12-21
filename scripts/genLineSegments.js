@@ -159,6 +159,7 @@ Object.keys(feeds).forEach((feed) => {
 
                       //getting sub-line for stations
                       const slicedShape = turf.lineSlice(startPoint, endPoint, initialShape);
+                      const slicedShapeLength = turf.length(slicedShape, { units: 'meters' });
 
                       //getting the segment time
                       const startTime = startStopTime.departureTime.split(':');
@@ -172,6 +173,7 @@ Object.keys(feeds).forEach((feed) => {
 
                       segments[`${startStopID}_${endStopID}`] = {
                         seconds: timeDiff,
+                        meters: slicedShapeLength,
                         shape: slicedShape.geometry.coordinates,
                       }
                     })
