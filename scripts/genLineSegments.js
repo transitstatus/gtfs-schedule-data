@@ -12,7 +12,7 @@ Object.keys(feeds).forEach((feed) => {
   //if (feed !== 'metra') return;
   //if (feed !== 'southshore') return;
   //if (feed !== 'chicago') return;
-  //if (feed !== 'nyct_subway') return;
+  //if (feed !== 'bart') return;
 
   if (feeds[feed].disabled === true) return;
 
@@ -142,8 +142,8 @@ Object.keys(feeds).forEach((feed) => {
                       const endStop = stops[endStopID];
 
                       //getting the points
-                      const startPoint = turf.point([startStop.lat, startStop.lon]);
-                      const endPoint = turf.point([endStop.lat, endStop.lon]);
+                      const startPoint = turf.point([startStop.lon, startStop.lat]);
+                      const endPoint = turf.point([endStop.lon, endStop.lat]);
 
                       //getting shape data
                       const initialShape = turf.lineString(shapes[trips[tripID].shapeID]);
@@ -162,8 +162,8 @@ Object.keys(feeds).forEach((feed) => {
                       const timeDiff = (hoursDiff * 60 * 60) + (minutesDiff * 60) + secondsDiff;
 
                       segments[`${startStopID}_${endStopID}`] = {
-                        timeDiff,
-                        shape: slicedShape,
+                        seconds: timeDiff,
+                        shape: slicedShape.geometry.coordinates,
                       }
                     })
                   })
