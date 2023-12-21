@@ -125,8 +125,6 @@ Object.keys(feeds).forEach((feed) => {
                   console.log(`Setting up line segments for ${feed}`);
 
                   Object.keys(trips).forEach((tripID) => {
-                    if (trips[tripID].routeID !== 'Y') return;
-
                     trips[tripID].stopTimes.forEach((startStopTime, i, arr) => {
                       if (i === arr.length - 1) return; //as there is no i + 1 element
 
