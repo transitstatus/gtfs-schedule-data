@@ -270,16 +270,7 @@ const processFeed = (feed, feeds) => {
           const uniqueIconsRef = [...new Set(iconsRef)];
 
           fs.writeFileSync(`./data/${feed}/icons.json`, JSON.stringify(uniqueIconsRef));
-          fs.writeFileSync(`./data/${feed}/meta.json`, JSON.stringify({
-            icons: uniqueIconsRef,
-            bbox: {
-              minLat,
-              maxLat,
-              minLon,
-              maxLon,
-            }
-          }))
-
+          
           console.log(`Processing ${feed} trips...`)
           fs.createReadStream(`${feedPath}/trips.txt`)
             .pipe(parse({
@@ -381,10 +372,10 @@ const processFeed = (feed, feeds) => {
                       //const truncated = truncate(simplified); //ensure only 6 digits
 
                       meta.coordAll(simplified).forEach((point) => {
-                        if (point[0] > maxLat) maxLat = point[0];
-                        if (point[0] < minLat) minLat = point[0];
-                        if (point[1] > maxLon) maxLat = point[1];
-                        if (point[1] < minLon) minLat = point[1];
+                        if (point[0] > maxLon) maxLon = point[0];
+                        if (point[0] < minLon) minLon = point[0];
+                        if (point[1] > maxLat) maxLat = point[1];
+                        if (point[1] < minLat) minLat = point[1];
                       })
 
                       return simplified
@@ -527,6 +518,18 @@ const processFeed = (feed, feeds) => {
 
                           console.log(`Writing ${feed} routes to JSON...`)
                           fs.writeFileSync(`./data/${feed}/routes.json`, JSON.stringify(routes));
+
+                          console.log(`Writing ${feed} metadata to JSON...`)
+                          fs.writeFileSync(`./data/${feed}/meta.json`, JSON.stringify({
+                            icons: uniqueIconsRef,
+                            bbox: {
+                              minLat,
+                              maxLat,
+                              minLon,
+                              maxLon,
+                            }
+                          }))
+                
 
                           parentPort.postMessage('finished');
                         });
