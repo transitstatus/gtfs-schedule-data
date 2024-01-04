@@ -24,7 +24,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
-    "disabled": false
+    "disabled": true
   },
   "AC": {
     "name": "AC Transit",
@@ -39,7 +39,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
-    "disabled": false
+    "disabled": true
   },
   "AF": {
     "name": "Angel Island Tiburon Ferry",
@@ -54,7 +54,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
-    "disabled": false
+    "disabled": true
   },
   "AM": {
     "name": "Capitol Corridor Joint Powers Authority",
@@ -69,7 +69,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
-    "disabled": false
+    "disabled": true
   },
   "CC": {
     "name": "County Connection",
@@ -84,7 +84,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
-    "disabled": false
+    "disabled": true
   },
   "CE": {
     "name": "Altamont Corridor Express",
@@ -99,7 +99,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
-    "disabled": false
+    "disabled": true
   },
   "CM": {
     "name": "Commute.org Shuttles",
@@ -114,7 +114,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
-    "disabled": false
+    "disabled": true
   },
   "CT": {
     "name": "Caltrain",
@@ -129,7 +129,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
-    "disabled": false
+    "disabled": true
   },
   "DE": {
     "name": "Dumbarton Express Consortium",
@@ -144,7 +144,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
-    "disabled": false
+    "disabled": true
   },
   "EM": {
     "name": "Emery Go-Round",
@@ -159,7 +159,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
-    "disabled": false
+    "disabled": true
   },
   "FS": {
     "name": "FAST",
@@ -174,7 +174,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
-    "disabled": false
+    "disabled": true
   },
   "GF": {
     "name": "Golden Gate Ferry",
@@ -189,7 +189,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
-    "disabled": false
+    "disabled": true
   },
   "GG": {
     "name": "Golden Gate Transit",
@@ -204,7 +204,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
-    "disabled": false
+    "disabled": true
   },
   "MA": {
     "name": "Marin Transit",
@@ -219,7 +219,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
-    "disabled": false
+    "disabled": true
   },
   "MB": {
     "name": "Mission Bay TMA",
@@ -234,7 +234,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
-    "disabled": false
+    "disabled": true
   },
   "MV": {
     "name": "MVgo",
@@ -249,7 +249,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
-    "disabled": false
+    "disabled": true
   },
   "PE": {
     "name": "Petaluma",
@@ -264,7 +264,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
-    "disabled": false
+    "disabled": true
   },
   "RG": {
     "name": "Regional GTFS",
@@ -294,7 +294,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
-    "disabled": false
+    "disabled": true
   },
   "SA": {
     "name": "Sonoma Marin Area Rail Transit",
@@ -309,7 +309,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
-    "disabled": false
+    "disabled": true
   },
   "SB": {
     "name": "San Francisco Bay Ferry",
@@ -324,7 +324,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
-    "disabled": false
+    "disabled": true
   },
   "SC": {
     "name": "VTA",
@@ -339,7 +339,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
-    "disabled": false
+    "disabled": true
   },
   "SF": {
     "name": "San Francisco Municipal Transportation Agency",
@@ -354,7 +354,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
-    "disabled": false
+    "disabled": true
   },
   "SI": {
     "name": "San Francisco International Airport",
@@ -369,7 +369,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
-    "disabled": false
+    "disabled": true
   },
   "SM": {
     "name": "SamTrans",
@@ -384,7 +384,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
-    "disabled": false
+    "disabled": true
   },
   "SO": {
     "name": "Sonoma County Transit",
@@ -399,7 +399,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
-    "disabled": false
+    "disabled": true
   },
   "SR": {
     "name": "SANTAROSA",
@@ -414,7 +414,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
-    "disabled": false
+    "disabled": true
   },
   "SS": {
     "name": "City of South San Francisco",
@@ -429,7 +429,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
-    "disabled": false
+    "disabled": true
   },
   "ST": {
     "name": "SolTrans",
@@ -444,7 +444,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
-    "disabled": false
+    "disabled": true
   },
   "TF": {
     "name": "Treasure Island Ferry",
@@ -459,7 +459,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
-    "disabled": false
+    "disabled": true
   },
   "UC": {
     "name": "Union City Transit",
@@ -474,7 +474,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
-    "disabled": false
+    "disabled": true
   },
   "VC": {
     "name": "Vacaville City Coach",
@@ -489,7 +489,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
-    "disabled": false
+    "disabled": true
   },
   "VN": {
     "name": "VINE Transit",
@@ -504,7 +504,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
-    "disabled": false
+    "disabled": true
   },
   "WC": {
     "name": "WestCat (Western Contra Costa)",
@@ -519,7 +519,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
-    "disabled": false
+    "disabled": true
   },
   "WH": {
     "name": "Livermore Amador Valley Transit Authority",
@@ -534,7 +534,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
-    "disabled": false
+    "disabled": true
   },
   "metra": {
     "name": "Metra",
