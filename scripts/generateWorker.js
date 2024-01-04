@@ -3,7 +3,8 @@ const fetch = require('node-fetch');
 const fs = require('fs');
 const { parse } = require('csv-parse');
 const { execSync } = require('child_process');
-const simplify = require('@turf/simplify');
+const meta = require('@turf/meta');
+const simplify = require('@turf/simplify').default;
 const bezier = require('@turf/bezier-spline').default;
 const truncate = require('@turf/truncate').default;
 const sharp = require('sharp');
@@ -96,6 +97,11 @@ const processFeed = (feed, feeds) => {
       let tripsDict = {};
       let parentStations = {};
       let tripsMeta = {};
+
+      let minLat = 999999;
+      let maxLat = -99999;
+      let minLon = 999999;
+      let maxLon = -99999;
 
       console.log(`Processing ${feed} routes...`)
       fs.createReadStream(`${feedPath}/routes.txt`)
@@ -264,6 +270,15 @@ const processFeed = (feed, feeds) => {
           const uniqueIconsRef = [...new Set(iconsRef)];
 
           fs.writeFileSync(`./data/${feed}/icons.json`, JSON.stringify(uniqueIconsRef));
+          fs.writeFileSync(`./data/${feed}/meta.json`, JSON.stringify({
+            icons: uniqueIconsRef,
+            bbox: {
+              minLat,
+              maxLat,
+              minLon,
+              maxLon,
+            }
+          }))
 
           console.log(`Processing ${feed} trips...`)
           fs.createReadStream(`${feedPath}/trips.txt`)
@@ -362,8 +377,17 @@ const processFeed = (feed, feeds) => {
                     finalGeoJSON.features = finalGeoJSON.features.map((feature) => {
                       const simplified = simplify(feature, { tolerance: 0.00001, highQuality: true });
                       //const splined = bezier(simplified);
-                      const truncated = truncate(simplified); //ensure only 6 digits
-                      return truncated;
+                      //didnt need because the simplified above is doing that
+                      //const truncated = truncate(simplified); //ensure only 6 digits
+
+                      meta.coordAll(simplified).forEach((point) => {
+                        if (point[0] > maxLat) maxLat = point[0];
+                        if (point[0] < minLat) minLat = point[0];
+                        if (point[1] > maxLon) maxLat = point[1];
+                        if (point[1] < minLon) minLat = point[1];
+                      })
+
+                      return simplified
                     });
 
                     finalGeoJSONByType[routes[route]['routeType']].features.push({
@@ -379,13 +403,6 @@ const processFeed = (feed, feeds) => {
                         coordinates: finalGeoJSON.features.map((feature) => feature.geometry.coordinates),
                       },
                     });
-
-
-                    /*
-                    fs.writeFile(`./data/${feed}/shapes/${route}.geojson`, JSON.stringify(finalGeoJSON), (err) => {
-                      if (err) throw err;
-                    });
-                    //*/
                   });
 
                   Object.keys(finalGeoJSONByType).forEach((type) => {
