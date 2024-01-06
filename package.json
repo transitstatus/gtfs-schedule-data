@@ -6,7 +6,8 @@
   "scripts": {
     "generate": "node ./scripts/generate.js",
     "genLines": "node ./scripts/genLineSegments.js",
-    "genDir": "node ./scripts/genDir.js"
+    "genDir": "node ./scripts/genDir.js",
+    "scrapeIconsAndShapes": "node ./scripts/scrapeIconsAndShapes.js"
   },
   "keywords": [],
   "author": "",
