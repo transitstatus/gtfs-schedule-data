@@ -7,7 +7,9 @@
     "seperatorOverrides": {},
     "colorOverrides": {},
     "mapCodeOverrides": {},
-    "colorReplacements": {},
+    "colorReplacements": {
+      "CAE4F1": "5366c9"
+    },
     "trim": false,
     "noSegments": true,
     "disabled": false
@@ -323,7 +325,9 @@
       "Brn": "T",
       "Org": "O"
     },
-    "colorReplacements": {},
+    "colorReplacements": {
+      "565a5c": "949ca1"
+    },
     "trim": false,
     "noSegments": true,
     "disabled": false
