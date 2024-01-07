@@ -9,6 +9,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
+    "noSegments": true,
     "disabled": false
   },
   "bart": {
@@ -21,6 +22,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
+    "noSegments": false,
     "disabled": false
   },
   "RG": {
@@ -36,6 +38,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
+    "noSegments": false,
     "disabled": false
   },
   "metra": {
@@ -187,6 +190,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
+    "noSegments": true,
     "disabled": false
   },
   "lirr": {
@@ -200,6 +204,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
+    "noSegments": true,
     "disabled": true
   },
   "mnrr": {
@@ -213,6 +218,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
+    "noSegments": true,
     "disabled": false
   },
   "nyct_bronx": {
@@ -226,6 +232,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
+    "noSegments": true,
     "disabled": false
   },
   "nyct_brooklyn": {
@@ -239,6 +246,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
+    "noSegments": true,
     "disabled": false
   },
   "nyct_manhattan": {
@@ -252,6 +260,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
+    "noSegments": true,
     "disabled": false
   },
   "nyct_queens": {
@@ -265,6 +274,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
+    "noSegments": true,
     "disabled": false
   },
   "nyct_staten_island": {
@@ -278,6 +288,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
+    "noSegments": true,
     "disabled": false
   },
   "nyct_mta_bus_company": {
@@ -291,6 +302,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
+    "noSegments": true,
     "disabled": false
   },
   "cta": {
@@ -313,6 +325,7 @@
     },
     "colorReplacements": {},
     "trim": false,
+    "noSegments": true,
     "disabled": false
   },
   "southshore": {
@@ -331,6 +344,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
+    "noSegments": false,
     "disabled": false,
     "subfolder": "Working copy GTFS changes/"
   }

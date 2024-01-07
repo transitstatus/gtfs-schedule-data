@@ -14,6 +14,7 @@ Object.keys(feeds).forEach((feed) => {
   //if (feed !== 'chicago') return;
 
   if (feeds[feed].disabled === true) return;
+  if (feeds[feed].noSegments === true) return;
 
   console.log(`Generating line segments for ${feed}`);
 
