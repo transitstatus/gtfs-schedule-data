@@ -9,6 +9,15 @@ const bezier = require('@turf/bezier-spline').default;
 const truncate = require('@turf/truncate').default;
 const sharp = require('sharp');
 
+const routeTypeMinZooms = {
+  '0': 7, //tram
+  '1': 7, //subway
+  '2': 0, //commuter, regional, and intercity
+  '3': 8, //buses, might need to make exceptions if stuff like flixbus is added
+  '4': 7, //ferries
+  '5': 7, //cable cars
+}
+
 // dot env
 require('dotenv').config();
 
@@ -97,6 +106,7 @@ const processFeed = (feed, feeds) => {
       let tripsDict = {};
       let parentStations = {};
       let tripsMeta = {};
+      let colorSets = [];
 
       let minLat = 999999;
       let maxLat = -99999;
@@ -140,6 +150,9 @@ const processFeed = (feed, feeds) => {
               routeTextColor = 'FFFFFF';
             }
           }
+
+          // for later icon gen
+          colorSets.push(`${routeColor}_${routeTextColor}`);
 
           routes[row.route_id] = {
             routeID: row.route_id,
@@ -270,7 +283,7 @@ const processFeed = (feed, feeds) => {
           const uniqueIconsRef = [...new Set(iconsRef)];
 
           fs.writeFileSync(`./data/${feed}/icons.json`, JSON.stringify(uniqueIconsRef));
-          
+
           console.log(`Processing ${feed} trips...`)
           fs.createReadStream(`${feedPath}/trips.txt`)
             .pipe(parse({
@@ -388,6 +401,7 @@ const processFeed = (feed, feeds) => {
                         routeShortName: routes[route]['routeShortName'],
                         routeLongName: routes[route]['routeLongName'],
                         routeColor: `#${routes[route]['routeColor'] === '000000' ? 'FFFFFF' : routes[route]['routeColor']}`,
+                        minZoom: routeTypeMinZooms[routes[route]['routeType']],
                       },
                       geometry: {
                         type: 'MultiLineString',
@@ -527,9 +541,10 @@ const processFeed = (feed, feeds) => {
                               maxLat,
                               minLon,
                               maxLon,
-                            }
+                            },
+                            colorSets,
                           }))
-                
+
 
                           parentPort.postMessage('finished');
                         });

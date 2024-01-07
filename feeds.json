@@ -731,9 +731,7 @@
       "Brn": "T",
       "Org": "O"
     },
-    "colorReplacements": {
-      "565a5c": "2eb712"
-    },
+    "colorReplacements": {},
     "trim": false,
     "disabled": false
   },
