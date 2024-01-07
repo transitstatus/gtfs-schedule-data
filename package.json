@@ -6,16 +6,14 @@
   "scripts": {
     "generate": "node ./scripts/generate.js",
     "genLines": "node ./scripts/genLineSegments.js",
+    "scrapeIconsAndShapes": "node ./scripts/scrapeIconsAndShapes.js",
     "genDir": "node ./scripts/genDir.js",
-    "scrapeIconsAndShapes": "node ./scripts/scrapeIconsAndShapes.js"
+    "all": "npm run generate && npm run genLines && npm run scrapeIconsAndShapes && npm run genDir"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@turf/bezier-spline": "^6.5.0",
-    "@turf/meta": "^6.5.0",
-    "@turf/truncate": "^6.5.0",
     "@turf/turf": "^6.5.0",
     "csv-parse": "^5.3.10",
     "directory-tree": "^3.5.1",

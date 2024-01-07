@@ -3,10 +3,7 @@ const fetch = require('node-fetch');
 const fs = require('fs');
 const { parse } = require('csv-parse');
 const { execSync } = require('child_process');
-const meta = require('@turf/meta');
-const simplify = require('@turf/simplify').default;
-const bezier = require('@turf/bezier-spline').default;
-const truncate = require('@turf/truncate').default;
+const turf = require('@turf/turf');
 const sharp = require('sharp');
 
 const routeTypeMinZooms = {
@@ -379,12 +376,12 @@ const processFeed = (feed, feeds) => {
 
                     //simplify each polyline to a tolerance of 0.00001
                     finalGeoJSON.features = finalGeoJSON.features.map((feature) => {
-                      const simplified = simplify(feature, { tolerance: 0.00001, highQuality: true });
+                      const simplified = turf.simplify(feature, { tolerance: 0.00001, highQuality: true });
                       //const splined = bezier(simplified);
                       //didnt need because the simplified above is doing that
                       //const truncated = truncate(simplified); //ensure only 6 digits
 
-                      meta.coordAll(simplified).forEach((point) => {
+                      turf.meta.coordAll(simplified).forEach((point) => {
                         if (point[0] > maxLon) maxLon = point[0];
                         if (point[0] < minLon) minLon = point[0];
                         if (point[1] > maxLat) maxLat = point[1];
@@ -394,7 +391,7 @@ const processFeed = (feed, feeds) => {
                       return simplified
                     });
 
-                    finalGeoJSONByType[routes[route]['routeType']].features.push({
+                    let almostFinalFeature = {
                       type: 'Feature',
                       properties: {
                         routeID: feeds[feed].mapCodeOverrides[route] ?? route,
@@ -407,7 +404,12 @@ const processFeed = (feed, feeds) => {
                         type: 'MultiLineString',
                         coordinates: finalGeoJSON.features.map((feature) => feature.geometry.coordinates),
                       },
-                    });
+                    };
+
+                    //const areaCoverage = turf.area(turf.bboxPolygon(turf.bbox(almostFinalFeature)));
+                    //almostFinalFeature.properties.areaCoverage = areaCoverage;
+
+                    finalGeoJSONByType[routes[route]['routeType']].features.push(almostFinalFeature);
                   });
 
                   Object.keys(finalGeoJSONByType).forEach((type) => {
@@ -543,8 +545,7 @@ const processFeed = (feed, feeds) => {
                               maxLon,
                             },
                             colorSets,
-                          }))
-
+                          }));
 
                           parentPort.postMessage('finished');
                         });
