@@ -197,7 +197,7 @@ const processFeed = (feed, feeds) => {
             //trams
             if (types.includes('0')) {
               //processing template
-              const tramIcon = tramTemplate.replaceAll("#FFFFFF", `#${actualRouteColor}`).replaceAll("#000000", `#${actualRouteTextColor}`);
+              const tramIcon = tramTemplate.replaceAll("FILL", `#${actualRouteColor}`).replaceAll("BORDERS", `#${actualRouteTextColor}`);
               const tramBuffer = Buffer.from(tramIcon, 'utf8');
 
               iconsRef.push(`${routeColor}_tram.png`);
@@ -215,7 +215,7 @@ const processFeed = (feed, feeds) => {
             //trains
             if (types.includes('1') || types.includes('2') || types.includes('5')) {
               //processing template
-              const trainIcon = trainTemplate.replaceAll("#FFFFFF", `#${actualRouteColor}`).replaceAll("#000000", `#${actualRouteTextColor}`);
+              const trainIcon = trainTemplate.replaceAll("FILL", `#${actualRouteColor}`).replaceAll("BORDERS", `#${actualRouteTextColor}`);
               const trainBuffer = Buffer.from(trainIcon, 'utf8');
 
               iconsRef.push(`${routeColor}_train.png`);
@@ -232,7 +232,7 @@ const processFeed = (feed, feeds) => {
 
             //buses
             if (types.includes('3')) {
-              const busIcon = busTemplate.replaceAll("#FFFFFF", `#${actualRouteColor}`).replaceAll("#000000", `#${actualRouteTextColor}`);
+              const busIcon = busTemplate.replaceAll("FILL", `#${actualRouteColor}`).replaceAll("BORDERS", `#${actualRouteTextColor}`);
               const busBuffer = Buffer.from(busIcon, 'utf8');
 
               iconsRef.push(`${routeColor}_bus.png`);
@@ -248,7 +248,7 @@ const processFeed = (feed, feeds) => {
 
             //ferries
             if (types.includes('4')) {
-              const boatIcon = boatTemplate.replaceAll("#FFFFFF", `#${actualRouteColor}`).replaceAll("#000000", `#${actualRouteTextColor}`);
+              const boatIcon = boatTemplate.replaceAll("FILL", `#${actualRouteColor}`).replaceAll("BORDERS", `#${actualRouteTextColor}`);
               const boatBuffer = Buffer.from(boatIcon, 'utf8');
 
               iconsRef.push(`${routeColor}_boat.png`);
@@ -263,7 +263,7 @@ const processFeed = (feed, feeds) => {
             }
 
             //arrow
-            const arrowIcon = arrowTemplate.replaceAll("#FFFFFF", `#${actualRouteColor}`).replaceAll("#000000", `#${actualRouteTextColor}`);
+            const arrowIcon = arrowTemplate.replaceAll("FILL", `#${actualRouteColor}`).replaceAll("BORDERS", `#${actualRouteTextColor}`);
             const arrowBuffer = Buffer.from(arrowIcon, 'utf8');
 
             iconsRef.push(`${routeColor}_arrow.png`);
