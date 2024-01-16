@@ -70,7 +70,8 @@ const contrastFromString = (color1, color2) => {
 }
 
 const processFeed = (feed, feeds) => {
-  const feedURL = processURL(feeds[feed]['url'], feeds[feed]['urlEnv']);
+  try {
+    const feedURL = processURL(feeds[feed]['url'], feeds[feed]['urlEnv']);
   console.log(`Fetching ${feed} zip...`)
   fetch(feedURL, {
     method: 'GET',
@@ -122,8 +123,6 @@ const processFeed = (feed, feeds) => {
         .on('data', function (row) {
           let routeColor = feeds[feed]['colorOverrides'][row.route_id] ? feeds[feed]['colorOverrides'][row.route_id][0] : row.route_color;
           let routeTextColor = feeds[feed]['colorOverrides'][row.route_id] ? feeds[feed]['colorOverrides'][row.route_id][1] : row.route_text_color;
-
-          console.log(routeColor, routeTextColor)
 
           if (feeds[feed]['colorReplacements'][routeColor]) {
             routeColor = feeds[feed]['colorReplacements'][routeColor]
@@ -258,7 +257,7 @@ const processFeed = (feed, feeds) => {
                 .png()
                 .toFile(`./data/${feed}/icons/${routeColor}_boat.png`, (err, info) => {
                   if (err) throw err;
-                  if (info) console.log(info);
+                  //if (info) console.log(info);
                 });
             }
 
@@ -282,6 +281,7 @@ const processFeed = (feed, feeds) => {
           fs.writeFileSync(`./data/${feed}/icons.json`, JSON.stringify(uniqueIconsRef));
 
           console.log(`Processing ${feed} trips...`)
+
           fs.createReadStream(`${feedPath}/trips.txt`)
             .pipe(parse({
               delimiter: feeds[feed]['separator'],
@@ -290,10 +290,11 @@ const processFeed = (feed, feeds) => {
               bom: true,
               trim: feeds[feed]['trim'],
             }))
-            .on('data', function (row) {
+            .on('data', (row) => {
               tripsMeta[row.trip_id] = {
                 headsign: row.trip_headsign,
               }
+
               routes[row.route_id]['routeTrips'][row.trip_id] = {
                 headsign: row.trip_headsign,
               };
@@ -308,7 +309,6 @@ const processFeed = (feed, feeds) => {
               }
             })
             .on('end', function () {
-
               console.log(`Writing ${feed} trip metadata to JSON...`)
               fs.writeFileSync(`./data/${feed}/tripMeta.json`, JSON.stringify(tripsMeta), { encoding: 'utf-8' })
 
@@ -554,6 +554,9 @@ const processFeed = (feed, feeds) => {
             });
         })
     });
+  } catch (e) {
+    console.log(e);
+  }
 }
 
 processFeed(workerData.feed, workerData.feeds);

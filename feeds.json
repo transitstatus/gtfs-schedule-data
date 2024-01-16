@@ -351,5 +351,47 @@
     "noSegments": false,
     "disabled": false,
     "subfolder": "Working copy GTFS changes/"
+  },
+  "casco_bay_lines": {
+    "name": "Casco Bay Lines",
+    "url": "http://smttracker.com/downloads/gtfs/cascobaylines-portland-me-usa.zip",
+    "headers": {},
+    "urlEnv": [],
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
+    "trim": true,
+    "noSegments": true,
+    "disabled": false
+  },
+  "gp_metro": {
+    "name": "GP Metro",
+    "url": "http://www.smttracker.com/downloads/gtfs/greater-portland-me.zip",
+    "headers": {},
+    "urlEnv": [],
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
+    "trim": true,
+    "noSegments": true,
+    "disabled": false
+  },
+  "south_portland": {
+    "name": "South Portland Bus Lines",
+    "url": "http://www.smttracker.com/downloads/gtfs/south-portland-me-us.zip",
+    "headers": {},
+    "urlEnv": [],
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
+    "trim": true,
+    "noSegments": true,
+    "disabled": false
   }
 }
