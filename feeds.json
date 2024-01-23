@@ -350,7 +350,7 @@
     "trim": false,
     "noSegments": false,
     "disabled": false,
-    "subfolder": "Working copy GTFS changes/"
+    "subfolder_removetoenable": "Working copy GTFS changes/"
   },
   "casco_bay_lines": {
     "name": "Casco Bay Lines",
