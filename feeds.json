@@ -50,8 +50,9 @@
       "Authorization": "env.metra_authorization"
     },
     "urlEnv": [],
-    "separator": ", ",
+    "separator": ",",
     "seperatorOverrides": {
+      "stops": ",",
       "shapes": ","
     },
     "colorOverrides": {},

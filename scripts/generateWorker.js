@@ -422,7 +422,7 @@ const processFeed = (feed, feeds) => {
               console.log(`Processing ${feed} stops...`)
               fs.createReadStream(`${feedPath}/stops.txt`)
                 .pipe(parse({
-                  delimiter: feeds[feed]['separator'],
+                  delimiter: feeds[feed]['seperatorOverrides'].stops ?? feeds[feed]['separator'],
                   columns: true,
                   skip_empty_lines: true,
                   bom: true,
@@ -483,7 +483,7 @@ const processFeed = (feed, feeds) => {
                       console.log(`Processing ${feed} stops...`)
                       fs.createReadStream(`${feedPath}/stops.txt`)
                         .pipe(parse({
-                          delimiter: feeds[feed]['separator'],
+                          delimiter: feeds[feed]['seperatorOverrides'].stops ?? feeds[feed]['separator'],
                           columns: true,
                           skip_empty_lines: true,
                           bom: true,
