@@ -54,7 +54,7 @@
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
-    "noSegments": true,
+    "noSegments": false,
     "disabled": false
   },
   "metra": {
