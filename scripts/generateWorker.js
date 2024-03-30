@@ -276,11 +276,11 @@ const processFeed = (feed, feeds) => {
                   console.log(`${routeColor}_arrow.png generated for ${feed}`)
                 });
 
-              //arrow
+              //circle
               const circleIcon = circleTemplate.replaceAll("FILL", `#${actualRouteColor}`).replaceAll("BORDERS", `#${actualRouteTextColor}`);
               const circleBuffer = Buffer.from(circleIcon, 'utf8');
 
-              iconsRef.push(`${routeColor}_arrow.png`);
+              iconsRef.push(`${routeColor}_circle.png`);
 
               sharp(circleBuffer)
                 .resize(64, 64)
@@ -289,8 +289,6 @@ const processFeed = (feed, feeds) => {
                   if (err) throw err;
                   console.log(`${routeColor}_circle.png generated for ${feed}`)
                 });
-
-
             });
 
             const uniqueIconsRef = [...new Set(iconsRef)];
