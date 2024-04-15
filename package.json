@@ -9,7 +9,8 @@
     "scrapeIconsAndShapes": "node ./scripts/scrapeIconsAndShapes.js",
     "genDir": "node ./scripts/genDir.js",
     "cleanup": "node ./scripts/cleanup.js",
-    "all": "npm run generate && npm run genLines && npm run scrapeIconsAndShapes && npm run genDir && npm run cleanup"
+    "allLocal": "npm run generate && npm run genLines && npm run scrapeIconsAndShapes && npm run genDir",
+    "all": "npm run allLocal && npm run cleanup"
   },
   "keywords": [],
   "author": "",
