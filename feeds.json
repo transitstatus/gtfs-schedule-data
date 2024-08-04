@@ -10,6 +10,7 @@
     "colorReplacements": {
       "CAE4F1": "5366c9"
     },
+    "textColorReplacements": {},
     "trim": false,
     "noSegments": true,
     "disabled": false
@@ -22,8 +23,8 @@
     "seperatorOverrides": {},
     "colorOverrides": {},
     "mapCodeOverrides": {},
-    "colorReplacements": {
-    },
+    "colorReplacements": {},
+    "textColorReplacements": {"73D700": "000000"},
     "trim": false,
     "noSegments": true,
     "disabled": false
@@ -37,6 +38,7 @@
     "colorOverrides": {},
     "mapCodeOverrides": {},
     "colorReplacements": {},
+    "textColorReplacements": {},
     "trim": false,
     "noSegments": false,
     "disabled": false
@@ -53,6 +55,7 @@
     "colorOverrides": {},
     "mapCodeOverrides": {},
     "colorReplacements": {},
+    "textColorReplacements": {},
     "trim": false,
     "noSegments": false,
     "disabled": false
@@ -67,6 +70,7 @@
     "colorOverrides": {},
     "mapCodeOverrides": {},
     "colorReplacements": {},
+    "textColorReplacements": {},
     "trim": false,
     "noSegments": false,
     "disabled": false
@@ -86,6 +90,7 @@
     "colorOverrides": {},
     "mapCodeOverrides": {},
     "colorReplacements": {},
+    "textColorReplacements": {},
     "trim": true,
     "disabled": false
   },
@@ -220,6 +225,7 @@
     },
     "mapCodeOverrides": {},
     "colorReplacements": {},
+    "textColorReplacements": {},
     "trim": false,
     "noSegments": true,
     "disabled": false
@@ -234,6 +240,7 @@
     "colorOverrides": {},
     "mapCodeOverrides": {},
     "colorReplacements": {},
+    "textColorReplacements": {},
     "trim": false,
     "noSegments": true,
     "disabled": true
@@ -248,6 +255,7 @@
     "colorOverrides": {},
     "mapCodeOverrides": {},
     "colorReplacements": {},
+    "textColorReplacements": {},
     "trim": false,
     "noSegments": true,
     "disabled": false
@@ -260,6 +268,7 @@
     "separator": ",",
     "seperatorOverrides": {},
     "colorOverrides": {},
+    "textColorReplacements": {},
     "mapCodeOverrides": {},
     "colorReplacements": {},
     "trim": false,
@@ -276,6 +285,7 @@
     "colorOverrides": {},
     "mapCodeOverrides": {},
     "colorReplacements": {},
+    "textColorReplacements": {},
     "trim": false,
     "noSegments": true,
     "disabled": false
@@ -290,6 +300,7 @@
     "colorOverrides": {},
     "mapCodeOverrides": {},
     "colorReplacements": {},
+    "textColorReplacements": {},
     "trim": false,
     "noSegments": true,
     "disabled": false
@@ -304,6 +315,7 @@
     "colorOverrides": {},
     "mapCodeOverrides": {},
     "colorReplacements": {},
+    "textColorReplacements": {},
     "trim": false,
     "noSegments": true,
     "disabled": false
@@ -318,6 +330,7 @@
     "colorOverrides": {},
     "mapCodeOverrides": {},
     "colorReplacements": {},
+    "textColorReplacements": {},
     "trim": false,
     "noSegments": true,
     "disabled": false
@@ -332,6 +345,7 @@
     "colorOverrides": {},
     "mapCodeOverrides": {},
     "colorReplacements": {},
+    "textColorReplacements": {},
     "trim": false,
     "noSegments": true,
     "disabled": false
@@ -357,6 +371,7 @@
     "colorReplacements": {
       "565a5c": "949ca1"
     },
+    "textColorReplacements": {},
     "trim": false,
     "noSegments": true,
     "disabled": false
@@ -376,6 +391,7 @@
     },
     "mapCodeOverrides": {},
     "colorReplacements": {},
+    "textColorReplacements": {},
     "trim": false,
     "noSegments": false,
     "disabled": false,
@@ -391,6 +407,7 @@
     "colorOverrides": {},
     "mapCodeOverrides": {},
     "colorReplacements": {},
+    "textColorReplacements": {},
     "trim": true,
     "noSegments": true,
     "disabled": false
@@ -405,6 +422,7 @@
     "colorOverrides": {},
     "mapCodeOverrides": {},
     "colorReplacements": {},
+    "textColorReplacements": {},
     "trim": true,
     "noSegments": true,
     "disabled": false
@@ -419,6 +437,7 @@
     "colorOverrides": {},
     "mapCodeOverrides": {},
     "colorReplacements": {},
+    "textColorReplacements": {},
     "trim": true,
     "noSegments": true,
     "disabled": false
