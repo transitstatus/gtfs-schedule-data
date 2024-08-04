@@ -365,7 +365,8 @@ const processFeed = (feed, feeds) => {
 
                       routeShapes[route].forEach((shape) => {
                         if (!shapes[shape]) {
-                          console.log('Shape not found')
+                          //commented out since this was clogging up logs lmao
+                          //console.log('Shape not found')
                           return;
                         }
 
