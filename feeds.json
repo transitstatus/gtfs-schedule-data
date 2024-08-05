@@ -72,7 +72,7 @@
     "colorReplacements": {},
     "textColorReplacements": {},
     "trim": false,
-    "noSegments": false,
+    "noSegments": true,
     "disabled": false
   },
   "metra": {

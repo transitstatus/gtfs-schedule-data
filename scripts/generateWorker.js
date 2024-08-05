@@ -181,10 +181,10 @@ const processFeed = (feed, feeds) => {
 
             fs.mkdirSync(`./data/${feed}/icons`);
 
-            const tramTemplate = fs.readFileSync('./templates/tram.svg', 'utf8');
-            const trainTemplate = fs.readFileSync('./templates/train.svg', 'utf8');
-            const busTemplate = fs.readFileSync('./templates/bus.svg', 'utf8');
-            const boatTemplate = fs.readFileSync('./templates/boat.svg', 'utf8');
+            //const tramTemplate = fs.readFileSync('./templates/tram.svg', 'utf8');
+            //const trainTemplate = fs.readFileSync('./templates/train.svg', 'utf8');
+            //const busTemplate = fs.readFileSync('./templates/bus.svg', 'utf8');
+            ///const boatTemplate = fs.readFileSync('./templates/boat.svg', 'utf8');
             const circleTemplate = fs.readFileSync('./templates/circle.svg', 'utf8');
             const arrowTemplate = fs.readFileSync('./templates/arrow.svg', 'utf8');
             //const boxTemplate = fs.readFileSync('./templates/box.svg', 'utf8');
@@ -198,6 +198,7 @@ const processFeed = (feed, feeds) => {
               let actualRouteColor = routeColor === '000000' ? 'FFFFFF' : routeColor;
               let actualRouteTextColor = routeColor === '000000' ? '000000' : routeTextColor;
 
+              /*
               //trams
               if (types.includes('0')) {
                 //processing template
@@ -265,6 +266,7 @@ const processFeed = (feed, feeds) => {
                     //if (info) console.log(info);
                   });
               }
+              */
 
               //arrow
               const arrowIcon = arrowTemplate.replaceAll("FILL", `#${actualRouteColor}`).replaceAll("BORDERS", `#${actualRouteTextColor}`);

@@ -2,5 +2,6 @@
   <path
     d="M60.866 3.5L60 2L59.134 3.5L48.7417 21.5L47.8756 23H49.6077H70.3923H72.1244L71.2583 21.5L60.866 3.5Z"
     fill="FILL" stroke="BORDERS" stroke-width="2" />
+    <circle cx="60" cy="60" r="30" fill="FILL" stroke="BORDERS" stroke-width="4"/>
 </svg>
   
