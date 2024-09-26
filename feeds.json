@@ -24,7 +24,9 @@
     "colorOverrides": {},
     "mapCodeOverrides": {},
     "colorReplacements": {},
-    "textColorReplacements": {"73D700": "000000"},
+    "textColorReplacements": {
+      "73D700": "000000"
+    },
     "trim": false,
     "noSegments": true,
     "disabled": false
@@ -87,6 +89,26 @@
       "stops": ",",
       "shapes": ","
     },
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
+    "textColorReplacements": {},
+    "trim": true,
+    "disabled": false
+  },
+  "njt_rail": {
+    "name": "NJT Rail",
+    "url": "https://raildata.njtransit.com/api/GTFSRT/getGTFS",
+    "headers": {
+      "accept": "*/*"
+    },
+    "body": {
+      "token": "env.njt_rail_key"
+    },
+    "bodyType": "formData",
+    "urlEnv": [],
+    "separator": ",",
+    "seperatorOverrides": {},
     "colorOverrides": {},
     "mapCodeOverrides": {},
     "colorReplacements": {},

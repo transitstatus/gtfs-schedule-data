@@ -1,5 +1,6 @@
 const { parentPort, workerData } = require("worker_threads");
 const fetch = require('node-fetch');
+const FormData = require('form-data');
 const fs = require('fs');
 const { parse } = require('csv-parse');
 const { execSync } = require('child_process');
@@ -73,9 +74,42 @@ const processFeed = (feed, feeds) => {
   try {
     const feedURL = processURL(feeds[feed]['url'], feeds[feed]['urlEnv']);
     console.log(`Fetching ${feed} zip...`)
+
+    let requestBody = "";
+    let requestHeaders = processHeaders(feeds[feed]['headers']);
+
+    if (feeds[feed]['bodyType']) {
+      switch (feeds[feed]['bodyType']) {
+        case "raw":
+          requestBody = feeds[feed]['body'];
+          break;
+        case "json":
+          requestBody = JSON.stringify(feeds[feed]['body']);
+          break;
+        case "formData":
+          const formData = new FormData();
+          const processedForm = processHeaders(feeds[feed]['body']);
+
+          Object.keys(processedForm).forEach((formKey) => {
+            formData.append(formKey, processedForm[formKey]);
+          })
+          requestBody = formData;
+          requestHeaders = {
+            ...requestHeaders,
+            ...formData.getHeaders(),
+          }
+      }
+    }
+
+    if (feed === 'njt_rail') {
+      console.log(requestBody)
+      console.log(requestHeaders)
+    }
+
     fetch(feedURL, {
-      method: 'GET',
-      headers: processHeaders(feeds[feed]['headers'])
+      method: feeds[feed]['bodyType'] ? 'POST' : 'GET',
+      headers: requestHeaders,
+      body: feeds[feed]['bodyType'] ? requestBody : null
     })
       .then((res) => res.arrayBuffer())
       .then((body) => {
