@@ -341,6 +341,8 @@ const processFeed = (feed, feeds) => {
                 trim: feeds[feed]['trim'],
               }))
               .on('data', (row) => {
+                if (!routes[row.route_id]) return; //thanks NJT
+
                 tripsMeta[row.trip_id] = {
                   headsign: row.trip_headsign,
                 }
@@ -505,6 +507,8 @@ const processFeed = (feed, feeds) => {
 
                           //console.log(routes[routeID]['routeStations'].includes(parentStation))
                         }
+
+                        if (!routes[routeID]) return; //thanks NJT
 
                         if (!parentStation && !routes[routeID]['routeStations'].includes(row.stop_id)) {
                           routes[routeID]['routeStations'].push(row.stop_id);
