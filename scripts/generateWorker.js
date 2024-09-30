@@ -101,11 +101,6 @@ const processFeed = (feed, feeds) => {
       }
     }
 
-    if (feed === 'njt_rail') {
-      console.log(requestBody)
-      console.log(requestHeaders)
-    }
-
     fetch(feedURL, {
       method: feeds[feed]['bodyType'] ? 'POST' : 'GET',
       headers: requestHeaders,

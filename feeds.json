@@ -112,6 +112,21 @@
     "colorOverrides": {},
     "mapCodeOverrides": {},
     "colorReplacements": {},
+    "allShapes": false,
+    "textColorReplacements": {},
+    "trim": true,
+    "disabled": false
+  },
+  "wmata_rail": {
+    "name": "WMATA Rail",
+    "url": "https://api.wmata.com/gtfs/rail-gtfs-static.zip",
+    "headers": {},
+    "urlEnv": [],
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
     "textColorReplacements": {},
     "trim": true,
     "disabled": false
