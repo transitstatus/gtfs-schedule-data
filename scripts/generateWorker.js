@@ -150,8 +150,8 @@ const processFeed = (feed, feeds) => {
             trim: feeds[feed]['trim'],
           }))
           .on('data', function (row) {
-            let routeColor = feeds[feed]['colorOverrides'][row.route_id] ? feeds[feed]['colorOverrides'][row.route_id][0] : row.route_color;
-            let routeTextColor = feeds[feed]['colorOverrides'][row.route_id] ? feeds[feed]['colorOverrides'][row.route_id][1] : row.route_text_color;
+            let routeColor = (feeds[feed]['colorOverrides'][row.route_id] ? feeds[feed]['colorOverrides'][row.route_id][0] : row.route_color) ?? '';
+            let routeTextColor = (feeds[feed]['colorOverrides'][row.route_id] ? feeds[feed]['colorOverrides'][row.route_id][1] : row.route_text_color) ?? '';
 
             if (feeds[feed]['colorReplacements'][routeColor]) {
               routeColor = feeds[feed]['colorReplacements'][routeColor]

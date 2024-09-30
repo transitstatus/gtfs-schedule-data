@@ -117,6 +117,21 @@
     "trim": true,
     "disabled": false
   },
+  "njt_rail_nonrt": {
+    "name": "NJT Rail",
+    "url": "https://www.njtransit.com/rail_data.zip",
+    "headers": {},
+    "urlEnv": [],
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
+    "allShapes": false,
+    "textColorReplacements": {},
+    "trim": true,
+    "disabled": false
+  },
   "wmata_rail": {
     "name": "WMATA Rail",
     "url": "https://api.wmata.com/gtfs/rail-gtfs-static.zip",

@@ -2,3 +2,5 @@ csv
 zips
 node_modules
 .env
+data
+dir
