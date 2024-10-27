@@ -551,6 +551,7 @@ const processFeed = (feed, feeds) => {
                               stopLat: Number(Number(row.stop_lat).toFixed(5)),
                               stopLon: Number(Number(row.stop_lon).toFixed(5)),
                               zoneID: row.zone_id,
+                              stopTZ: row.stop_timezone,
                               parentStation: row.parent_station,
                             };
                           })
