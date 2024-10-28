@@ -15,6 +15,35 @@
     "noSegments": true,
     "disabled": false
   },
+  "viarail": {
+    "url": "https://www.viarail.ca/sites/all/files/gtfs/viarail.zip",
+    "headers": {},
+    "urlEnv": [],
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
+    "textColorReplacements": {},
+    "trim": false,
+    "noSegments": true,
+    "disabled": false
+  },
+  "brightline": {
+    "url": "http://feed.gobrightline.com/bl_gtfs.zip",
+    "headers": {},
+    "urlEnv": [],
+    "separator": ",",
+    "seperatorOverrides": {},
+    "colorOverrides": {},
+    "mapCodeOverrides": {},
+    "colorReplacements": {},
+    "textColorReplacements": {},
+    "trim": false,
+    "noSegments": true,
+    "disabled": false
+  },
+  
   "flixbus_us": {
     "url": "https://gtfs.gis.flix.tech/gtfs_generic_us.zip",
     "headers": {},
