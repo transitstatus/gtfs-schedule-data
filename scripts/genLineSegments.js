@@ -15,6 +15,7 @@ Object.keys(feeds).forEach((feed) => {
 
   if (feeds[feed].disabled === true) return;
   if (feeds[feed].noSegments === true) return;
+  if (!fs.existsSync(`./csv/${feed}`)) return;
 
   console.log(`Generating line segments for ${feed}`);
 
@@ -125,7 +126,10 @@ Object.keys(feeds).forEach((feed) => {
                   console.log(`Done ingesting stops for ${feed}`);
                   console.log(`Setting up line segments for ${feed}`);
 
-                  Object.keys(trips).forEach((tripID) => {
+                  const tripIDKeys = Object.keys(trips);
+                  for (let tripIDKey = 0; tripIDKey < tripIDKeys.length; tripIDKey++) {
+                    const tripID = tripIDKeys[tripIDKey];
+
                     trips[tripID].stopTimes.forEach((startStopTime, i, arr) => {
                       if (i === arr.length - 1) return; //as there is no i + 1 element
 
@@ -137,15 +141,15 @@ Object.keys(feeds).forEach((feed) => {
                       const endStopID = stops[endStopTime.stopID].parent ?? endStopTime.stopID;
                       const additionalStopID = arr[i + 2] ? (stops[arr[i + 2].stopID].parent ?? arr[i + 2].stopID) : 'undefined';
 
-                      //dont redo work already done
-                      if (segments[`${startStopID}_${endStopID}`]) return;
-
                       //setting up the key dict
                       //if (i < arr.length - 2) { //if this is the last segment
                       //  segmentKeyDict[`${trips[tripID].routeID}_${endStopID}_undefined`] = `${startStopID}_${endStopID}`;
                       //} else { //since there are 2+ upcoming stops, we can just go ahead
                       segmentKeyDict[`${trips[tripID].routeID}_${endStopID}_${additionalStopID}`] = `${startStopID}_${endStopID}`;
                       //}
+
+                      //dont redo work already done
+                      if (segments[`${startStopID}_${endStopID}`]) return;
 
                       //getting stop metadata
                       const startStop = stops[startStopID];
@@ -178,7 +182,7 @@ Object.keys(feeds).forEach((feed) => {
                         shape: slicedShape.geometry.coordinates,
                       }
                     })
-                  })
+                  }
 
                   console.log(`Line segments setup for ${feed}, saving to disk`)
 
