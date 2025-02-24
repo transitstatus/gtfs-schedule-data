@@ -43,7 +43,6 @@
     "noSegments": true,
     "disabled": false
   },
-  
   "flixbus_us": {
     "url": "https://gtfs.gis.flix.tech/gtfs_generic_us.zip",
     "headers": {},
@@ -478,8 +477,8 @@
     "textColorReplacements": {},
     "trim": false,
     "noSegments": false,
-    "disabled": false,
-    "subfolder_removetoenable": "Working copy GTFS changes/"
+    "disabled": true,
+    "subfolder": "new schedule/"
   },
   "casco_bay_lines": {
     "name": "Casco Bay Lines",

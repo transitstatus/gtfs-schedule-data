@@ -8,7 +8,7 @@ require('dotenv').config();
 const feeds = JSON.parse(fs.readFileSync('./feeds.json', 'utf8'));
 
 Object.keys(feeds).forEach((feed) => {
-  //if (feed !== 'cta') return;
+  //if (feed !== 'bart') return;
   //if (feed !== 'metra') return;
   //if (feed !== 'southshore') return;
   //if (feed !== 'chicago') return;
@@ -93,6 +93,7 @@ Object.keys(feeds).forEach((feed) => {
                 departureTime: row.departure_time,
                 stopID: row.stop_id,
                 stopSequence: row.stop_sequence,
+                stopDistanceTraveled: row.shape_distance_traveled,
               })
             })
             .on('end', () => {

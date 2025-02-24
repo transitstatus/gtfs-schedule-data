@@ -21,11 +21,7 @@ fs.mkdirSync('./data');
 const startValue = new Date().valueOf();
 
 Object.keys(feeds).forEach((feed) => {
-  //if (feed !== 'cta') return;
-  //if (feed !== 'metra') return;
   //if (feed !== 'southshore') return;
-  //if (feed !== 'chicago') return;
-  //if (feed !== 'casco_bay_lines') return;
 
   if (feeds[feed].disabled === true) return;
 
