@@ -523,7 +523,7 @@ const feeds = {
     textColorReplacements: {},
     trim: true,
     noSegments: true,
-    disabled: false
+    disabled: true
   }
 };
 
