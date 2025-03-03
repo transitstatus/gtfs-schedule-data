@@ -1,11 +1,10 @@
 const fs = require('fs');
 const { parse } = require('csv-parse');
 const turf = require('@turf/turf');
+const feeds = require('../feeds.js');
 
 // dot env
 require('dotenv').config();
-
-const feeds = JSON.parse(fs.readFileSync('./feeds.json', 'utf8'));
 
 Object.keys(feeds).forEach((feed) => {
   //if (feed !== 'bart') return;
@@ -68,7 +67,10 @@ Object.keys(feeds).forEach((feed) => {
           trim: feeds[feed]['trim'],
         }))
         .on('data', (row) => {
-          if (!row.shape_id) return;
+          if (!row.shape_id && feed === 'nyct_subway') {
+            row.shape_id = row.trip_id.split('_').reverse()[0];
+            if (!shapes[row.shape_id]) return;
+          } else if (!row.shape_id) return;
 
           trips[row.trip_id] = {
             routeID: row.route_id,

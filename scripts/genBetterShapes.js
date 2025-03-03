@@ -4,6 +4,8 @@ const turf = require('@turf/turf');
 
 const Image = require('./imageLib.js');
 
+const feeds = require('../feeds.js');
+
 return; //make sure i dont accidentally run this lol
 
 const skeletonedToGeoJSON = (skeletonedData, properties = {}, ratio = 10000, minLat = 0, minLon = 0, curve = false) => {
@@ -49,8 +51,6 @@ fs.mkdirSync('./images');
 //removing old better shapes
 fs.existsSync('./better_shapes') && fs.rmSync('./better_shapes', { recursive: true });
 fs.mkdirSync('./better_shapes');
-
-const feeds = JSON.parse(fs.readFileSync('./feeds.json', 'utf8'));
 
 Object.keys(feeds).forEach((feed) => {
   //if (feed !== 'cta') return;

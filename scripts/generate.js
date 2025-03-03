@@ -1,10 +1,9 @@
 const { Worker } = require("worker_threads");
 const fs = require('fs');
+const feeds = require('../feeds.js');
 
 // dot env
 require('dotenv').config();
-
-const feeds = JSON.parse(fs.readFileSync('./feeds.json', 'utf8'));
 
 //removing old zips
 fs.existsSync('./zips') && fs.rmSync('./zips', { recursive: true });
@@ -21,8 +20,6 @@ fs.mkdirSync('./data');
 const startValue = new Date().valueOf();
 
 Object.keys(feeds).forEach((feed) => {
-  //if (feed !== 'southshore') return;
-
   if (feeds[feed].disabled === true) return;
 
   const worker = new Worker(
