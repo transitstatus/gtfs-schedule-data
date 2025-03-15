@@ -69,7 +69,16 @@ Object.keys(feeds).forEach((feed) => {
         .on('data', (row) => {
           if (!row.shape_id && feed === 'nyct_subway') {
             row.shape_id = row.trip_id.split('_').reverse()[0];
-            if (!shapes[row.shape_id]) return;
+            if (!shapes[row.shape_id]) {
+              const custom_nyct_subway_shape_overrides = {
+                'B..S65R': 'B..S45R',
+                'B..N65R': 'B..N45R',
+              };
+
+              row.shape_id = custom_nyct_subway_shape_overrides[row.shape_id];
+
+              if (!row.shape_id) return; // these are lost causes tbh
+            }
           } else if (!row.shape_id) return;
 
           trips[row.trip_id] = {
