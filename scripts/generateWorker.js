@@ -7,6 +7,20 @@ const { execSync } = require('child_process');
 const turf = require('@turf/turf');
 const sharp = require('sharp');
 
+const default_ff_headers = {
+  "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0",
+  "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+  "Accept-Language": "en-US,en;q=0.5",
+  "Upgrade-Insecure-Requests": "1",
+  "Sec-Fetch-Dest": "document",
+  "Sec-Fetch-Mode": "navigate",
+  "Sec-Fetch-Site": "same-origin",
+  "Sec-Fetch-User": "?1",
+  "Priority": "u=0, i",
+  "Pragma": "no-cache",
+  "Cache-Control": "no-cache"
+};
+
 const routeTypeMinZooms = {
   '0': 7, //tram
   '1': 7, //subway
@@ -76,7 +90,10 @@ const processFeed = (feed, feeds) => {
     console.log(`Fetching ${feed} zip...`)
 
     let requestBody = "";
-    let requestHeaders = processHeaders(feeds[feed]['headers']);
+    let requestHeaders = {
+      ...default_ff_headers,
+      ...processHeaders(feeds[feed]['headers']),
+    }
 
     if (feeds[feed]['bodyType']) {
       switch (feeds[feed]['bodyType']) {
