@@ -435,7 +435,7 @@ const feeds = {
   },
   cta: {
     name: "Chicago Transit Authority",
-    url: "https://bigfiles.piemadd.com/google_transit.zip", //"https://www.transitchicago.com/downloads/sch_data/google_transit.zip",
+    url: "https://www.transitchicago.com/downloads/sch_data/google_transit.zip",
     headers: {},
     urlEnv: [],
     separator: ",",
