@@ -87,7 +87,7 @@ const feeds = {
     colorReplacements: {},
     textColorReplacements: {},
     trim: false,
-    noSegments: false,
+    noSegments: true,
     disabled: false
   },
   marta: {
