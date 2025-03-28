@@ -13,7 +13,7 @@ Object.keys(feeds).forEach((feed) => {
   //if (feed !== 'bart') return;
   //if (feed !== 'metra') return;
   //if (feed !== 'southshore') return;
-  //if (feed !== 'cta') return;
+  if (feed !== 'cta') return;
 
   if (feeds[feed].disabled === true) return;
   if (feeds[feed].noSegments === true) return;
@@ -26,7 +26,7 @@ Object.keys(feeds).forEach((feed) => {
     feedPath = `./csv/${feed}/${feeds[feed].subfolder}`
   }
 
-  console.log(`Ingesting shapes for ${feed}`);
+  console.time(`Ingesting shapes for ${feed}`);
 
   let shapes = {};
   let trips = {};
@@ -51,15 +51,15 @@ Object.keys(feeds).forEach((feed) => {
       shapes[row.shape_id].push([row.shape_pt_lon, row.shape_pt_lat, row.shape_pt_sequence]);
     })
     .on('end', () => {
-      console.log(`Done ingesting shapes for ${feed}`);
-      console.log(`Sorting shapes for ${feed}`);
+      console.timeEnd(`Ingesting shapes for ${feed}`);
+      console.time(`Sorting shapes for ${feed}`);
 
       Object.keys(shapes).forEach((shapeID) => {
         shapes[shapeID] = shapes[shapeID].sort((a, b) => a[2] - b[2]).map((n) => [Number(n[0]), Number(n[1])]);
       })
 
-      console.log(`Done sorting shapes for ${feed}`);
-      console.log(`Ingesting trips for ${feed}`);
+      console.timeEnd(`Sorting shapes for ${feed}`);
+      console.time(`Ingesting trips for ${feed}`);
 
       fs.createReadStream(`${feedPath}/trips.txt`)
         .pipe(parse({
@@ -93,7 +93,8 @@ Object.keys(feeds).forEach((feed) => {
           }
         })
         .on('end', () => {
-          console.log(`Ingesting stop times for ${feed}`)
+          console.timeEnd(`Ingesting trips for ${feed}`);
+          console.time(`Ingesting stop times for ${feed}`)
           fs.createReadStream(`${feedPath}/stop_times.txt`)
             .pipe(parse({
               delimiter: feeds[feed]['seperatorOverrides'].stop_times ?? feeds[feed]['separator'],
@@ -114,15 +115,15 @@ Object.keys(feeds).forEach((feed) => {
               })
             })
             .on('end', () => {
-              console.log(`Done ingesting trips for ${feed}`);
-              console.log(`Sorting stop times for ${feed}`);
+              console.timeEnd(`Ingesting stop times for ${feed}`)
+              console.time(`Sorting stop times for ${feed}`);
 
               Object.keys(trips).forEach((tripID) => {
                 trips[tripID].stopTimes = trips[tripID].stopTimes.sort((a, b) => a.stopSequence - b.stopSequence)
               })
 
-              console.log(`Done sorting stop times for ${feed}`);
-              console.log(`Ingesting stops for ${feed}`);
+              console.timeEnd(`Sorting stop times for ${feed}`);
+              console.time(`Ingesting stops for ${feed}`);
 
               fs.createReadStream(`${feedPath}/stops.txt`)
                 .pipe(parse({
@@ -141,8 +142,8 @@ Object.keys(feeds).forEach((feed) => {
                   }
                 })
                 .on('end', () => {
-                  console.log(`Done ingesting stops for ${feed}`);
-                  console.log(`Setting up line segments for ${feed}`);
+                  console.timeEnd(`Ingesting stops for ${feed}`);
+                  console.time(`Setting up line segments for ${feed}`);
 
                   const tripIDKeys = Object.keys(trips);
                   for (let tripIDKey = 0; tripIDKey < tripIDKeys.length; tripIDKey++) {
@@ -172,10 +173,10 @@ Object.keys(feeds).forEach((feed) => {
                           };
                         } else { // we have passed the point and can stop
                           // first we should modify the shape array
-                          if (pointDistance > secondClosestPoint[3] + 100) { // allow for variations in shape size up to 100 meters
+                          if (pointDistance > secondClosestPoint[3] + 500) {// allow for variations in shape size up to 500 meters
+                            tripShape.splice(0, Math.min(pointsIndex - 2, 0)); // assuming the last two points are firstClosestPoint and secondClosestPoint, which they probably are
                             break;
                           }
-                          //tripShape.splice(0, pointsIndex - 2); // assuming the last two points are firstClosestPoint and secondClosestPoint, which they probably are
                         };
                       };
 
@@ -242,7 +243,7 @@ Object.keys(feeds).forEach((feed) => {
 
                       const timeDiff = (hoursDiff * 60 * 60) + (minutesDiff * 60) + secondsDiff;
 
-                      //if (endStopID == '1160') console.log(JSON.stringify(slicedShape));
+                      if (endStopID == '1160') console.log(JSON.stringify(slicedShape));
 
                       segments[`${startStopID}_${endStopID}`] = {
                         seconds: timeDiff,
@@ -254,6 +255,7 @@ Object.keys(feeds).forEach((feed) => {
                     //break; //only once REMOVEME
                   }
 
+                  console.timeEnd(`Setting up line segments for ${feed}`);
                   console.log(`Line segments setup for ${feed}, saving to disk`)
 
                   fs.writeFileSync(`./data/${feed}/segments.json`, JSON.stringify({
