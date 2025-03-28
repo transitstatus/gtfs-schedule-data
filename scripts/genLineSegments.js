@@ -70,7 +70,7 @@ Object.keys(feeds).forEach((feed) => {
           trim: feeds[feed]['trim'],
         }))
         .on('data', (row) => {
-          //if (row.route_id != '146') return; //REMOVEME
+          //if (row.route_id != 'Org') return; //REMOVEME
 
           if (!row.shape_id && feed === 'nyct_subway') {
             row.shape_id = row.trip_id.split('_').reverse()[0];
@@ -154,6 +154,7 @@ Object.keys(feeds).forEach((feed) => {
                     let tripShape = turf.lineString(shapes[trips[tripID].shapeID]).geometry.coordinates.map((point, i) => [...point, i]);
 
                     const modifiedTripPoints = trips[tripID].stopTimes.map((startStopTime, i, arr) => {
+                      //if (i > 1) return;
                       const stopID = stops[startStopTime.stopID].parent ?? startStopTime.stopID;
                       const stopData = stops[stopID];
                       const stopPoint = [stopData.lon, stopData.lat];
@@ -161,7 +162,8 @@ Object.keys(feeds).forEach((feed) => {
                       let firstClosestPoint = [0, 0, -1, 9999999];
                       let secondClosestPoint = [0, 0, -1, 9999999];
 
-                      for (let pointsIndex = 0; pointsIndex < tripShape.length; pointsIndex++) {
+                      let pointsIndex;
+                      for (pointsIndex = 0; pointsIndex < tripShape.length; pointsIndex++) {
                         const point = tripShape[pointsIndex];
                         const pointDistance = turf.distance(point, stopPoint);
 
@@ -172,13 +174,16 @@ Object.keys(feeds).forEach((feed) => {
                             [firstClosestPoint, secondClosestPoint] = [secondClosestPoint, firstClosestPoint];
                           };
                         } else { // we have passed the point and can stop
-                          // first we should modify the shape array
-                          if (pointDistance > secondClosestPoint[3] + 500) {// allow for variations in shape size up to 500 meters
-                            tripShape.splice(0, Math.min(pointsIndex - 2, 0)); // assuming the last two points are firstClosestPoint and secondClosestPoint, which they probably are
+                          if (pointDistance > secondClosestPoint[3] + 0.5) {// allow for variations in shape size up to 500 meters
                             break;
                           }
                         };
                       };
+
+                      // modifying the shape array so the points right next to this stop can be yeeted
+                      tripShape.splice(0, pointsIndex - 2); // assuming the last two points are firstClosestPoint and secondClosestPoint, which they probably are
+
+                      //console.log(firstClosestPoint, secondClosestPoint, tripShape);
 
                       const pointsSurroundingStop = [firstClosestPoint, secondClosestPoint].sort((a, b) => a[2] - b[2]);
                       const distanceBetweenPoints = turf.distance(pointsSurroundingStop[0].slice(0, 2), pointsSurroundingStop[1].slice(0, 2));
@@ -243,7 +248,7 @@ Object.keys(feeds).forEach((feed) => {
 
                       const timeDiff = (hoursDiff * 60 * 60) + (minutesDiff * 60) + secondsDiff;
 
-                      if (endStopID == '1160') console.log(JSON.stringify(slicedShape));
+                      //if (endStopID == '1160') console.log(JSON.stringify(slicedShape));
 
                       segments[`${startStopID}_${endStopID}`] = {
                         seconds: timeDiff,
