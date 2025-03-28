@@ -13,7 +13,7 @@ Object.keys(feeds).forEach((feed) => {
   //if (feed !== 'bart') return;
   //if (feed !== 'metra') return;
   //if (feed !== 'southshore') return;
-  if (feed !== 'cta') return;
+  //if (feed !== 'cta') return;
 
   if (feeds[feed].disabled === true) return;
   if (feeds[feed].noSegments === true) return;
