@@ -70,6 +70,8 @@ Object.keys(feeds).forEach((feed) => {
           trim: feeds[feed]['trim'],
         }))
         .on('data', (row) => {
+          //if (row.route_id != '146') return; //REMOVEME
+
           if (!row.shape_id && feed === 'nyct_subway') {
             row.shape_id = row.trip_id.split('_').reverse()[0];
             if (!shapes[row.shape_id]) {
@@ -100,6 +102,7 @@ Object.keys(feeds).forEach((feed) => {
               trim: feeds[feed]['trim'],
             }))
             .on('data', (row) => {
+              //if (row.trip_id != '6700040409010') return; //REMOVEME
               if (!trips[row.trip_id]) return;
 
               trips[row.trip_id].stopTimes.push({
@@ -169,15 +172,17 @@ Object.keys(feeds).forEach((feed) => {
                           };
                         } else { // we have passed the point and can stop
                           // first we should modify the shape array
-                          tripShape.splice(0, pointsIndex - 2); // assuming the last two points are firstClosestPoint and secondClosestPoint, which they probably are
-                          break;
+                          if (pointDistance > secondClosestPoint[3] + 100) { // allow for variations in shape size up to 100 meters
+                            break;
+                          }
+                          //tripShape.splice(0, pointsIndex - 2); // assuming the last two points are firstClosestPoint and secondClosestPoint, which they probably are
                         };
                       };
 
                       const pointsSurroundingStop = [firstClosestPoint, secondClosestPoint].sort((a, b) => a[2] - b[2]);
                       const distanceBetweenPoints = turf.distance(pointsSurroundingStop[0].slice(0, 2), pointsSurroundingStop[1].slice(0, 2));
                       const percentAlongDistanceBetweenPointsIncludingMidPoint = pointsSurroundingStop[0][3] / (pointsSurroundingStop[0][3] + pointsSurroundingStop[1][3]);
-                      
+
                       //console.log(pointsSurroundingStop[0][0], pointsSurroundingStop[0][1], pointsSurroundingStop[1][0], pointsSurroundingStop[1][1], percentAlongDistanceBetweenPointsIncludingMidPoint);
                       let lineMidPoint = calculateLineMidpointWithPercent(pointsSurroundingStop[0][0], pointsSurroundingStop[0][1], pointsSurroundingStop[1][0], pointsSurroundingStop[1][1], percentAlongDistanceBetweenPointsIncludingMidPoint);
 
@@ -215,7 +220,7 @@ Object.keys(feeds).forEach((feed) => {
 
                       const startStopPointMeta = modifiedTripPoints[i];
                       const endStopPointMeta = modifiedTripPoints[i + 1];
-                      
+
                       //getting sub-line for stations
                       const slicedShape = turf.lineString([
                         startStopPointMeta[1],
@@ -236,6 +241,8 @@ Object.keys(feeds).forEach((feed) => {
                       const secondsDiff = Number(endTime[2]) - Number(startTime[2]);
 
                       const timeDiff = (hoursDiff * 60 * 60) + (minutesDiff * 60) + secondsDiff;
+
+                      //if (endStopID == '1160') console.log(JSON.stringify(slicedShape));
 
                       segments[`${startStopID}_${endStopID}`] = {
                         seconds: timeDiff,
