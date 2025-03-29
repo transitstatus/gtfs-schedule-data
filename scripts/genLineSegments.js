@@ -181,7 +181,7 @@ Object.keys(feeds).forEach((feed) => {
                       };
 
                       // modifying the shape array so the points right next to this stop can be yeeted
-                      tripShape.splice(0, pointsIndex - 4); // assuming the last two points are firstClosestPoint and secondClosestPoint, which they probably are
+                      tripShape.splice(0, 1); // this keeps on causing issues, but i think just taking 1 point away is a pretty foolproof method tbh 
 
                       //console.log(firstClosestPoint, secondClosestPoint, tripShape);
 
