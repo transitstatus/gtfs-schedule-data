@@ -70,7 +70,8 @@ Object.keys(feeds).forEach((feed) => {
           trim: feeds[feed]['trim'],
         }))
         .on('data', (row) => {
-          //if (row.route_id != 'Org') return; //REMOVEME
+          //if (row.route_id != 'Pink') return; //REMOVEME
+          //if (row.trip_id != '85258112294') return; //REMOVEME
 
           if (!row.shape_id && feed === 'nyct_subway') {
             row.shape_id = row.trip_id.split('_').reverse()[0];
@@ -103,7 +104,6 @@ Object.keys(feeds).forEach((feed) => {
               trim: feeds[feed]['trim'],
             }))
             .on('data', (row) => {
-              //if (row.trip_id != '6700040409010') return; //REMOVEME
               if (!trips[row.trip_id]) return;
 
               trips[row.trip_id].stopTimes.push({
@@ -149,7 +149,7 @@ Object.keys(feeds).forEach((feed) => {
                   for (let tripIDKey = 0; tripIDKey < tripIDKeys.length; tripIDKey++) {
                     const tripID = tripIDKeys[tripIDKey];
 
-                    //if (trips[tripID].routeID != 'Org') continue; // only orange REMOVEME
+                    //if (trips[tripID].routeID != 'Pink') continue; // only orange REMOVEME
 
                     let tripShape = turf.lineString(shapes[trips[tripID].shapeID]).geometry.coordinates.map((point, i) => [...point, i]);
 
@@ -181,7 +181,7 @@ Object.keys(feeds).forEach((feed) => {
                       };
 
                       // modifying the shape array so the points right next to this stop can be yeeted
-                      tripShape.splice(0, pointsIndex - 2); // assuming the last two points are firstClosestPoint and secondClosestPoint, which they probably are
+                      tripShape.splice(0, pointsIndex - 4); // assuming the last two points are firstClosestPoint and secondClosestPoint, which they probably are
 
                       //console.log(firstClosestPoint, secondClosestPoint, tripShape);
 
@@ -254,6 +254,8 @@ Object.keys(feeds).forEach((feed) => {
                         seconds: timeDiff,
                         meters: slicedShapeLength,
                         shape: slicedShape.geometry.coordinates,
+                        routeID: trips[tripID].routeID,
+                        tripID: tripID,
                       }
                     });
 
