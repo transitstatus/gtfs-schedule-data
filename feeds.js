@@ -143,7 +143,7 @@ const feeds = {
     "allShapes": false,
     textColorReplacements: {},
     trim: true,
-    disabled: true
+    disabled: false
   },
   njt_rail_nonrt: {
     name: "NJT Rail",
