@@ -90,6 +90,20 @@ const feeds = {
     noSegments: false,
     disabled: false
   },
+  nashville: {
+    url: "https://www.nashvillemta.org/GoogleExport/google_transit.zip",
+    headers: {},
+    urlEnv: [],
+    separator: ",",
+    seperatorOverrides: {},
+    colorOverrides: {},
+    mapCodeOverrides: {},
+    colorReplacements: {},
+    textColorReplacements: {},
+    trim: false,
+    noSegments: true,
+    disabled: false
+  },
   marta: {
     name: "MARTA",
     url: "https://www.itsmarta.com/google_transit_feed/google_transit.zip",
