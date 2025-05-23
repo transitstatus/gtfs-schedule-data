@@ -104,6 +104,20 @@ const feeds = {
     noSegments: true,
     disabled: false
   },
+  dekalb_il: {
+    url: "https://data.trilliumtransit.com/gtfs/cityofdekalb-il-us/cityofdekalb-il-us.zip",
+    headers: {},
+    urlEnv: [],
+    separator: ",",
+    seperatorOverrides: {},
+    colorOverrides: {},
+    mapCodeOverrides: {},
+    colorReplacements: {},
+    textColorReplacements: {},
+    trim: false,
+    noSegments: true,
+    disabled: false
+  },
   marta: {
     name: "MARTA",
     url: "https://www.itsmarta.com/google_transit_feed/google_transit.zip",
