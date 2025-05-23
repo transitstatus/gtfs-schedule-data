@@ -521,7 +521,7 @@ const feeds = {
     textColorReplacements: {},
     trim: true,
     noSegments: true,
-    disabled: false
+    disabled: true
   },
   gp_metro: {
     name: "GP Metro",
@@ -536,7 +536,7 @@ const feeds = {
     textColorReplacements: {},
     trim: true,
     noSegments: true,
-    disabled: false
+    disabled: true
   },
   south_portland: {
     name: "South Portland Bus Lines",
