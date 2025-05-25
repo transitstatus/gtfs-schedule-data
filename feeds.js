@@ -133,6 +133,21 @@ const feeds = {
     noSegments: true,
     disabled: false
   },
+  hawaii_thebus: {
+    name: "The Bus (Hawai'i)",
+    url: "https://www.thebus.org/transitdata/production/google_transit.zip",
+    headers: {},
+    urlEnv: [],
+    separator: ",",
+    seperatorOverrides: {},
+    colorOverrides: {},
+    mapCodeOverrides: {},
+    colorReplacements: {},
+    textColorReplacements: {},
+    trim: false,
+    noSegments: true,
+    disabled: false
+  },
   metra: {
     name: "Metra",
     url: "https://gtfsapi.metrarail.com/gtfs/raw/schedule.zip",
