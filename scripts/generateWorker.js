@@ -85,7 +85,7 @@ const contrastFromString = (color1, color2) => {
 }
 
 const processFeed = (feed, feeds) => {
-  if (feed != 'hawaii_thebus') return;
+  //if (feed != 'hawaii_thebus') return;
 
   try {
     const feedURL = processURL(feeds[feed]['url'], feeds[feed]['urlEnv']);
