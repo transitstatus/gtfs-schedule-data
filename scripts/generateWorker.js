@@ -85,6 +85,8 @@ const contrastFromString = (color1, color2) => {
 }
 
 const processFeed = (feed, feeds) => {
+  if (feed != 'hawaii_thebus') return;
+
   try {
     const feedURL = processURL(feeds[feed]['url'], feeds[feed]['urlEnv']);
     console.log(`Fetching ${feed} zip...`)
@@ -401,9 +403,16 @@ const processFeed = (feed, feeds) => {
                       shapes[row.shape_id] = [];
                     }
 
-                    shapes[row.shape_id].push([Number(Number(row.shape_pt_lon).toFixed(5)), Number(Number(row.shape_pt_lat).toFixed(5))]);
+                    shapes[row.shape_id].push([Number(Number(row.shape_pt_lon).toFixed(5)), Number(Number(row.shape_pt_lat).toFixed(5)), Number(row.shape_pt_sequence)]);
                   })
                   .on('end', function () {
+                    console.log(`Sorting ${feed} shapes...`);
+                    Object.keys(shapes).forEach((shapeKey) => {
+                      shapes[shapeKey] = shapes[shapeKey]
+                        .sort((a, b) => a[2] - b[2])
+                        .map((coord) => [coord[0], coord[1]]);
+                    })
+
                     Object.keys(routeShapes).forEach((route) => {
                       if (!finalGeoJSONByType[routes[route]['routeType']]) {
                         finalGeoJSONByType[routes[route]['routeType']] = {
