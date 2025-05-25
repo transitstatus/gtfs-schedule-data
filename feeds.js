@@ -499,7 +499,7 @@ const feeds = {
     },
     textColorReplacements: {},
     trim: false,
-    noSegments: false,
+    noSegments: true, // change to true at some point
     disabled: false
   },
   southshore: {
