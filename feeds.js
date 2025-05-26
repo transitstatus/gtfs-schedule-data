@@ -116,6 +116,7 @@ const feeds = {
     textColorReplacements: {},
     trim: false,
     noSegments: true,
+    useRouteShortNameAsRouteCode: true,
     disabled: false
   },
   marta: {

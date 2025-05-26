@@ -153,6 +153,7 @@ const processFeed = (feed, feeds) => {
         let parentStations = {};
         let tripsMeta = {};
         let colorSets = [];
+        let routeIDReplacements = {};
 
         let minLat = 999999;
         let maxLat = -99999;
@@ -169,6 +170,11 @@ const processFeed = (feed, feeds) => {
             trim: feeds[feed]['trim'],
           }))
           .on('data', function (row) {
+            if (feeds[feed]['useRouteShortNameAsRouteCode']) {
+              routeIDReplacements[row.route_short_name] = row.route_id;
+              row.route_id = row.route_short_name;
+            };
+
             let routeColor = (feeds[feed]['colorOverrides'][row.route_id] ? feeds[feed]['colorOverrides'][row.route_id][0] : row.route_color) ?? '';
             let routeTextColor = (feeds[feed]['colorOverrides'][row.route_id] ? feeds[feed]['colorOverrides'][row.route_id][1] : row.route_text_color) ?? '';
 
@@ -360,6 +366,7 @@ const processFeed = (feed, feeds) => {
                 trim: feeds[feed]['trim'],
               }))
               .on('data', (row) => {
+                if (feeds[feed]['useRouteShortNameAsRouteCode']) row.route_id = routeIDReplacements[row.route_id];
                 if (!routes[row.route_id]) return; //thanks NJT
 
                 tripsMeta[row.trip_id] = {
