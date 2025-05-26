@@ -366,7 +366,6 @@ const processFeed = (feed, feeds) => {
                 trim: feeds[feed]['trim'],
               }))
               .on('data', (row) => {
-                console.log(row.route_id, routeIDReplacements[row.route_id])
                 if (feeds[feed]['useRouteShortNameAsRouteCode']) row.route_id = routeIDReplacements[row.route_id];
                 if (!routes[row.route_id]) return; //thanks NJT
 
