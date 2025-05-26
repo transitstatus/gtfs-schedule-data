@@ -171,7 +171,7 @@ const processFeed = (feed, feeds) => {
           }))
           .on('data', function (row) {
             if (feeds[feed]['useRouteShortNameAsRouteCode']) {
-              routeIDReplacements[row.route_short_name] = row.route_id;
+              routeIDReplacements[row.route_id] = row.route_short_name;
               row.route_id = row.route_short_name;
             };
 
@@ -366,6 +366,7 @@ const processFeed = (feed, feeds) => {
                 trim: feeds[feed]['trim'],
               }))
               .on('data', (row) => {
+                console.log(row.route_id, routeIDReplacements[row.route_id])
                 if (feeds[feed]['useRouteShortNameAsRouteCode']) row.route_id = routeIDReplacements[row.route_id];
                 if (!routes[row.route_id]) return; //thanks NJT
 

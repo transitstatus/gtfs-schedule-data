@@ -74,6 +74,7 @@ Object.keys(feeds).forEach((feed) => {
 
   let routes = {};
   let shapeIDToRouteID = {};
+  let routeIDReplacements = {};
 
   console.log(`Processing ${feed} routes...`)
   fs.createReadStream(`${feedPath}/routes.txt`)
@@ -85,6 +86,11 @@ Object.keys(feeds).forEach((feed) => {
       trim: feeds[feed]['trim'],
     }))
     .on('data', function (row) {
+      if (feeds[feed]['useRouteShortNameAsRouteCode']) {
+        routeIDReplacements[row.route_id] = row.route_short_name;
+        row.route_id = row.route_short_name;
+      };
+
       routes[row.route_id] = {
         color: row.route_color,
         text_color: row.route_text_color,
@@ -107,6 +113,7 @@ Object.keys(feeds).forEach((feed) => {
           trim: feeds[feed]['trim'],
         }))
         .on('data', function (row) {
+          if (feeds[feed]['useRouteShortNameAsRouteCode']) row.route_id = routeIDReplacements[row.route_id];
           routes[row.route_id].shapes.push(row.shape_id);
           shapeIDToRouteID[row.shape_id] = row.route_id;
         })
