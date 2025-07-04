@@ -91,7 +91,7 @@ const feeds = {
     disabled: false
   },
   nashville: {
-    url: "https://www.nashvillemta.org/GoogleExport/google_transit.zip",
+    url: "https://www.wegotransit.com/GoogleExport/google_transit.zip",
     headers: {},
     urlEnv: [],
     separator: ",",
