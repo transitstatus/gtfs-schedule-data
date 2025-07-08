@@ -37,8 +37,12 @@ const feeds = {
     seperatorOverrides: {},
     colorOverrides: {},
     mapCodeOverrides: {},
-    colorReplacements: {},
-    textColorReplacements: {},
+    colorReplacements: {
+      "F2E205": "FFDB00"
+    },
+    textColorReplacements: {
+      "0D0D0D": "363636"
+    },
     trim: false,
     noSegments: true,
     disabled: false
