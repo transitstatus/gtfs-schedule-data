@@ -182,8 +182,8 @@ const processFeed = (feed, feeds) => {
               routeColor = feeds[feed]['colorReplacements'][routeColor]
             }
 
-            if (feeds[feed]['textColorReplacements'][routeColor]) { // BASED ON ROUTE COLOR
-              routeTextColor = feeds[feed]['textColorReplacements'][routeColor];
+            if (feeds[feed]['textColorReplacements'][routeTextColor]) { // BASED ON ROUTE COLOR
+              routeTextColor = feeds[feed]['textColorReplacements'][routeTextColor];
             }
 
             if (routeColor.length === 0) {
