@@ -525,8 +525,8 @@ const feeds = {
     textColorReplacements: {},
     trim: false,
     noSegments: false,
-    disabled: true,
-    "subfolder": "new schedule/"
+    disabled: false,
+    //"subfolder": "new schedule/"
   },
   casco_bay_lines: {
     name: "Casco Bay Lines",
