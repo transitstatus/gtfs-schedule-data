@@ -12,7 +12,7 @@ const feeds = {
     },
     textColorReplacements: {},
     trim: false,
-    noSegments: true,
+    noSegments: false,
     disabled: false
   },
   viarail: {
@@ -26,7 +26,7 @@ const feeds = {
     colorReplacements: {},
     textColorReplacements: {},
     trim: false,
-    noSegments: true,
+    noSegments: false,
     disabled: false
   },
   brightline: {
@@ -44,7 +44,7 @@ const feeds = {
       //"0D0D0D": "363636"
     },
     trim: false,
-    noSegments: true,
+    noSegments: false,
     disabled: false
   },
   flixbus_us: {
