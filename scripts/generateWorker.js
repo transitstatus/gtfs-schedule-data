@@ -135,7 +135,7 @@ const processFeed = (feed, feeds) => {
 
         console.log(`Unzipping ${feed}...`);
         fs.mkdirSync(`./csv/${feed}`);
-        execSync(`unzip -o ./zips/${feed}.zip -d ./csv/${feed}`);
+        execSync(`unzip -o ./zips/${feed}.zip -d ./csv/${feed} || echo ./zips/${feed}.zip`);
         console.log(`Unzipped ${feed} to ./csv/${feed}`);
 
         console.log(`Converting ${feed} to JSON...`)
