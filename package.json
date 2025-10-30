@@ -22,7 +22,6 @@
     "dotenv": "^16.0.3",
     "form-data": "^4.0.0",
     "node-fetch": "^2.6.7",
-    "sharp": "^0.32.5",
     "skeleton-tracing-js": "^1.0.4"
   }
 }

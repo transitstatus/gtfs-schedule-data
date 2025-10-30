@@ -22,6 +22,7 @@ const startValue = new Date().valueOf();
 Object.keys(feeds).forEach((feed) => {
   if (feeds[feed].disabled === true) return;
   //if (feed != 'dekalb_il') return;
+  //if (!feeds[feed].url.includes('passio')) return;
 
   const worker = new Worker(
     __dirname + "/generateWorker.js",

@@ -5,7 +5,6 @@ const fs = require('fs');
 const { parse } = require('csv-parse');
 const { execSync } = require('child_process');
 const turf = require('@turf/turf');
-const sharp = require('sharp');
 
 const default_ff_headers = {
   "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:136.0) Gecko/20100101 Firefox/136.0",
@@ -231,130 +230,6 @@ const processFeed = (feed, feeds) => {
             routeShapes[row.route_id] = [];
           })
           .on('end', function () {
-            console.log(`Generating ${feed} icons...`)
-
-            fs.mkdirSync(`./data/${feed}/icons`);
-
-            //const tramTemplate = fs.readFileSync('./templates/tram.svg', 'utf8');
-            //const trainTemplate = fs.readFileSync('./templates/train.svg', 'utf8');
-            //const busTemplate = fs.readFileSync('./templates/bus.svg', 'utf8');
-            ///const boatTemplate = fs.readFileSync('./templates/boat.svg', 'utf8');
-            const circleTemplate = fs.readFileSync('./templates/circle.svg', 'utf8');
-            const arrowTemplate = fs.readFileSync('./templates/arrow.svg', 'utf8');
-            //const boxTemplate = fs.readFileSync('./templates/box.svg', 'utf8');
-
-            let iconsRef = [];
-
-            Object.keys(routeColors).forEach((routeColor) => {
-              const routeTextColor = routeColors[routeColor].routeTextColor;
-              const types = routeColors[routeColor].types;
-
-              let actualRouteColor = routeColor === '000000' ? 'FFFFFF' : routeColor;
-              let actualRouteTextColor = routeColor === '000000' ? '000000' : routeTextColor;
-
-              /*
-              //trams
-              if (types.includes('0')) {
-                //processing template
-                const tramIcon = tramTemplate.replaceAll("FILL", `#${actualRouteColor}`).replaceAll("BORDERS", `#${actualRouteTextColor}`);
-                const tramBuffer = Buffer.from(tramIcon, 'utf8');
-
-                iconsRef.push(`${routeColor}_tram.png`);
-
-                sharp(tramBuffer)
-                  .resize(64, 64)
-                  .png()
-                  .toFile(`./data/${feed}/icons/${routeColor}_tram.png`, (err, info) => {
-                    if (err) throw err;
-                    //if (info) console.log(info);
-                    console.log(`${routeColor}_tram.png generated for ${feed}`)
-                  });
-              }
-
-              //trains
-              if (types.includes('1') || types.includes('2') || types.includes('5')) {
-                //processing template
-                const trainIcon = trainTemplate.replaceAll("FILL", `#${actualRouteColor}`).replaceAll("BORDERS", `#${actualRouteTextColor}`);
-                const trainBuffer = Buffer.from(trainIcon, 'utf8');
-
-                iconsRef.push(`${routeColor}_train.png`);
-
-                sharp(trainBuffer)
-                  .resize(64, 64)
-                  .png()
-                  .toFile(`./data/${feed}/icons/${routeColor}_train.png`, (err, info) => {
-                    if (err) throw err;
-                    //if (info) console.log(info);
-                    console.log(`${routeColor}_train.png generated for ${feed}`)
-                  });
-              }
-
-              //buses
-              if (types.includes('3')) {
-                const busIcon = busTemplate.replaceAll("FILL", `#${actualRouteColor}`).replaceAll("BORDERS", `#${actualRouteTextColor}`);
-                const busBuffer = Buffer.from(busIcon, 'utf8');
-
-                iconsRef.push(`${routeColor}_bus.png`);
-
-                sharp(busBuffer)
-                  .resize(64, 64)
-                  .png()
-                  .toFile(`./data/${feed}/icons/${routeColor}_bus.png`, (err, info) => {
-                    if (err) throw err;
-                    console.log(`${routeColor}_bus.png generated for ${feed}`)
-                  });
-              }
-
-              //ferries
-              if (types.includes('4')) {
-                const boatIcon = boatTemplate.replaceAll("FILL", `#${actualRouteColor}`).replaceAll("BORDERS", `#${actualRouteTextColor}`);
-                const boatBuffer = Buffer.from(boatIcon, 'utf8');
-
-                iconsRef.push(`${routeColor}_boat.png`);
-
-                sharp(boatBuffer)
-                  .resize(64, 64)
-                  .png()
-                  .toFile(`./data/${feed}/icons/${routeColor}_boat.png`, (err, info) => {
-                    if (err) throw err;
-                    //if (info) console.log(info);
-                  });
-              }
-              */
-
-              //arrow
-              const arrowIcon = arrowTemplate.replaceAll("FILL", `#${actualRouteColor}`).replaceAll("BORDERS", `#${actualRouteTextColor}`);
-              const arrowBuffer = Buffer.from(arrowIcon, 'utf8');
-
-              iconsRef.push(`${routeColor}_arrow.png`);
-
-              sharp(arrowBuffer)
-                .resize(120, 120)
-                .png()
-                .toFile(`./data/${feed}/icons/${routeColor}_arrow.png`, (err, info) => {
-                  if (err) throw err;
-                  console.log(`${routeColor}_arrow.png generated for ${feed}`)
-                });
-
-              //circle
-              const circleIcon = circleTemplate.replaceAll("FILL", `#${actualRouteColor}`).replaceAll("BORDERS", `#${actualRouteTextColor}`);
-              const circleBuffer = Buffer.from(circleIcon, 'utf8');
-
-              iconsRef.push(`${routeColor}_circle.png`);
-
-              sharp(circleBuffer)
-                .resize(64, 64)
-                .png()
-                .toFile(`./data/${feed}/icons/${routeColor}_circle.png`, (err, info) => {
-                  if (err) throw err;
-                  console.log(`${routeColor}_circle.png generated for ${feed}`)
-                });
-            });
-
-            const uniqueIconsRef = [...new Set(iconsRef)];
-
-            fs.writeFileSync(`./data/${feed}/icons.json`, JSON.stringify(uniqueIconsRef));
-
             console.log(`Processing ${feed} trips...`)
 
             fs.createReadStream(`${feedPath}/trips.txt`)
@@ -626,7 +501,6 @@ const processFeed = (feed, feeds) => {
 
                             console.log(`Writing ${feed} metadata to JSON...`)
                             fs.writeFileSync(`./data/${feed}/meta.json`, JSON.stringify({
-                              icons: uniqueIconsRef,
                               bbox: {
                                 minLat,
                                 maxLat,
