@@ -139,7 +139,7 @@ const feeds = {
     disabled: false
   },
   hawaii_thebus: {
-    name: "The Bus (Hawai'i)",
+    name: "The Bus (Hawaii)",
     url: "https://www.thebus.org/transitdata/production/google_transit.zip",
     headers: {},
     urlEnv: [],
@@ -155,10 +155,8 @@ const feeds = {
   },
   metra: {
     name: "Metra",
-    url: "https://gtfsapi.metrarail.com/gtfs/raw/schedule.zip",
-    headers: {
-      "Authorization": "env.metra_authorization"
-    },
+    url: "https://schedules.metrarail.com/gtfs/schedule.zip",
+    headers: {},
     urlEnv: [],
     separator: ",",
     seperatorOverrides: {
