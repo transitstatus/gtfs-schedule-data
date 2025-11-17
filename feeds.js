@@ -400,7 +400,7 @@ const feeds = {
     lineNameOverrides: {},
     trim: false,
     noSegments: true,
-    disabled: true
+    disabled: false
   },
   mnrr: {
     name: "Metro North (MTA)",
