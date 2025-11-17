@@ -210,7 +210,7 @@ const processFeed = (feed, feeds) => {
             routes[row.route_id] = {
               routeID: row.route_id,
               routeShortName: row.route_short_name,
-              routeLongName: row.route_long_name,
+              routeLongName: feeds[feed]['lineNameOverrides'][row.route_long_name] ?? row.route_long_name,
               routeType: row.route_type,
               routeColor: routeColor,
               routeTextColor: routeTextColor,

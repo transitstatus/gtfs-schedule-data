@@ -11,6 +11,7 @@ const feeds = {
       "CAE4F1": "5366c9"
     },
     textColorReplacements: {},
+    lineNameOverrides: {},
     trim: false,
     noSegments: false,
     disabled: false
@@ -25,6 +26,7 @@ const feeds = {
     mapCodeOverrides: {},
     colorReplacements: {},
     textColorReplacements: {},
+    lineNameOverrides: {},
     trim: false,
     noSegments: false,
     disabled: false
@@ -43,6 +45,7 @@ const feeds = {
     textColorReplacements: {
       //"0D0D0D": "363636"
     },
+    lineNameOverrides: {},
     trim: false,
     noSegments: false,
     disabled: false
@@ -59,6 +62,7 @@ const feeds = {
     textColorReplacements: {
       "73D700": "000000"
     },
+    lineNameOverrides: {},
     trim: false,
     noSegments: true,
     disabled: false
@@ -73,6 +77,7 @@ const feeds = {
     mapCodeOverrides: {},
     colorReplacements: {},
     textColorReplacements: {},
+    lineNameOverrides: {},
     trim: false,
     noSegments: false,
     disabled: false
@@ -90,6 +95,7 @@ const feeds = {
     mapCodeOverrides: {},
     colorReplacements: {},
     textColorReplacements: {},
+    lineNameOverrides: {},
     trim: false,
     noSegments: true,
     disabled: false
@@ -104,6 +110,7 @@ const feeds = {
     mapCodeOverrides: {},
     colorReplacements: {},
     textColorReplacements: {},
+    lineNameOverrides: {},
     trim: false,
     noSegments: true,
     disabled: false
@@ -118,6 +125,7 @@ const feeds = {
     mapCodeOverrides: {},
     colorReplacements: {},
     textColorReplacements: {},
+    lineNameOverrides: {},
     trim: false,
     noSegments: true,
     useRouteShortNameAsRouteCode: true,
@@ -134,6 +142,7 @@ const feeds = {
     mapCodeOverrides: {},
     colorReplacements: {},
     textColorReplacements: {},
+    lineNameOverrides: {},
     trim: false,
     noSegments: true,
     disabled: false
@@ -149,6 +158,7 @@ const feeds = {
     mapCodeOverrides: {},
     colorReplacements: {},
     textColorReplacements: {},
+    lineNameOverrides: {},
     trim: false,
     noSegments: true,
     disabled: false
@@ -167,6 +177,19 @@ const feeds = {
     mapCodeOverrides: {},
     colorReplacements: {},
     textColorReplacements: {},
+    lineNameOverrides: {
+      'BNSF': 'BNSF',
+      'HC': 'Heritage Corridor',
+      'MD-N': 'Milwaukee North',
+      'MD-W': 'Milwaukee West',
+      'ME': 'Metra Electric',
+      'NCS': 'North Central',
+      'RI': 'Rock Island',
+      'SWS': 'Southwest Service',
+      'UP-N': 'UP North',
+      'UP-NW': 'UP Northwest',
+      'UP-W': 'UP West'
+    },
     trim: true,
     disabled: false
   },
@@ -188,6 +211,7 @@ const feeds = {
     colorReplacements: {},
     "allShapes": false,
     textColorReplacements: {},
+    lineNameOverrides: {},
     trim: true,
     disabled: false
   },
@@ -203,6 +227,7 @@ const feeds = {
     colorReplacements: {},
     "allShapes": false,
     textColorReplacements: {},
+    lineNameOverrides: {},
     trim: true,
     disabled: false
   },
@@ -210,7 +235,7 @@ const feeds = {
     name: "WMATA Rail",
     url: "https://api.wmata.com/gtfs/rail-gtfs-static.zip",
     headers: {
-      "api_key": "env.wmata_primary",
+      "api_key": "env.WMATA_PRIMARY",
       "Cache-Control": "no-cache"
     },
     urlEnv: [],
@@ -220,6 +245,7 @@ const feeds = {
     mapCodeOverrides: {},
     colorReplacements: {},
     textColorReplacements: {},
+    lineNameOverrides: {},
     trim: true,
     disabled: false
   },
@@ -355,6 +381,7 @@ const feeds = {
     mapCodeOverrides: {},
     colorReplacements: {},
     textColorReplacements: {},
+    lineNameOverrides: {},
     trim: false,
     noSegments: false,
     disabled: false
@@ -370,6 +397,7 @@ const feeds = {
     mapCodeOverrides: {},
     colorReplacements: {},
     textColorReplacements: {},
+    lineNameOverrides: {},
     trim: false,
     noSegments: true,
     disabled: true
@@ -385,6 +413,7 @@ const feeds = {
     mapCodeOverrides: {},
     colorReplacements: {},
     textColorReplacements: {},
+    lineNameOverrides: {},
     trim: false,
     noSegments: true,
     disabled: false
@@ -398,6 +427,7 @@ const feeds = {
     seperatorOverrides: {},
     colorOverrides: {},
     textColorReplacements: {},
+    lineNameOverrides: {},
     mapCodeOverrides: {},
     colorReplacements: {},
     trim: false,
@@ -415,6 +445,7 @@ const feeds = {
     mapCodeOverrides: {},
     colorReplacements: {},
     textColorReplacements: {},
+    lineNameOverrides: {},
     trim: false,
     noSegments: true,
     disabled: false
@@ -430,6 +461,7 @@ const feeds = {
     mapCodeOverrides: {},
     colorReplacements: {},
     textColorReplacements: {},
+    lineNameOverrides: {},
     trim: false,
     noSegments: true,
     disabled: false
@@ -445,6 +477,7 @@ const feeds = {
     mapCodeOverrides: {},
     colorReplacements: {},
     textColorReplacements: {},
+    lineNameOverrides: {},
     trim: false,
     noSegments: true,
     disabled: false
@@ -460,6 +493,7 @@ const feeds = {
     mapCodeOverrides: {},
     colorReplacements: {},
     textColorReplacements: {},
+    lineNameOverrides: {},
     trim: false,
     noSegments: true,
     disabled: false
@@ -475,6 +509,7 @@ const feeds = {
     mapCodeOverrides: {},
     colorReplacements: {},
     textColorReplacements: {},
+    lineNameOverrides: {},
     trim: false,
     noSegments: true,
     disabled: false
@@ -501,6 +536,7 @@ const feeds = {
       "565a5c": "949ca1"
     },
     textColorReplacements: {},
+    lineNameOverrides: {},
     trim: false,
     noSegments: true, // change to true at some point
     disabled: false
@@ -521,6 +557,7 @@ const feeds = {
     mapCodeOverrides: {},
     colorReplacements: {},
     textColorReplacements: {},
+    lineNameOverrides: {},
     trim: false,
     noSegments: false,
     disabled: false,
@@ -537,6 +574,7 @@ const feeds = {
     mapCodeOverrides: {},
     colorReplacements: {},
     textColorReplacements: {},
+    lineNameOverrides: {},
     trim: true,
     noSegments: true,
     disabled: true
@@ -552,6 +590,7 @@ const feeds = {
     mapCodeOverrides: {},
     colorReplacements: {},
     textColorReplacements: {},
+    lineNameOverrides: {},
     trim: true,
     noSegments: true,
     disabled: true
@@ -567,6 +606,7 @@ const feeds = {
     mapCodeOverrides: {},
     colorReplacements: {},
     textColorReplacements: {},
+    lineNameOverrides: {},
     trim: true,
     noSegments: true,
     disabled: true
@@ -582,6 +622,7 @@ const feeds = {
     mapCodeOverrides: {},
     colorReplacements: {},
     textColorReplacements: {},
+    lineNameOverrides: {},
     trim: false,
     noSegments: true,
     disabled: false
@@ -597,6 +638,7 @@ const feeds = {
     mapCodeOverrides: {},
     colorReplacements: {},
     textColorReplacements: {},
+    lineNameOverrides: {},
     trim: false,
     noSegments: true,
     disabled: false
@@ -612,6 +654,7 @@ const feeds = {
     mapCodeOverrides: {},
     colorReplacements: {},
     textColorReplacements: {},
+    lineNameOverrides: {},
     trim: false,
     noSegments: true,
     disabled: false
@@ -627,6 +670,7 @@ const feeds = {
     mapCodeOverrides: {},
     colorReplacements: {},
     textColorReplacements: {},
+    lineNameOverrides: {},
     trim: false,
     noSegments: true,
     disabled: false
@@ -642,6 +686,7 @@ const feeds = {
     mapCodeOverrides: {},
     colorReplacements: {},
     textColorReplacements: {},
+    lineNameOverrides: {},
     trim: false,
     noSegments: true,
     disabled: false
@@ -657,6 +702,7 @@ const feeds = {
     mapCodeOverrides: {},
     colorReplacements: {},
     textColorReplacements: {},
+    lineNameOverrides: {},
     trim: false,
     noSegments: true,
     disabled: false
@@ -672,6 +718,7 @@ const feeds = {
     mapCodeOverrides: {},
     colorReplacements: {},
     textColorReplacements: {},
+    lineNameOverrides: {},
     trim: false,
     noSegments: true,
     disabled: false
@@ -687,6 +734,7 @@ const feeds = {
     mapCodeOverrides: {},
     colorReplacements: {},
     textColorReplacements: {},
+    lineNameOverrides: {},
     trim: false,
     noSegments: true,
     disabled: false
@@ -702,6 +750,7 @@ const feeds = {
     mapCodeOverrides: {},
     colorReplacements: {},
     textColorReplacements: {},
+    lineNameOverrides: {},
     trim: false,
     noSegments: true,
     disabled: false
@@ -717,6 +766,7 @@ const feeds = {
     mapCodeOverrides: {},
     colorReplacements: {},
     textColorReplacements: {},
+    lineNameOverrides: {},
     trim: false,
     noSegments: true,
     disabled: false
