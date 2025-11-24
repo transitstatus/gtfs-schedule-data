@@ -386,6 +386,22 @@ const feeds = {
     noSegments: false,
     disabled: false
   },
+  mbta: {
+    name: "MBTA",
+    url: "https://cdn.mbta.com/MBTA_GTFS.zip",
+    headers: {},
+    urlEnv: [],
+    separator: ",",
+    seperatorOverrides: {},
+    colorOverrides: {},
+    mapCodeOverrides: {},
+    colorReplacements: {},
+    textColorReplacements: {},
+    lineNameOverrides: {},
+    trim: false,
+    noSegments: true,
+    disabled: false
+  },
   lirr: {
     name: "Long Island Railroad (MTA)",
     url: "http://web.mta.info/developers/data/lirr/google_transit.zip",
