@@ -577,7 +577,7 @@ const feeds = {
     trim: false,
     noSegments: false,
     disabled: false,
-    //"subfolder": "new schedule/"
+    "subfolder": "google_transit/"
   },
   casco_bay_lines: {
     name: "Casco Bay Lines",
