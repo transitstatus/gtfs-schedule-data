@@ -576,7 +576,7 @@ const feeds = {
     lineNameOverrides: {},
     trim: false,
     noSegments: false,
-    disabled: false,
+    disabled: true,
     "subfolder": "google_transit/"
   },
   casco_bay_lines: {
