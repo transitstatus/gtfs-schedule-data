@@ -16,7 +16,7 @@ const feeds = {
     noSegments: false,
     disabled: false
   },
-  viarail: {
+  via_rail: {
     url: "https://www.viarail.ca/sites/all/files/gtfs/viarail.zip",
     headers: {},
     urlEnv: [],
