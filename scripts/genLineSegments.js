@@ -142,8 +142,15 @@ Object.keys(feeds).forEach((feed) => {
                   console.log(`Setting up line segments for ${feed}`);
 
                   const tripIDKeys = Object.keys(trips);
-                  for (let tripIDKey = 0; tripIDKey < tripIDKeys.length; tripIDKey++) {
-                    const tripID = tripIDKeys[tripIDKey];
+                  const sortedTripIDKeys = tripIDKeys.sort((a, b) => {
+                    const aNumber = shapes[trips[a].shapeID].length;
+                    const bNumber = shapes[trips[b].shapeID].length;
+
+                    return bNumber - aNumber;
+                  });
+
+                  for (let tripIDKey = 0; tripIDKey < sortedTripIDKeys.length; tripIDKey++) {
+                    const tripID = sortedTripIDKeys[tripIDKey];
 
                     //if (trips[tripID].routeID != 'Org') continue; // only orange REMOVEME
 
