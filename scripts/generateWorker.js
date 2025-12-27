@@ -390,7 +390,7 @@ const processFeed = (feed, feeds) => {
                     trim: feeds[feed]['trim'],
                   }))
                   .on('data', function (row) {
-                    parentStations[row.stop_code ?? row.stop_id] = row.parent_station;
+                    parentStations[row.stop_id] = row.parent_station;
                   })
                   .on('end', function () {
                     //console.log(parentStations)
@@ -407,7 +407,7 @@ const processFeed = (feed, feeds) => {
                       }))
                       .on('data', function (row) {
                         const routeID = tripsDict[row.trip_id];
-                        const parentStation = parentStations[row.stop_code ?? row.stop_id];
+                        const parentStation = parentStations[row.stop_id];
 
                         if (row.stop_id == 30068) {
                           //console.log(row.stop_id)
@@ -418,8 +418,8 @@ const processFeed = (feed, feeds) => {
 
                         if (!routes[routeID]) return; //thanks NJT
 
-                        if (!parentStation && !routes[routeID]['routeStations'].includes(row.stop_code ?? row.stop_id)) {
-                          routes[routeID]['routeStations'].push(row.stop_code ?? row.stop_id);
+                        if (!parentStation && !routes[routeID]['routeStations'].includes(row.stop_id)) {
+                          routes[routeID]['routeStations'].push(row.stop_id);
                         }
 
                         if (parentStation && !routes[routeID]['routeStations'].includes(parentStation)) {
@@ -438,7 +438,7 @@ const processFeed = (feed, feeds) => {
                           }
                         }
 
-                        tripEnds[row.trip_id] = row.stop_code ?? row.stop_id;
+                        tripEnds[row.trip_id] = row.stop_id;
                       })
                       .on('end', function () {
 
@@ -453,8 +453,8 @@ const processFeed = (feed, feeds) => {
                             trim: feeds[feed]['trim'],
                           }))
                           .on('data', function (row) {
-                            stops[row.stop_code ?? row.stop_id] = {
-                              stopID: row.stop_code ?? row.stop_id,
+                            stops[row.stop_id] = {
+                              stopID: row.stop_id,
                               stopName: row.stop_name,
                               stopLat: Number(Number(row.stop_lat).toFixed(5)),
                               stopLon: Number(Number(row.stop_lon).toFixed(5)),

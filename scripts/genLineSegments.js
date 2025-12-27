@@ -105,7 +105,7 @@ Object.keys(feeds).forEach((feed) => {
               trips[row.trip_id].stopTimes.push({
                 arrivalTime: row.arrival_time,
                 departureTime: row.departure_time,
-                stopID: row.stop_code ?? row.stop_id,
+                stopID: row.stop_id,
                 stopSequence: row.stop_sequence,
                 stopDistanceTraveled: row.shape_distance_traveled,
               })
@@ -130,7 +130,7 @@ Object.keys(feeds).forEach((feed) => {
                   trim: feeds[feed]['trim'],
                 }))
                 .on('data', (row) => {
-                  stops[row.stop_code ?? row.stop_id] = {
+                  stops[row.stop_id] = {
                     name: row.stop_name,
                     lat: Number(row.stop_lat),
                     lon: Number(row.stop_lon),
@@ -184,7 +184,7 @@ Object.keys(feeds).forEach((feed) => {
                       const pointsSurroundingStop = [firstClosestPoint, secondClosestPoint].sort((a, b) => a[2] - b[2]);
                       const distanceBetweenPoints = turf.distance(pointsSurroundingStop[0].slice(0, 2), pointsSurroundingStop[1].slice(0, 2));
                       const percentAlongDistanceBetweenPointsIncludingMidPoint = pointsSurroundingStop[0][3] / (pointsSurroundingStop[0][3] + pointsSurroundingStop[1][3]);
-                      
+
                       //console.log(pointsSurroundingStop[0][0], pointsSurroundingStop[0][1], pointsSurroundingStop[1][0], pointsSurroundingStop[1][1], percentAlongDistanceBetweenPointsIncludingMidPoint);
                       let lineMidPoint = calculateLineMidpointWithPercent(pointsSurroundingStop[0][0], pointsSurroundingStop[0][1], pointsSurroundingStop[1][0], pointsSurroundingStop[1][1], percentAlongDistanceBetweenPointsIncludingMidPoint);
 
@@ -222,7 +222,7 @@ Object.keys(feeds).forEach((feed) => {
 
                       const startStopPointMeta = modifiedTripPoints[i];
                       const endStopPointMeta = modifiedTripPoints[i + 1];
-                      
+
                       //getting sub-line for stations
                       const slicedShape = turf.lineString([
                         startStopPointMeta[1],
