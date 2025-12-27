@@ -105,7 +105,7 @@ Object.keys(feeds).forEach((feed) => {
               trips[row.trip_id].stopTimes.push({
                 arrivalTime: row.arrival_time,
                 departureTime: row.departure_time,
-                stopID: row.stop_id,
+                stopID: row.stop_code ?? row.stop_id,
                 stopSequence: row.stop_sequence,
                 stopDistanceTraveled: row.shape_distance_traveled,
               })
@@ -130,7 +130,7 @@ Object.keys(feeds).forEach((feed) => {
                   trim: feeds[feed]['trim'],
                 }))
                 .on('data', (row) => {
-                  stops[row.stop_id] = {
+                  stops[row.stop_code ?? row.stop_id] = {
                     name: row.stop_name,
                     lat: Number(row.stop_lat),
                     lon: Number(row.stop_lon),
