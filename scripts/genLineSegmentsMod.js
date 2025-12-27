@@ -26,7 +26,7 @@ Object.keys(feeds).forEach((feed) => {
     feedPath = `./csv/${feed}/${feeds[feed].subfolder}`
   }
 
-  console.log(`Ingesting shapes for ${feed}`);
+  console.time(`Ingesting shapes for ${feed}`);
 
   let shapes = {};
   let trips = {};
@@ -51,15 +51,15 @@ Object.keys(feeds).forEach((feed) => {
       shapes[row.shape_id].push([row.shape_pt_lon, row.shape_pt_lat, row.shape_pt_sequence]);
     })
     .on('end', () => {
-      console.log(`Done ingesting shapes for ${feed}`);
-      console.log(`Sorting shapes for ${feed}`);
+      console.timeEnd(`Ingesting shapes for ${feed}`);
+      console.time(`Sorting shapes for ${feed}`);
 
       Object.keys(shapes).forEach((shapeID) => {
         shapes[shapeID] = shapes[shapeID].sort((a, b) => a[2] - b[2]).map((n) => [Number(n[0]), Number(n[1])]);
       })
 
-      console.log(`Done sorting shapes for ${feed}`);
-      console.log(`Ingesting trips for ${feed}`);
+      console.timeEnd(`Sorting shapes for ${feed}`);
+      console.time(`Ingesting trips for ${feed}`);
 
       fs.createReadStream(`${feedPath}/trips.txt`)
         .pipe(parse({
@@ -70,6 +70,9 @@ Object.keys(feeds).forEach((feed) => {
           trim: feeds[feed]['trim'],
         }))
         .on('data', (row) => {
+          //if (row.route_id != 'Pink') return; //REMOVEME
+          //if (row.trip_id != '85258112294') return; //REMOVEME
+
           if (!row.shape_id && feed === 'nyct_subway') {
             row.shape_id = row.trip_id.split('_').reverse()[0];
             if (!shapes[row.shape_id]) {
@@ -91,7 +94,8 @@ Object.keys(feeds).forEach((feed) => {
           }
         })
         .on('end', () => {
-          console.log(`Ingesting stop times for ${feed}`)
+          console.timeEnd(`Ingesting trips for ${feed}`);
+          console.time(`Ingesting stop times for ${feed}`)
           fs.createReadStream(`${feedPath}/stop_times.txt`)
             .pipe(parse({
               delimiter: feeds[feed]['seperatorOverrides'].stop_times ?? feeds[feed]['separator'],
@@ -111,15 +115,15 @@ Object.keys(feeds).forEach((feed) => {
               })
             })
             .on('end', () => {
-              console.log(`Done ingesting trips for ${feed}`);
-              console.log(`Sorting stop times for ${feed}`);
+              console.timeEnd(`Ingesting stop times for ${feed}`)
+              console.time(`Sorting stop times for ${feed}`);
 
               Object.keys(trips).forEach((tripID) => {
                 trips[tripID].stopTimes = trips[tripID].stopTimes.sort((a, b) => a.stopSequence - b.stopSequence)
               })
 
-              console.log(`Done sorting stop times for ${feed}`);
-              console.log(`Ingesting stops for ${feed}`);
+              console.timeEnd(`Sorting stop times for ${feed}`);
+              console.time(`Ingesting stops for ${feed}`);
 
               fs.createReadStream(`${feedPath}/stops.txt`)
                 .pipe(parse({
@@ -138,18 +142,19 @@ Object.keys(feeds).forEach((feed) => {
                   }
                 })
                 .on('end', () => {
-                  console.log(`Done ingesting stops for ${feed}`);
-                  console.log(`Setting up line segments for ${feed}`);
+                  console.timeEnd(`Ingesting stops for ${feed}`);
+                  console.time(`Setting up line segments for ${feed}`);
 
                   const tripIDKeys = Object.keys(trips);
                   for (let tripIDKey = 0; tripIDKey < tripIDKeys.length; tripIDKey++) {
                     const tripID = tripIDKeys[tripIDKey];
 
-                    //if (trips[tripID].routeID != 'Org') continue; // only orange REMOVEME
+                    //if (trips[tripID].routeID != 'Pink') continue; // only orange REMOVEME
 
                     let tripShape = turf.lineString(shapes[trips[tripID].shapeID]).geometry.coordinates.map((point, i) => [...point, i]);
 
                     const modifiedTripPoints = trips[tripID].stopTimes.map((startStopTime, i, arr) => {
+                      //if (i > 1) return;
                       const stopID = stops[startStopTime.stopID].parent ?? startStopTime.stopID;
                       const stopData = stops[stopID];
                       const stopPoint = [stopData.lon, stopData.lat];
@@ -157,7 +162,8 @@ Object.keys(feeds).forEach((feed) => {
                       let firstClosestPoint = [0, 0, -1, 9999999];
                       let secondClosestPoint = [0, 0, -1, 9999999];
 
-                      for (let pointsIndex = 0; pointsIndex < tripShape.length; pointsIndex++) {
+                      let pointsIndex;
+                      for (pointsIndex = 0; pointsIndex < tripShape.length; pointsIndex++) {
                         const point = tripShape[pointsIndex];
                         const pointDistance = turf.distance(point, stopPoint);
 
@@ -168,16 +174,21 @@ Object.keys(feeds).forEach((feed) => {
                             [firstClosestPoint, secondClosestPoint] = [secondClosestPoint, firstClosestPoint];
                           };
                         } else { // we have passed the point and can stop
-                          // first we should modify the shape array
-                          tripShape.splice(0, pointsIndex - 2); // assuming the last two points are firstClosestPoint and secondClosestPoint, which they probably are
-                          break;
+                          if (pointDistance > secondClosestPoint[3] + 0.5) {// allow for variations in shape size up to 500 meters
+                            break;
+                          }
                         };
                       };
+
+                      // modifying the shape array so the points right next to this stop can be yeeted
+                      tripShape.splice(0, 1); // this keeps on causing issues, but i think just taking 1 point away is a pretty foolproof method tbh 
+
+                      //console.log(firstClosestPoint, secondClosestPoint, tripShape);
 
                       const pointsSurroundingStop = [firstClosestPoint, secondClosestPoint].sort((a, b) => a[2] - b[2]);
                       const distanceBetweenPoints = turf.distance(pointsSurroundingStop[0].slice(0, 2), pointsSurroundingStop[1].slice(0, 2));
                       const percentAlongDistanceBetweenPointsIncludingMidPoint = pointsSurroundingStop[0][3] / (pointsSurroundingStop[0][3] + pointsSurroundingStop[1][3]);
-                      
+
                       //console.log(pointsSurroundingStop[0][0], pointsSurroundingStop[0][1], pointsSurroundingStop[1][0], pointsSurroundingStop[1][1], percentAlongDistanceBetweenPointsIncludingMidPoint);
                       let lineMidPoint = calculateLineMidpointWithPercent(pointsSurroundingStop[0][0], pointsSurroundingStop[0][1], pointsSurroundingStop[1][0], pointsSurroundingStop[1][1], percentAlongDistanceBetweenPointsIncludingMidPoint);
 
@@ -215,7 +226,7 @@ Object.keys(feeds).forEach((feed) => {
 
                       const startStopPointMeta = modifiedTripPoints[i];
                       const endStopPointMeta = modifiedTripPoints[i + 1];
-                      
+
                       //getting sub-line for stations
                       const slicedShape = turf.lineString([
                         startStopPointMeta[1],
@@ -237,16 +248,21 @@ Object.keys(feeds).forEach((feed) => {
 
                       const timeDiff = (hoursDiff * 60 * 60) + (minutesDiff * 60) + secondsDiff;
 
+                      //if (endStopID == '1160') console.log(JSON.stringify(slicedShape));
+
                       segments[`${startStopID}_${endStopID}`] = {
                         seconds: timeDiff,
                         meters: slicedShapeLength,
                         shape: slicedShape.geometry.coordinates,
+                        routeID: trips[tripID].routeID,
+                        tripID: tripID,
                       }
                     });
 
                     //break; //only once REMOVEME
                   }
 
+                  console.timeEnd(`Setting up line segments for ${feed}`);
                   console.log(`Line segments setup for ${feed}, saving to disk`)
 
                   fs.writeFileSync(`./data/${feed}/segments.json`, JSON.stringify({
