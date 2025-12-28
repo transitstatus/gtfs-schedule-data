@@ -157,8 +157,8 @@ Object.keys(feeds).forEach((feed) => {
                     let tripShape = turf.bezierSpline(
                       turf.lineString(shapes[trips[tripID].shapeID]),
                       {
-                        resolution: 50000,
-                        sharpness: 0.85,
+                        resolution: 100000,
+                        sharpness: 0.8,
                       }
                     ).geometry.coordinates.map((point, i) => [...point, i]);
 
