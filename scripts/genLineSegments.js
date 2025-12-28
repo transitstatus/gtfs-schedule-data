@@ -9,6 +9,39 @@ const calculateLineMidpointWithPercent = (lon1, lat1, lon2, lat2, per = 0.5) => 
 // dot env
 require('dotenv').config();
 
+const addPointsBetweenPoints = (points, iterations) => {
+  let finalPoints = [];
+
+  for (let i = 0; i < points.length - 1; i++) {
+    const thisPoint = points[i];
+    const nextPoint = points[i + 1];
+
+    const distanceBetweenPointsIsh = Math.sqrt(
+      Math.pow((nextPoint[0] - thisPoint[0]), 2) +
+      Math.pow((nextPoint[1] - thisPoint[1]), 2)
+    );
+
+    let thisNewPoints = [thisPoint];
+
+    for (let j = 0; j < distanceBetweenPointsIsh; j+= 0.01) {
+      const tValue = j / distanceBetweenPointsIsh;
+      const interprolatedPoint = [
+        thisPoint[0] + (nextPoint[0] - thisPoint[0]) * tValue,
+        thisPoint[1] + (nextPoint[1] - thisPoint[1]) * tValue,
+      ];
+
+      thisNewPoints.push(interprolatedPoint);
+    };
+
+    if (i == points.length - 2) thisNewPoints.push(nextPoint); // add last point to last segment
+
+    finalPoints.push(...thisNewPoints);
+  }
+
+  if (iterations > 1) return addPointsBetweenPoints(finalPoints, iterations - 1);
+  return finalPoints;
+};
+
 Object.keys(feeds).forEach((feed) => {
   //if (feed !== 'bart') return;
   //if (feed !== 'metra') return;
@@ -154,15 +187,11 @@ Object.keys(feeds).forEach((feed) => {
 
                     //if (trips[tripID].routeID != 'Org') continue; // only orange REMOVEME
 
-                    let tripShape = turf.bezierSpline(
-                      turf.lineString(shapes[trips[tripID].shapeID]),
-                      {
-                        resolution: 100000,
-                        sharpness: 0.8,
-                      }
-                    ).geometry.coordinates.map((point, i) => [...point, i]);
+                    let tripShape = addPointsBetweenPoints(
+                      turf.lineString(shapes[trips[tripID].shapeID]).geometry.coordinates
+                    ).map((point, i) => [...point, i]);
 
-                    //fs.writeFileSync('./out.json', JSON.stringify(turf.lineString(tripShape)), {encoding: 'utf8'})
+                    //fs.writeFileSync('./out.json', JSON.stringify(turf.lineString(tripShape)), { encoding: 'utf8' })
 
                     const modifiedTripPoints = trips[tripID].stopTimes.map((startStopTime, i, arr) => {
                       const stopID = stops[startStopTime.stopID].parent ?? startStopTime.stopID;
