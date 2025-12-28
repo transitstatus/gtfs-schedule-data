@@ -23,7 +23,7 @@ const addPointsBetweenPoints = (points, iterations) => {
 
     let thisNewPoints = [thisPoint];
 
-    for (let j = 0; j < distanceBetweenPointsIsh; j += 0.01) {
+    for (let j = 0; j < distanceBetweenPointsIsh; j+= 0.01) {
       const tValue = j / distanceBetweenPointsIsh;
       const interprolatedPoint = [
         thisPoint[0] + (nextPoint[0] - thisPoint[0]) * tValue,
@@ -187,9 +187,58 @@ Object.keys(feeds).forEach((feed) => {
 
                     //if (trips[tripID].routeID != 'Org') continue; // only orange REMOVEME
 
-                    const tripShape = turf.lineString(addPointsBetweenPoints(shapes[trips[tripID].shapeID]));
+                    let tripShape = addPointsBetweenPoints(
+                      turf.lineString(shapes[trips[tripID].shapeID]).geometry.coordinates
+                    ).map((point, i) => [...point, i]);
 
                     //fs.writeFileSync('./out.json', JSON.stringify(turf.lineString(tripShape)), { encoding: 'utf8' })
+
+                    const modifiedTripPoints = trips[tripID].stopTimes.map((startStopTime, i, arr) => {
+                      const stopID = stops[startStopTime.stopID].parent ?? startStopTime.stopID;
+                      const stopData = stops[stopID];
+                      const stopPoint = [stopData.lon, stopData.lat];
+
+                      let firstClosestPoint = [0, 0, -1, 9999999];
+                      let secondClosestPoint = [0, 0, -1, 9999999];
+
+                      for (let pointsIndex = 0; pointsIndex < tripShape.length; pointsIndex++) {
+                        const point = tripShape[pointsIndex];
+                        const pointDistance = turf.distance(point, stopPoint);
+
+                        if (pointDistance < secondClosestPoint[3]) { // first we see if we're closer than the 2nd
+                          secondClosestPoint = [...point, pointDistance];
+
+                          if (pointDistance < firstClosestPoint[3]) { // if we're also closer than the 1st, we swap em
+                            [firstClosestPoint, secondClosestPoint] = [secondClosestPoint, firstClosestPoint];
+                          };
+                        } else { // we have passed the point and can stop
+                          // first we should modify the shape array
+                          tripShape.splice(0, pointsIndex - 2); // assuming the last two points are firstClosestPoint and secondClosestPoint, which they probably are
+                          break;
+                        };
+                      };
+
+                      const pointsSurroundingStop = [firstClosestPoint, secondClosestPoint].sort((a, b) => a[2] - b[2]);
+                      const distanceBetweenPoints = turf.distance(pointsSurroundingStop[0].slice(0, 2), pointsSurroundingStop[1].slice(0, 2));
+                      const percentAlongDistanceBetweenPointsIncludingMidPoint = pointsSurroundingStop[0][3] / (pointsSurroundingStop[0][3] + pointsSurroundingStop[1][3]);
+
+                      //console.log(pointsSurroundingStop[0][0], pointsSurroundingStop[0][1], pointsSurroundingStop[1][0], pointsSurroundingStop[1][1], percentAlongDistanceBetweenPointsIncludingMidPoint);
+                      let lineMidPoint = calculateLineMidpointWithPercent(pointsSurroundingStop[0][0], pointsSurroundingStop[0][1], pointsSurroundingStop[1][0], pointsSurroundingStop[1][1], percentAlongDistanceBetweenPointsIncludingMidPoint);
+
+                      // stuff thats only going to show up at the beginning and the end, and isnt really a problem, but is best to avoid
+                      // this is when the stop is actually before or after both of the points, and not between them, so here we're
+                      // just snapping the point to the closer one in the even that happens
+                      if (distanceBetweenPoints < pointsSurroundingStop[1][3]) lineMidPoint = pointsSurroundingStop[0].slice(0, 2);
+                      if (distanceBetweenPoints < pointsSurroundingStop[0][3]) lineMidPoint = pointsSurroundingStop[1].slice(0, 2);
+
+                      return [
+                        pointsSurroundingStop[0][2],
+                        lineMidPoint,
+                        pointsSurroundingStop[1][2],
+                      ]
+                    });
+
+                    tripShape = turf.lineString(shapes[trips[tripID].shapeID]).geometry.coordinates;
 
                     trips[tripID].stopTimes.forEach((startStopTime, i, arr) => {
                       if (i === arr.length - 1) return; //as there is no i + 1 element
@@ -197,37 +246,26 @@ Object.keys(feeds).forEach((feed) => {
                       // i + 1 element
                       const endStopTime = arr[i + 1];
 
-                      // stop data
-                      const startStopData = stops[startStopTime.stopID];
-                      const endStopData = stops[endStopTime.stopID];
-
                       //getting parent stations
-                      const startStopID = startStopData.parent ?? startStopTime.stopID;
-                      const endStopID = endStopData.parent ?? endStopTime.stopID;
+                      const startStopID = stops[startStopTime.stopID].parent ?? startStopTime.stopID;
+                      const endStopID = stops[endStopTime.stopID].parent ?? endStopTime.stopID;
                       const additionalStopID = arr[i + 2] ? (stops[arr[i + 2].stopID].parent ?? arr[i + 2].stopID) : 'undefined';
 
                       //setting up the key dict
                       segmentKeyDict[`${trips[tripID].routeID}_${endStopID}_${additionalStopID}`] = `${startStopID}_${endStopID}`;
 
                       //dont redo work already done
-                      //if (segments[`${startStopID}_${endStopID}`]) return;
-                      if (segments[`${startStopID}_${endStopID}`] && segments[`${startStopID}_${endStopID}`].meters > 0) return;
+                      if (segments[`${startStopID}_${endStopID}`]) return;
 
-                      // points
-                      const startStopPoint = [startStopData.lon, startStopData.lat];
-                      const endStopPoint = [endStopData.lon, endStopData.lat];
-
-                      const startStopNearestPoint = turf.nearestPointOnLine(tripShape, startStopPoint);
-                      const endStopNearestPoint = turf.nearestPointOnLine(tripShape, endStopPoint);
-
-                      //console.log(startStopNearestPoint, endStopNearestPoint)
+                      const startStopPointMeta = modifiedTripPoints[i];
+                      const endStopPointMeta = modifiedTripPoints[i + 1];
 
                       //getting sub-line for stations
-                      const slicedShapeRaw = tripShape.geometry.coordinates.slice(startStopNearestPoint.properties.index, endStopNearestPoint.properties.index + 1);
-
-                      //console.log(feedPath, startStopID, endStopID, slicedShapeRaw)
-
-                      const slicedShape = turf.lineString(slicedShapeRaw.length > 1 ? slicedShapeRaw : [startStopPoint, endStopPoint]);
+                      const slicedShape = turf.lineString([
+                        startStopPointMeta[1],
+                        ...tripShape.slice(startStopPointMeta[2], endStopPointMeta[0] + 1),
+                        endStopPointMeta[1],
+                      ]);
 
                       //console.log(startStopPointMeta, endStopPointMeta);
 
