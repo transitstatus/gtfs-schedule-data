@@ -13,7 +13,7 @@ Object.keys(feeds).forEach((feed) => {
   //if (feed !== 'bart') return;
   //if (feed !== 'metra') return;
   //if (feed !== 'southshore') return;
-  //if (feed !== 'cta') return;
+  //if (feed !== 'amtrak') return;
 
   if (feeds[feed].disabled === true) return;
   if (feeds[feed].noSegments === true) return;
@@ -154,7 +154,15 @@ Object.keys(feeds).forEach((feed) => {
 
                     //if (trips[tripID].routeID != 'Org') continue; // only orange REMOVEME
 
-                    let tripShape = turf.lineString(shapes[trips[tripID].shapeID]).geometry.coordinates.map((point, i) => [...point, i]);
+                    let tripShape = turf.bezierSpline(
+                      turf.lineString(shapes[trips[tripID].shapeID]),
+                      {
+                        resolution: 25000,
+                        sharpness: 0.85,
+                      }
+                    ).geometry.coordinates.map((point, i) => [...point, i]);
+
+                    //fs.writeFileSync('./out.json', JSON.stringify(turf.lineString(tripShape)), {encoding: 'utf8'})
 
                     const modifiedTripPoints = trips[tripID].stopTimes.map((startStopTime, i, arr) => {
                       const stopID = stops[startStopTime.stopID].parent ?? startStopTime.stopID;
