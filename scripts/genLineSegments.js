@@ -46,7 +46,7 @@ Object.keys(feeds).forEach((feed) => {
   //if (feed !== 'bart') return;
   //if (feed !== 'metra') return;
   //if (feed !== 'southshore') return;
-  //if (feed !== 'amtrak') return;
+  if (feed !== 'amtrak') return;
 
   if (feeds[feed].disabled === true) return;
   if (feeds[feed].noSegments === true) return;
@@ -103,7 +103,7 @@ Object.keys(feeds).forEach((feed) => {
           trim: feeds[feed]['trim'],
         }))
         .on('data', (row) => {
-          if (!row.shape_id && feed === 'nyct_subway') {
+          /*if (!row.shape_id && feed === 'nyct_subway') {
             row.shape_id = row.trip_id.split('_').reverse()[0];
             if (!shapes[row.shape_id]) {
               const custom_nyct_subway_shape_overrides = {
@@ -115,11 +115,11 @@ Object.keys(feeds).forEach((feed) => {
 
               if (!row.shape_id) return; // these are lost causes tbh
             }
-          } else if (!row.shape_id) return;
+          }*/
 
           trips[row.trip_id] = {
             routeID: row.route_id,
-            shapeID: row.shape_id,
+            shapeID: row.shape_id ?? null,
             stopTimes: [],
           }
         })
@@ -176,6 +176,10 @@ Object.keys(feeds).forEach((feed) => {
 
                   const tripIDKeys = Object.keys(trips);
                   const sortedTripIDKeys = tripIDKeys.sort((a, b) => {
+                    if (!trips[a].shapeID && !trips[b].shapeID) return 0;
+                    if (!trips[a].shapeID) return 1;
+                    if (!trips[b].shapeID) return -1;
+
                     const aNumber = shapes[trips[a].shapeID].length;
                     const bNumber = shapes[trips[b].shapeID].length;
 
@@ -187,7 +191,13 @@ Object.keys(feeds).forEach((feed) => {
 
                     //if (trips[tripID].routeID != 'Org') continue; // only orange REMOVEME
 
-                    const tripShape = turf.lineString(addPointsBetweenPoints(shapes[trips[tripID].shapeID]));
+                    const tripShape = trips[tripID].shapeID ?
+                      turf.lineString(addPointsBetweenPoints(shapes[trips[tripID].shapeID])) :
+                      turf.lineString(trips[tripID].stopTimes.map((stop) => [
+                        stops[stop.stopID].lon,
+                        stops[stop.stopID].lat,
+                      ]))
+                    ;
 
                     //fs.writeFileSync('./out.json', JSON.stringify(turf.lineString(tripShape)), { encoding: 'utf8' })
 
