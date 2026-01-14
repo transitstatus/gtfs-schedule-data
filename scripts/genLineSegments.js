@@ -46,7 +46,7 @@ Object.keys(feeds).forEach((feed) => {
   //if (feed !== 'bart') return;
   //if (feed !== 'metra') return;
   //if (feed !== 'southshore') return;
-  if (feed !== 'amtrak') return;
+  //if (feed !== 'amtrak') return;
 
   if (feeds[feed].disabled === true) return;
   if (feeds[feed].noSegments === true) return;
@@ -196,8 +196,7 @@ Object.keys(feeds).forEach((feed) => {
                       turf.lineString(trips[tripID].stopTimes.map((stop) => [
                         stops[stop.stopID].lon,
                         stops[stop.stopID].lat,
-                      ]))
-                    ;
+                      ]));
 
                     //fs.writeFileSync('./out.json', JSON.stringify(turf.lineString(tripShape)), { encoding: 'utf8' })
 
