@@ -50,6 +50,21 @@ const feeds = {
     noSegments: false,
     disabled: false
   },
+  metrolink_la: {
+    url: "https://metrolinktrains.com/globalassets/about/gtfs/gtfs.zip",
+    headers: {},
+    urlEnv: [],
+    separator: ",",
+    seperatorOverrides: {},
+    colorOverrides: {},
+    mapCodeOverrides: {},
+    colorReplacements: {},
+    textColorReplacements: {},
+    lineNameOverrides: {},
+    trim: false,
+    noSegments: false,
+    disabled: false
+  },
   flixbus_us: {
     url: "https://gtfs.gis.flix.tech/gtfs_generic_us.zip",
     headers: {},
