@@ -8,13 +8,43 @@ const feeds = {
     colorOverrides: {},
     mapCodeOverrides: {},
     colorReplacements: {
-      "CAE4F1": "5366c9"
+      CAE4F1: "5366c9",
     },
     textColorReplacements: {},
     lineNameOverrides: {},
     trim: false,
     noSegments: false,
-    disabled: false
+    disabled: false,
+  },
+  ctrail_hartford: {
+    url: "https://ctrides.com/hlgtfs.zip",
+    headers: {},
+    urlEnv: [],
+    separator: ",",
+    seperatorOverrides: {},
+    colorOverrides: {},
+    mapCodeOverrides: {},
+    colorReplacements: {},
+    textColorReplacements: {},
+    lineNameOverrides: {},
+    trim: false,
+    noSegments: false,
+    disabled: false,
+  },
+  cttransit: {
+    url: "https://www.cttransit.com/sites/default/files/gtfs/googlect_transit.zip",
+    headers: {},
+    urlEnv: [],
+    separator: ",",
+    seperatorOverrides: {},
+    colorOverrides: {},
+    mapCodeOverrides: {},
+    colorReplacements: {},
+    textColorReplacements: {},
+    lineNameOverrides: {},
+    trim: false,
+    noSegments: false,
+    disabled: false,
   },
   via_rail: {
     url: "https://www.viarail.ca/sites/all/files/gtfs/viarail.zip",
@@ -29,7 +59,7 @@ const feeds = {
     lineNameOverrides: {},
     trim: false,
     noSegments: false,
-    disabled: false
+    disabled: false,
   },
   brightline: {
     url: "http://feed.gobrightline.com/bl_gtfs.zip",
@@ -40,7 +70,7 @@ const feeds = {
     colorOverrides: {},
     mapCodeOverrides: {},
     colorReplacements: {
-      "F2E205": "FFDB00"
+      F2E205: "FFDB00",
     },
     textColorReplacements: {
       //"0D0D0D": "363636"
@@ -48,7 +78,7 @@ const feeds = {
     lineNameOverrides: {},
     trim: false,
     noSegments: false,
-    disabled: false
+    disabled: false,
   },
   metrolink_la: {
     url: "https://metrolinktrains.com/globalassets/about/gtfs/gtfs.zip",
@@ -63,7 +93,7 @@ const feeds = {
     lineNameOverrides: {},
     trim: false,
     noSegments: false,
-    disabled: false
+    disabled: false,
   },
   flixbus_us: {
     url: "https://gtfs.gis.flix.tech/gtfs_generic_us.zip",
@@ -75,12 +105,12 @@ const feeds = {
     mapCodeOverrides: {},
     colorReplacements: {},
     textColorReplacements: {
-      "73D700": "000000"
+      "73D700": "000000",
     },
     lineNameOverrides: {},
     trim: false,
     noSegments: true,
-    disabled: false
+    disabled: false,
   },
   bart: {
     url: "https://www.bart.gov/dev/schedules/google_transit.zip",
@@ -95,15 +125,13 @@ const feeds = {
     lineNameOverrides: {},
     trim: false,
     noSegments: false,
-    disabled: false
+    disabled: false,
   },
   RG: {
     name: "Regional GTFS",
     url: "https://api.511.org/transit/datafeeds?api_key=env.bay_511&operator_id=RG",
     headers: {},
-    urlEnv: [
-      "env.bay_511"
-    ],
+    urlEnv: ["env.bay_511"],
     separator: ",",
     seperatorOverrides: {},
     colorOverrides: {},
@@ -113,7 +141,7 @@ const feeds = {
     lineNameOverrides: {},
     trim: false,
     noSegments: true,
-    disabled: false
+    disabled: false,
   },
   nashville: {
     url: "https://www.wegotransit.com/GoogleExport/google_transit.zip",
@@ -128,7 +156,7 @@ const feeds = {
     lineNameOverrides: {},
     trim: false,
     noSegments: true,
-    disabled: false
+    disabled: false,
   },
   dekalb_il: {
     url: "https://data.trilliumtransit.com/gtfs/cityofdekalb-il-us/cityofdekalb-il-us.zip",
@@ -144,7 +172,7 @@ const feeds = {
     trim: false,
     noSegments: true,
     useRouteShortNameAsRouteCode: true,
-    disabled: false
+    disabled: false,
   },
   marta: {
     name: "MARTA",
@@ -160,7 +188,7 @@ const feeds = {
     lineNameOverrides: {},
     trim: false,
     noSegments: true,
-    disabled: false
+    disabled: false,
   },
   hawaii_thebus: {
     name: "The Bus (Hawaii)",
@@ -176,7 +204,7 @@ const feeds = {
     lineNameOverrides: {},
     trim: false,
     noSegments: true,
-    disabled: false
+    disabled: false,
   },
   metra: {
     name: "Metra",
@@ -185,50 +213,50 @@ const feeds = {
     urlEnv: [],
     separator: ",",
     seperatorOverrides: {
-      "stops": ",",
-      "shapes": ","
+      stops: ",",
+      shapes: ",",
     },
     colorOverrides: {},
     mapCodeOverrides: {},
     colorReplacements: {},
     textColorReplacements: {},
     lineNameOverrides: {
-      'BNSF': 'BNSF',
-      'HC': 'Heritage Corridor',
-      'MD-N': 'Milwaukee North',
-      'MD-W': 'Milwaukee West',
-      'ME': 'Metra Electric',
-      'NCS': 'North Central',
-      'RI': 'Rock Island',
-      'SWS': 'Southwest Service',
-      'UP-N': 'UP North',
-      'UP-NW': 'UP Northwest',
-      'UP-W': 'UP West'
+      BNSF: "BNSF",
+      HC: "Heritage Corridor",
+      "MD-N": "Milwaukee North",
+      "MD-W": "Milwaukee West",
+      ME: "Metra Electric",
+      NCS: "North Central",
+      RI: "Rock Island",
+      SWS: "Southwest Service",
+      "UP-N": "UP North",
+      "UP-NW": "UP Northwest",
+      "UP-W": "UP West",
     },
     trim: true,
-    disabled: false
+    disabled: false,
   },
   njt_rail: {
     name: "NJT Rail",
     url: "https://raildata.njtransit.com/api/GTFSRT/getGTFS",
     headers: {
-      "accept": "*/*"
+      accept: "*/*",
     },
-    "body": {
-      "token": "env.njt_rail_key"
+    body: {
+      token: "env.njt_rail_key",
     },
-    "bodyType": "formData",
+    bodyType: "formData",
     urlEnv: [],
     separator: ",",
     seperatorOverrides: {},
     colorOverrides: {},
     mapCodeOverrides: {},
     colorReplacements: {},
-    "allShapes": false,
+    allShapes: false,
     textColorReplacements: {},
     lineNameOverrides: {},
     trim: true,
-    disabled: false
+    disabled: false,
   },
   njt_rail_nonrt: {
     name: "NJT Rail",
@@ -240,18 +268,18 @@ const feeds = {
     colorOverrides: {},
     mapCodeOverrides: {},
     colorReplacements: {},
-    "allShapes": false,
+    allShapes: false,
     textColorReplacements: {},
     lineNameOverrides: {},
     trim: true,
-    disabled: false
+    disabled: false,
   },
   wmata_rail: {
     name: "WMATA Rail",
     url: "https://api.wmata.com/gtfs/rail-gtfs-static.zip",
     headers: {
-      "api_key": "env.WMATA_PRIMARY",
-      "Cache-Control": "no-cache"
+      api_key: "env.WMATA_PRIMARY",
+      "Cache-Control": "no-cache",
     },
     urlEnv: [],
     separator: ",",
@@ -262,7 +290,7 @@ const feeds = {
     textColorReplacements: {},
     lineNameOverrides: {},
     trim: true,
-    disabled: false
+    disabled: false,
   },
   nyct_subway: {
     name: "NYC Subway",
@@ -272,126 +300,36 @@ const feeds = {
     separator: ",",
     seperatorOverrides: {},
     colorOverrides: {
-      "1": [
-        "EE352E",
-        "F2F2F2"
-      ],
-      "2": [
-        "EE352E",
-        "F2F2F2"
-      ],
-      "3": [
-        "EE352E",
-        "F2F2F2"
-      ],
-      "4": [
-        "00933C",
-        "F2F2F2"
-      ],
-      "5": [
-        "00933C",
-        "F2F2F2"
-      ],
-      "6": [
-        "00933C",
-        "F2F2F2"
-      ],
-      "7": [
-        "B933AD",
-        "F2F2F2"
-      ],
-      "5X": [
-        "00933C",
-        "F2F2F2"
-      ],
-      "6X": [
-        "00A65C",
-        "F2F2F2"
-      ],
-      "7X": [
-        "B933AD",
-        "F2F2F2"
-      ],
-      "GS": [
-        "6D6E71",
-        "F2F2F2"
-      ],
-      "A": [
-        "2850AD",
-        "FFFFFF"
-      ],
-      "B": [
-        "FF6319",
-        "FFFFFF"
-      ],
-      "C": [
-        "2850AD",
-        "FFFFFF"
-      ],
-      "D": [
-        "FF6319",
-        "FFFFFF"
-      ],
-      "E": [
-        "2850AD",
-        "FFFFFF"
-      ],
-      "F": [
-        "FF6319",
-        "F2F2F2"
-      ],
-      "FX": [
-        "FF6319",
-        "F2F2F2"
-      ],
-      "FS": [
-        "FF6319",
-        "F2F2F2"
-      ],
-      "G": [
-        "67b441",
-        "F2F2F2"
-      ],
-      "J": [
-        "996633",
-        "F2F2F2"
-      ],
-      "L": [
-        "A7A9AC",
-        "F2F2F2"
-      ],
-      "M": [
-        "FF6319",
-        "F2F2F2"
-      ],
-      "N": [
-        "FCCC0A",
-        "000000"
-      ],
-      "Q": [
-        "FCCC0A",
-        "000000"
-      ],
-      "R": [
-        "FCCC0A",
-        "000000"
-      ],
-      "H": [
-        "A7A9AC",
-        "F2F2F2"
-      ],
-      "W": [
-        "FCCC0A",
-        "000000"
-      ],
-      "Z": [
-        "996633",
-        "F2F2F2"
-      ],
-      "SI": [
-        "2850AD",
-        "FFFFFF"
-      ]
+      1: ["EE352E", "F2F2F2"],
+      2: ["EE352E", "F2F2F2"],
+      3: ["EE352E", "F2F2F2"],
+      4: ["00933C", "F2F2F2"],
+      5: ["00933C", "F2F2F2"],
+      6: ["00933C", "F2F2F2"],
+      7: ["B933AD", "F2F2F2"],
+      "5X": ["00933C", "F2F2F2"],
+      "6X": ["00A65C", "F2F2F2"],
+      "7X": ["B933AD", "F2F2F2"],
+      GS: ["6D6E71", "F2F2F2"],
+      A: ["2850AD", "FFFFFF"],
+      B: ["FF6319", "FFFFFF"],
+      C: ["2850AD", "FFFFFF"],
+      D: ["FF6319", "FFFFFF"],
+      E: ["2850AD", "FFFFFF"],
+      F: ["FF6319", "F2F2F2"],
+      FX: ["FF6319", "F2F2F2"],
+      FS: ["FF6319", "F2F2F2"],
+      G: ["67b441", "F2F2F2"],
+      J: ["996633", "F2F2F2"],
+      L: ["A7A9AC", "F2F2F2"],
+      M: ["FF6319", "F2F2F2"],
+      N: ["FCCC0A", "000000"],
+      Q: ["FCCC0A", "000000"],
+      R: ["FCCC0A", "000000"],
+      H: ["A7A9AC", "F2F2F2"],
+      W: ["FCCC0A", "000000"],
+      Z: ["996633", "F2F2F2"],
+      SI: ["2850AD", "FFFFFF"],
     },
     mapCodeOverrides: {},
     colorReplacements: {},
@@ -399,7 +337,7 @@ const feeds = {
     lineNameOverrides: {},
     trim: false,
     noSegments: false,
-    disabled: false
+    disabled: false,
   },
   mbta: {
     name: "MBTA",
@@ -415,7 +353,7 @@ const feeds = {
     lineNameOverrides: {},
     trim: false,
     noSegments: true,
-    disabled: false
+    disabled: false,
   },
   lirr: {
     name: "Long Island Railroad (MTA)",
@@ -431,7 +369,7 @@ const feeds = {
     lineNameOverrides: {},
     trim: false,
     noSegments: true,
-    disabled: false
+    disabled: false,
   },
   mnrr: {
     name: "Metro North (MTA)",
@@ -447,7 +385,7 @@ const feeds = {
     lineNameOverrides: {},
     trim: false,
     noSegments: true,
-    disabled: false
+    disabled: false,
   },
   nyct_bronx: {
     name: "NYC Bronx Buses",
@@ -463,7 +401,7 @@ const feeds = {
     colorReplacements: {},
     trim: false,
     noSegments: true,
-    disabled: false
+    disabled: false,
   },
   nyct_brooklyn: {
     name: "NYC Brooklyn Buses",
@@ -479,7 +417,7 @@ const feeds = {
     lineNameOverrides: {},
     trim: false,
     noSegments: true,
-    disabled: false
+    disabled: false,
   },
   nyct_manhattan: {
     name: "NYC Manhattan Buses",
@@ -495,7 +433,7 @@ const feeds = {
     lineNameOverrides: {},
     trim: false,
     noSegments: true,
-    disabled: false
+    disabled: false,
   },
   nyct_queens: {
     name: "NYC Queens Buses",
@@ -511,7 +449,7 @@ const feeds = {
     lineNameOverrides: {},
     trim: false,
     noSegments: true,
-    disabled: false
+    disabled: false,
   },
   nyct_staten_island: {
     name: "NYC Staten Island Buses",
@@ -527,7 +465,7 @@ const feeds = {
     lineNameOverrides: {},
     trim: false,
     noSegments: true,
-    disabled: false
+    disabled: false,
   },
   nyct_mta_bus_company: {
     name: "NYC MTA Bus Company",
@@ -543,7 +481,7 @@ const feeds = {
     lineNameOverrides: {},
     trim: false,
     noSegments: true,
-    disabled: false
+    disabled: false,
   },
   cta: {
     name: "Chicago Transit Authority",
@@ -554,23 +492,23 @@ const feeds = {
     seperatorOverrides: {},
     colorOverrides: {},
     mapCodeOverrides: {
-      "Red": "R",
-      "P": "P",
-      "Y": "Y",
-      "Blue": "B",
-      "Pink": "V",
-      "G": "G",
-      "Brn": "T",
-      "Org": "O"
+      Red: "R",
+      P: "P",
+      Y: "Y",
+      Blue: "B",
+      Pink: "V",
+      G: "G",
+      Brn: "T",
+      Org: "O",
     },
     colorReplacements: {
-      "565a5c": "949ca1"
+      "565a5c": "949ca1",
     },
     textColorReplacements: {},
     lineNameOverrides: {},
     trim: false,
     noSegments: true, // change to true at some point
-    disabled: false
+    disabled: false,
   },
   southshore: {
     name: "South Shore Line",
@@ -580,10 +518,7 @@ const feeds = {
     separator: ",",
     seperatorOverrides: {},
     colorOverrides: {
-      "so_shore": [
-        "EA6E10",
-        "000000"
-      ]
+      so_shore: ["EA6E10", "000000"],
     },
     mapCodeOverrides: {},
     colorReplacements: {},
@@ -592,7 +527,7 @@ const feeds = {
     trim: false,
     noSegments: false,
     disabled: true,
-    "subfolder": "google_transit/"
+    subfolder: "google_transit/",
   },
   casco_bay_lines: {
     name: "Casco Bay Lines",
@@ -608,7 +543,7 @@ const feeds = {
     lineNameOverrides: {},
     trim: true,
     noSegments: true,
-    disabled: true
+    disabled: true,
   },
   gp_metro: {
     name: "GP Metro",
@@ -624,7 +559,7 @@ const feeds = {
     lineNameOverrides: {},
     trim: true,
     noSegments: true,
-    disabled: true
+    disabled: true,
   },
   south_portland: {
     name: "South Portland Bus Lines",
@@ -640,7 +575,7 @@ const feeds = {
     lineNameOverrides: {},
     trim: true,
     noSegments: true,
-    disabled: true
+    disabled: true,
   },
   rutgers: {
     name: "Rutgers",
@@ -656,7 +591,7 @@ const feeds = {
     lineNameOverrides: {},
     trim: false,
     noSegments: true,
-    disabled: false
+    disabled: false,
   },
   uchicago: {
     name: "UChicago",
@@ -672,7 +607,7 @@ const feeds = {
     lineNameOverrides: {},
     trim: false,
     noSegments: true,
-    disabled: false
+    disabled: false,
   },
   rutgers: {
     name: "Rutgers",
@@ -688,7 +623,7 @@ const feeds = {
     lineNameOverrides: {},
     trim: false,
     noSegments: true,
-    disabled: false
+    disabled: false,
   },
   gcsu: {
     name: "GCSU",
@@ -704,7 +639,7 @@ const feeds = {
     lineNameOverrides: {},
     trim: false,
     noSegments: true,
-    disabled: false
+    disabled: false,
   },
   nyu: {
     name: "NYU",
@@ -720,7 +655,7 @@ const feeds = {
     lineNameOverrides: {},
     trim: false,
     noSegments: true,
-    disabled: false
+    disabled: false,
   },
   uncc: {
     name: "University of North Carolina - Charlotte",
@@ -736,7 +671,7 @@ const feeds = {
     lineNameOverrides: {},
     trim: false,
     noSegments: true,
-    disabled: false
+    disabled: false,
   },
   bamabama: {
     name: "Alabama",
@@ -752,7 +687,7 @@ const feeds = {
     lineNameOverrides: {},
     trim: false,
     noSegments: true,
-    disabled: false
+    disabled: false,
   },
   ncstateuni: {
     name: "North Carolina State",
@@ -768,7 +703,7 @@ const feeds = {
     lineNameOverrides: {},
     trim: false,
     noSegments: true,
-    disabled: false
+    disabled: false,
   },
   ritech: {
     name: "RIT",
@@ -784,7 +719,7 @@ const feeds = {
     lineNameOverrides: {},
     trim: false,
     noSegments: true,
-    disabled: false
+    disabled: false,
   },
   uga: {
     name: "UGA",
@@ -800,7 +735,7 @@ const feeds = {
     lineNameOverrides: {},
     trim: false,
     noSegments: true,
-    disabled: false
+    disabled: false,
   },
 };
 
