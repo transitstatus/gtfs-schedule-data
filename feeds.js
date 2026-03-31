@@ -32,7 +32,7 @@ const feeds = {
     disabled: false,
   },
   via_rail: {
-    url: "https://www.viarail.ca/sites/all/files/gtfs/viarail.zip",
+    url: "https://tiles.transitstat.us/viarail.zip", // temp switch due to via server issues "https://www.viarail.ca/sites/all/files/gtfs/viarail.zip",
     headers: {},
     urlEnv: [],
     separator: ",",
