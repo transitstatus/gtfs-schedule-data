@@ -193,7 +193,7 @@ Object.keys(feeds).forEach((feed) => {
                     //if (trips[tripID].routeID != 'Org') continue; // only orange REMOVEME
 
                     const tripShape = trips[tripID].shapeID ?
-                      turf.lineString(addPointsBetweenPoints(shapes[trips[tripID].shapeID])) :
+                      turf.lineString(addPointsBetweenPoints(shapes[trips[tripID].shapeID], 0)) :
                       turf.lineString(trips[tripID].stopTimes.map((stop) => [
                         stops[stop.stopID].lon,
                         stops[stop.stopID].lat,
