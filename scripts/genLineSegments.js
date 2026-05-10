@@ -10,6 +10,8 @@ const calculateLineMidpointWithPercent = (lon1, lat1, lon2, lat2, per = 0.5) => 
 require('dotenv').config();
 
 const addPointsBetweenPoints = (points, iterations) => {
+  if (iterations == 0) return points;
+
   let finalPoints = [];
 
   for (let i = 0; i < points.length - 1; i++) {
@@ -38,8 +40,7 @@ const addPointsBetweenPoints = (points, iterations) => {
     finalPoints.push(...thisNewPoints);
   }
 
-  if (iterations > 1) return addPointsBetweenPoints(finalPoints, iterations - 1);
-  return finalPoints;
+  return addPointsBetweenPoints(finalPoints, iterations - 1);
 };
 
 Object.keys(feeds).forEach((feed) => {
