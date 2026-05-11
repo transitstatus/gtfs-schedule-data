@@ -173,7 +173,7 @@ const feeds = {
     lineNameOverrides: {},
     trim: false,
     noSegments: true,
-    disabled: false,
+    disabled: true,
   },
   hawaii_thebus: {
     name: "The Bus (Hawaii)",
