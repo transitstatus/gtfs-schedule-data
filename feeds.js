@@ -8,7 +8,8 @@ const feeds = {
     colorOverrides: {},
     mapCodeOverrides: {},
     colorReplacements: {
-      CAE4F1: "5366c9",
+      CAE4F1: "008fd6",
+      "000000": "008fd6",
     },
     textColorReplacements: {},
     lineNameOverrides: {},
