@@ -17,6 +17,23 @@ const feeds = {
     noSegments: false,
     disabled: false,
   },
+  goldrunner: {
+    url: "https://d34tiw64n5z4oh.cloudfront.net/wp-content/uploads/GRGTFS.zip",
+    headers: {},
+    urlEnv: [],
+    separator: ",",
+    seperatorOverrides: {},
+    colorOverrides: {},
+    mapCodeOverrides: {},
+    colorReplacements: {
+      FEE129: "008fd6"
+    },
+    textColorReplacements: {},
+    lineNameOverrides: {},
+    trim: false,
+    noSegments: false,
+    disabled: false,
+  },
   ctrail_hartford: {
     url: "https://ctrides.com/hlgtfs.zip",
     headers: {},
