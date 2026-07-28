@@ -550,7 +550,7 @@ const feeds = {
   },
   rutgers: {
     name: "Rutgers",
-    url: "https://passio3.com/rutgers/passioTransit/gtfs/google_transit.zip",
+    url: "https://rutgers.tripshot.com/v1/gtfs.zip?regionId=CA558DDC-D7F2-4B48-9CAC-DEEA1134F820", //"https://passio3.com/rutgers/passioTransit/gtfs/google_transit.zip",
     headers: {},
     urlEnv: [],
     separator: ",",
