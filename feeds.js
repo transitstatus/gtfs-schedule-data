@@ -116,6 +116,7 @@ const feeds = {
     disabled: false,
   },
   bart: {
+    name: 'BART',
     url: "https://www.bart.gov/dev/schedules/google_transit.zip",
     headers: {},
     urlEnv: [],
