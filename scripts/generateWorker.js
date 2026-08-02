@@ -461,6 +461,7 @@ const processFeed = (feed, feeds) => {
                               zoneID: row.zone_id,
                               stopTZ: row.stop_timezone,
                               parentStation: row.parent_station,
+                              stopCode: row.stop_code
                             };
                           })
                           .on('end', function () {
