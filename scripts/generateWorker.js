@@ -84,7 +84,7 @@ const contrastFromString = (color1, color2) => {
 }
 
 const processFeed = (feed, feeds) => {
-  //if (feed != 'southshore') return;
+  //if (feed != 'brightline') return;
 
   try {
     const feedURL = processURL(feeds[feed]['url'], feeds[feed]['urlEnv']);
@@ -461,7 +461,7 @@ const processFeed = (feed, feeds) => {
                               zoneID: row.zone_id,
                               stopTZ: row.stop_timezone,
                               parentStation: row.parent_station,
-                              stopCode: row.stop_code && row.stop_code.length > 0 ? row.stop_code : null,
+                              stopCode: row.stop_code && row.stop_code.length > 0 ? row.stop_code : row.stop_id,
                             };
                           })
                           .on('end', function () {
