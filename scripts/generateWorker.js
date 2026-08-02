@@ -461,7 +461,7 @@ const processFeed = (feed, feeds) => {
                               zoneID: row.zone_id,
                               stopTZ: row.stop_timezone,
                               parentStation: row.parent_station,
-                              stopCode: row.stop_code
+                              stopCode: row.stop_code && row.stop_code.length > 0 ? row.stop_code : null,
                             };
                           })
                           .on('end', function () {
