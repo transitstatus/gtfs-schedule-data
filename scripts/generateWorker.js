@@ -1,5 +1,5 @@
 const { parentPort, workerData } = require("worker_threads");
-const fetch = require('node-fetch');
+//const fetch = require('node-fetch');
 const FormData = require('form-data');
 const fs = require('fs');
 const { parse } = require('csv-parse');
