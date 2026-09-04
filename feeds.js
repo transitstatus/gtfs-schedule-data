@@ -464,16 +464,7 @@ const feeds = {
     separator: ",",
     seperatorOverrides: {},
     colorOverrides: {},
-    mapCodeOverrides: {
-      Red: "R",
-      P: "P",
-      Y: "Y",
-      Blue: "B",
-      Pink: "V",
-      G: "G",
-      Brn: "T",
-      Org: "O",
-    },
+    mapCodeOverrides: {},
     colorReplacements: {
       "565a5c": "949ca1",
     },
