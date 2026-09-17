@@ -517,7 +517,11 @@ const processFeed = (feed, feeds) => {
                   });
               });
           })
-      });
+      })
+      .catch((e) => {
+        console.log('FUCK FUCK FUCK FUCK', feed, feeds[feed])
+        throw e;
+      })
   } catch (e) {
     console.log(e);
   }
