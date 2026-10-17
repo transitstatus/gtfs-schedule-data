@@ -64,7 +64,7 @@ Object.keys(feeds).forEach((feed) => {
 
   let shapes = {};
   let trips = {};
-  let stops = {};
+  let stops = feeds[feed]?.defaultDictsLineSegments?.stops ?? {};
   let segments = {};
   let segmentKeyDict = {};
 

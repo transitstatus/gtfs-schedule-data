@@ -442,7 +442,7 @@ const processFeed = (feed, feeds) => {
                       })
                       .on('end', function () {
 
-                        let stops = {};
+                        let stops = feeds[feed]?.defaultDictsWorker?.stops ?? {};
                         console.log(`Processing ${feed} stops...`)
                         fs.createReadStream(`${feedPath}/stops.txt`)
                           .pipe(parse({
