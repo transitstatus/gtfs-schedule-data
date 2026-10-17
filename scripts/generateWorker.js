@@ -285,7 +285,7 @@ const processFeed = (feed, feeds) => {
                       shapes[row.shape_id] = [];
                     }
 
-                    shapes[row.shape_id].push([Number(Number(row.shape_pt_lon).toFixed(5)), Number(Number(row.shape_pt_lat).toFixed(5)), Number(row.shape_pt_sequence)]);
+                    shapes[row.shape_id].push([Number(Number(row.shape_pt_lon).toFixed(6)), Number(Number(row.shape_pt_lat).toFixed(6)), Number(row.shape_pt_sequence)]);
                   })
                   .on('end', function () {
                     console.log(`Sorting ${feed} shapes...`);
@@ -456,8 +456,8 @@ const processFeed = (feed, feeds) => {
                             stops[row.stop_id] = {
                               stopID: row.stop_id,
                               stopName: row.stop_name,
-                              stopLat: Number(Number(row.stop_lat).toFixed(5)),
-                              stopLon: Number(Number(row.stop_lon).toFixed(5)),
+                              stopLat: Number(Number(row.stop_lat).toFixed(6)),
+                              stopLon: Number(Number(row.stop_lon).toFixed(6)),
                               zoneID: row.zone_id,
                               stopTZ: row.stop_timezone,
                               parentStation: row.parent_station,
