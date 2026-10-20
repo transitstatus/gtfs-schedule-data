@@ -283,7 +283,7 @@ const feeds = {
     textColorReplacements: {},
     lineNameOverrides: {},
     trim: true,
-    disabled: true
+    disabled: false
   },
   njt_rail_nonrt: {
     name: "NJT Rail",
